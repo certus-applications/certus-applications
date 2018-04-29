@@ -3,7 +3,7 @@
 <!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
 <head>
-    <title>Responsive website template for documentations</title>
+    <title>Developer Documentation</title>
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -70,7 +70,6 @@
                                 <i class="icon fa fa-paper-plane"></i>
                             </div><!--//icon-holder-->
                             <h3 class="title">Quick Start</h3>
-                            <p class="intro">Demo example, consectetuer adipiscing elit</p>
                             <a class="link" href="dev/start"><span></span></a>
                         </div><!--//item-inner-->
                     </div><!--//item-->

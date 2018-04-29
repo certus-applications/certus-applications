@@ -7,4 +7,9 @@ class Dev extends CI_Controller {
     $this->load->helper('url');
     $this->load->view('dev');
   }
+
+  public function start() {
+    $this->load->helper('url');
+    $this->load->view('start');
+  }
 }
