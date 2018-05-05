@@ -38,7 +38,7 @@
                     <h1 class="logo">
                         <a href="../dev">
                             <span aria-hidden="true" class="icon_documents_alt icon"></span>
-                            <span class="text-highlight">Certus Devtest</span><span class="text-bold">Docs</span>
+                            <span class="text-highlight">Certus Dev</span><span class="text-bold">Docs</span>
                         </a>
                     </h1>
                 </div><!--//branding-->
@@ -52,7 +52,7 @@
             <div class="container">
                 <div id="doc-header" class="doc-header text-center">
                     <h1 class="doc-title"><i class="icon fa fa-paper-plane"></i> Quick Start</h1>
-                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Apr 29th, 2018</div>
+                    <div class="meta"><i class="fa fa-clock-o"></i> Last updated: Apr 30th, 2018</div>
                 </div><!--//doc-header-->
                 <div class="doc-body">
                     <div class="doc-content">
@@ -60,70 +60,103 @@
                             <section id="download-section" class="doc-section">
                                 <h2 class="section-title">Download</h2>
                                 <div class="section-block">
+                                <div id="step1"  class="section-block">
+                                    <h3 class="block-title">Sourcetree</h3>
+                                    <p>Download sourcetree <a href="https://www.sourcetreeapp.com"> here!</a>
+                                    </p>
+                                    <h3 class="block-title">XAMPP</h3>
+                                    <p>Download XAMPP 5.6.35 / PHP 5.6.35 <a href="https://www.apachefriends.org/download.html"> here!</a>
+                                    </p>
+                                </div><!--//section-block-->
 
                                 </div>
                             </section><!--//doc-section-->
                             <section id="installation-section" class="doc-section">
-                                <h2 class="section-title">Installation</h2>
-                                <div id="step1"  class="section-block">
+                                <h2 class="section-title">Setup</h2>
+                                <div id="git_repo"  class="section-block">
+                                    <h3 class="block-title">Git Repo</h3>
+                                    <p>All of our application files are stored on github. Below are the instructions to download the repo on your personal computer!
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <h6>Git</h6>
+                                            <ol class="list">
+                                              <li>Open sourcetree.</li>
+                                              <li>At the top of sorcetree click: "+ New..."</li>
+                                              <li>In the drop down click: "Clone from URL"
+                                                <ul>
+                                                  <li>Source URL: https://github.com/certus-applications/certus-applications.git</li>
+                                                  <li>Desitnation Path: /Users/your_username/Desktop</li>
+                                                    <ul>Click "..."</ul>
+                                                    <ul>Click "New folder"</ul>
+                                                    <ul>Name your folder "certus" and click create</ul>
+                                                    <ul>Click "Open"</ul>
+                                                  <li>Name: certus</li>
+                                                </ul>
+                                              </li>
+                                              <li>See screenshot below:</li>
+                                            </ol>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                              <img class="img-responsive" src="/img/sourcetree.jpg">
+                                            </div>
+                                        </div>
+                                    </div><!--//row-->
+                                </div><!--//section-block-->
+                                <div id="xampp"  class="section-block">
+                                    <h3 class="block-title">XAMPP</h3>
+                                    <p>We use XAMPP as our Apache HTTP Server.
+                                    </p>
+                                    <div class="row">
+                                        <div class="col-md-12 col-sm-12 col-xs-12">
+                                            <h6>XAMPP</h6>
+                                            <ol class="list">
+                                              <li>Open the new downloaded file and follow the set up wizard.</li>
+                                              <li>If on a MAC navigate to applications then to XAMPP.</li>
+                                              <li>Open manager-osx.</li>
+                                              <li>At the top click manage servers.</li>
+                                              <li>Then click Start All.</li>
+                                              <li>Set up your virtual host on XAMPP:
+                                                <ul>
+                                                  <li>If on MAC go to Applications > XAMPP > etc > extra > httpd-vhosts.conf (open the file in sublime or atom)</li>
+                                                  <li>Copy the following code:</li>
+                                                  <pre><code class="language-markup">&#x3C;VirtualHost *:80&#x3E;
+  ServerName certus.local
+  DocumentRoot &#x22;/Users/jlamba/Documents/certus&#x22;
+  &#x3C;Directory &#x22;/Users/jlamba/Documents/certus&#x22;&#x3E;
+      Options Indexes FollowSymLinks Includes execCGI
+      AllowOverride All
+      Require all granted
+  &#x3C;/Directory&#x3E;
+&#x3C;/VirtualHost&#x3E;</code></pre>
+                                                  <li>Note for Directory and Document root the value needs to be the location where you saved the certus git repo.</li>
+                                                </ul>
+                                              </li>
+                                              <li>Set up your virtual host in Terminal:
+                                                <ul>
+                                                  <li>If on MAC go to Applications > Utilities > Terminal
+                                                  <li>In terminal type the following:</li>
+                                                    <ul>sudo nano /etc/hosts (make sure to add a space after nano)</ul>
+                                                    <ul>After type the following code:</ul>
+                                                  <pre><code class="language-markup">127.0.0.1       certus.local</code></pre>
+                                                    <ul> To exit press Control - X and then Y</ul>
+                                                </ul>
+                                              </li>
+                                              <!-- <li>Now go to Applications > XAMPP > etc > extra > httpd.conf (open the file in sublime or atom) and type in the following code:</li> -->
 
+                                              <li>See screenshot below to set up virtual host:</li>
+                                              <div class="col-md-12 col-sm-12 col-xs-12">
+                                                <img class="img-responsive" src="/img/vhost.jpg">
+                                              </div>
+                                              <li>Open manager-osx again.</li>
+                                              <li>At the top click manage servers.</li>
+                                              <li>Now click Restart All.</li>
+                                              <li>Lastly, go to any browswer and type in: http://certus.local. This is where you will be able to see your changes locally on your computer.</li>
+                                            </ol>
+                                    </div><!--//row-->
                                 </div><!--//section-block-->
 
                             </section><!--//doc-section-->
 
-                            <section id="code-section" class="doc-section">
-                                <h2 class="section-title">Code</h2>
-                                <div class="section-block">
-
-                                </div><!--//section-block-->
-                                <div id="html" class="section-block">
-
-                                    <div class="callout-block callout-success">
-
-                                    </div>
-                                    <div class="code-block">
-                                        <h6>HTML Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="css" class="section-block">
-                                    <div class="code-block">
-                                        <h6>CSS Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="less" class="section-block">
-                                    <div class="code-block">
-                                        <h6>LESS Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="sass" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Sass Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="javascript" class="section-block">
-                                    <div class="code-block">
-                                        <h6>JavaScript Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="python" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Python Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="php" class="section-block">
-                                    <div class="code-block">
-                                        <h6>PHP Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                                <div id="handlebars" class="section-block">
-                                    <div class="code-block">
-                                        <h6>Handlebars Code Example</h6>
-                                    </div><!--//code-block-->
-                                    <div class="code-block">
-                                        <h6>Git Code Example</h6>
-                                    </div><!--//code-block-->
-                                </div><!--//section-block-->
-                            </section><!--//doc-section-->
                         </div><!--//content-inner-->
                     </div><!--//doc-content-->
                     <div class="doc-sidebar hidden-xs">
@@ -131,31 +164,12 @@
                             <ul id="doc-menu" class="nav doc-menu" data-spy="affix">
                                 <li><a class="scrollto" href="#download-section">Download</a></li>
                                 <li>
-                                    <a class="scrollto" href="#installation-section">Installation</a>
+                                    <a class="scrollto" href="#installation-section">Setup</a>
                                     <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#step1">Step One</a></li>
-                                        <li><a class="scrollto" href="#step2">Step Two</a></li>
-                                        <li><a class="scrollto" href="#step3">Step Three</a></li>
+                                        <li><a class="scrollto" href="#git_repo">Git Repo</a></li>
+                                        <li><a class="scrollto" href="#xampp">XAMPP</a></li>
                                     </ul><!--//nav-->
                                 </li>
-                                <li>
-                                    <a class="scrollto" href="#code-section">Code</a>
-                                    <ul class="nav doc-sub-menu">
-                                        <li><a class="scrollto" href="#html">HTML</a></li>
-                                        <li><a class="scrollto" href="#css">CSS</a></li>
-                                        <li><a class="scrollto" href="#less">LESS</a></li>
-                                        <li><a class="scrollto" href="#sass">Sass</a></li>
-                                        <li><a class="scrollto" href="#javascript">JavaScript</a></li>
-                                        <li><a class="scrollto" href="#python">Python</a></li>
-                                        <li><a class="scrollto" href="#php">PHP</a></li>
-                                        <li><a class="scrollto" href="#handlebars">Handlebars</a></li>
-                                    </ul><!--//nav-->
-                                </li>
-                                <li><a class="scrollto" h`ref="#callouts-section">Callouts</a></li>
-                                <li><a class="scrollto" href="#tables-section">Tables</a></li>
-                                <li><a class="scrollto" href="#buttons-section">Buttons</a></li>
-                                <li><a class="scrollto" href="#video-section">Video</a></li>
-                                <li><a class="scrollto" href="#icons-section">Icons</a></li>
                             </ul><!--//doc-menu-->
                         </nav>
                     </div><!--//doc-sidebar-->

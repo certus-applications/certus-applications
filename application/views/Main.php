@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Certus | Comming Soon Page</title>
+  <title>Certus | Comming Soon</title>
   <meta name="description" content="Certus">
   <meta name="keywords" content="">
   <link href='https://fonts.googleapis.com/css?family=Lobster|Open+Sans:400,400italic,300italic,300|Raleway:300,400,600' rel='stylesheet' type='text/css'>
@@ -38,7 +38,7 @@
             <input class="subscribe" name="email" value="Subscribe!" type="submit">
           </form>
           <p class="sub-p">We Promise to never spam you.</p>
-          <a href="chatbot"><button type="button" class="btn btn-primary">Go to Chatbot</button></a>
+          <a href="login"><button type="button" class="btn btn-primary">Go to Chatbot</button></a>
         </div>
       </div>
     </div>
