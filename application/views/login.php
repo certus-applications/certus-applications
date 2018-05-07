@@ -21,18 +21,19 @@
   <div class="limiter">
     <div class="container-login100">
       <div class="wrap-login100">
-        <form class="login100-form validate-form">
+        <form method="post" enctype="multipart/form-data" class="login100-form validate-form">
           <span class="login100-form-title p-b-34">
             <span style="color: green"><?php echo $this->session->flashdata('success_msg');?></span>
             <br><br>Account Login
           </span>
 
-          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20" data-validate="Type user name">
-            <input id="first-name" class="input100" type="text" name="username" placeholder="User name">
+          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20">
+            <input id="username" class="input100" type="text" name="username" placeholder="Username">
             <span class="focus-input100"></span>
           </div>
-          <div class="wrap-input100 rs2-wrap-input100 validate-input m-b-20" data-validate="Type password">
-            <input class="input100" type="password" name="pass" placeholder="Password">
+
+          <div class="wrap-input100 rs1-wrap-input100 validate-input m-b-20">
+            <input id="password" class="input100" type="password" name="password" placeholder="Password">
             <span class="focus-input100"></span>
           </div>
 
@@ -50,6 +51,8 @@
             <a href="#" class="txt2">
               User name / password?
             </a>
+            <br><span style="color: red"><?php echo $this->session->flashdata('error_msg');?></span>
+            <span style="color: red"><?php echo $this->session->flashdata('form_errors');?></span>
           </div>
 
           <div class="w-full text-center">
