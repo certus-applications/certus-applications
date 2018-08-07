@@ -104,7 +104,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Ryerson Healt Clinic <small>Clients</small></h2>
+                    <h2>Ryerson Health Clinic <small>Clients</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
                       </li>
@@ -137,12 +137,12 @@
                       </thead>
                       <tbody>
                         <tr>
-                          <td>Blah</td>
-                          <td>Blah</td>
-                          <td>Blah</td>
-                          <td>Blah</td>
-                          <td>Blah</td>
-                          <td>Blah</td>
+                          <td>John</td>
+                          <td>Smith</td>
+                          <td>August 6, 2018</td>
+                          <td>Dr. Bains</td>
+                          <td>9055505500</td>
+                          <td>john.smith@gmail.com</td>
                           <td>
                             <a href="" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                             <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
