@@ -70,10 +70,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | The $query_builder variables lets you determine whether or not to load
 | the query builder class.
 */
-$active_group = 'default';
+
+
+if (isset($_SERVER['SERVER_NAME']) ) {
+    $server_name = $_SERVER['SERVER_NAME'];
+    if ($server_name == 'certus.local') {
+        $active_group = 'DEV';
+    } else if (($server_name == 'http://staging.certusapplication.ca')) {
+        // echo "string";
+        $active_group = 'STAGING';
+    }
+}
+
+// $active_group = 'default';
 $query_builder = TRUE;
 
-$db['default'] = array(
+$db['DEV'] = array(
 	'dsn'	=> '',
 	'hostname' => 'localhost',
 	'username' => 'root',
@@ -95,25 +107,26 @@ $db['default'] = array(
 	'save_queries' => TRUE
 );
 
-// $db['default'] = array(
-// 	'dsn'	=> '',
-// 	'hostname' => '107.180.32.184',
-// 	// 'username' => 'root',
-// 	'username' => 'jas',
-// 	'password' => 'May072018',
-// 	'database' => 'certus-live',
-// 	'dbdriver' => 'mysqli',
-// 	'dbprefix' => '',
-// 	'pconnect' => FALSE,
-// 	'db_debug' => (ENVIRONMENT !== 'production'),
-// 	'cache_on' => FALSE,
-// 	'cachedir' => '',
-// 	'char_set' => 'utf8',
-// 	'dbcollat' => 'utf8_general_ci',
-// 	'swap_pre' => '',
-// 	'encrypt' => FALSE,
-// 	'compress' => FALSE,
-// 	'stricton' => FALSE,
-// 	'failover' => array(),
-// 	'save_queries' => TRUE
-// );
+$db['STAGING'] = array(
+	'dsn'	=> '',
+	'hostname' => 'localhost',
+	// 'hostname' => '107.180.32.184',
+	// 'username' => 'root',
+	'username' => 'certus',
+	'password' => 'E2K-wHa-nRy-naw',
+	'database' => 'certus-live',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
