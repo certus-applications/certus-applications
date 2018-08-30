@@ -74,11 +74,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (isset($_SERVER['SERVER_NAME']) ) {
     $server_name = $_SERVER['SERVER_NAME'];
-    if ($server_name == 'certus.local') {
+    if (($server_name == 'certus.local')) {
         $active_group = 'DEV';
     } else if (($server_name == 'staging.certusapplication.ca')) {
       	//  echo "string";
         $active_group = 'STAGING';
+    } else if (($server_name == 'certus1.local')) {
+      	//  echo "string";
+        $active_group = 'SUNNY';
     }
 }
 
@@ -90,6 +93,28 @@ $db['DEV'] = array(
 	'hostname' => 'localhost',
 	'username' => 'root',
 	'password' => '',
+	'database' => 'certus',
+	'dbdriver' => 'mysqli',
+	'dbprefix' => '',
+	'pconnect' => FALSE,
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
+	'cache_on' => FALSE,
+	'cachedir' => '',
+	'char_set' => 'utf8',
+	'dbcollat' => 'utf8_general_ci',
+	'swap_pre' => '',
+	'encrypt' => FALSE,
+	'compress' => FALSE,
+	'stricton' => FALSE,
+	'failover' => array(),
+	'save_queries' => TRUE
+);
+
+$db['SUNNY'] = array(
+	'dsn'	=> '',
+	'hostname' => '127.0.0.1',
+	'username' => 'root',
+	'password' => '3210762ps',
 	'database' => 'certus',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
