@@ -76,8 +76,8 @@ if (isset($_SERVER['SERVER_NAME']) ) {
     $server_name = $_SERVER['SERVER_NAME'];
     if ($server_name == 'certus.local') {
         $active_group = 'DEV';
-    } else if (($server_name == 'http://staging.certusapplication.ca')) {
-        // echo "string";
+    } else if (($server_name == 'staging.certusapplication.ca')) {
+      	//  echo "string";
         $active_group = 'STAGING';
     }
 }
@@ -94,7 +94,7 @@ $db['DEV'] = array(
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
@@ -112,13 +112,13 @@ $db['STAGING'] = array(
 	'hostname' => 'localhost',
 	// 'hostname' => '107.180.32.184',
 	// 'username' => 'root',
-	'username' => 'certus',
-	'password' => 'E2K-wHa-nRy-naw',
-	'database' => 'certus-live',
+	'username' => 'certus-staging',
+	'password' => 'StagingAug30',
+	'database' => 'certus-staging',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
-	'db_debug' => (ENVIRONMENT !== 'production'),
+	// 'db_debug' => (ENVIRONMENT !== 'production'),
 	'cache_on' => FALSE,
 	'cachedir' => '',
 	'char_set' => 'utf8',
