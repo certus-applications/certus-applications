@@ -22,7 +22,7 @@
 </head>
 <body>
 	
-	<?php echo form_open("auth/login");?>
+	
 
 	<div class="limiter">
 		<div class="container-login100">
@@ -31,12 +31,14 @@
 					<img src="../../../img/certus_logo.png" alt="IMG">
 				</div>
 
+				<?php echo form_open("auth/login");?>
+
 				<form class="login100-form validate-form">
 					<span class="login100-form-title">
-						<h1><?php echo lang('login_heading');?></h1>
-						<p><?php echo lang('login_subheading');?></p>
-						<?php echo form_open("auth/login");?>
+						Member Login
 					</span>
+
+					<?php echo form_open("auth/login");?>
 
 					<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
 						<?php echo lang('login_identity_label', 'identity');?>
@@ -62,6 +64,8 @@
 						</button>
 					</div>
 
+					<?php echo form_close();?>
+
 					<div class="text-center p-t-12">
 						<a class="txt2" href="forogt_password">
 							<?php echo lang('login_forgot_password');?>
@@ -79,7 +83,7 @@
 		</div>
 	</div>
 	
-	<?php echo form_close();?>
+
 	
 
 	
