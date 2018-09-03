@@ -1,3 +1,36 @@
+<!-- OLD CODE
+
+<h1><?php echo lang('login_heading');?></h1>
+<p><?php echo lang('login_subheading');?></p>
+
+<div id="infoMessage"><?php echo $message;?></div>
+
+<?php echo form_open("auth/login");?>
+
+  <p>
+    <?php echo lang('login_identity_label', 'identity');?>
+    <?php echo form_input($identity);?>
+  </p>
+
+  <p>
+    <?php echo lang('login_password_label', 'password');?>
+    <?php echo form_input($password);?>
+  </p>
+
+  <p>
+    <?php echo lang('login_remember_label', 'remember');?>
+    <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+  </p>
+
+
+  <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
+
+<?php echo form_close();?>
+
+<p><a href="forgot_password"><?php echo lang('login_forgot_password');?></a></p>
+
+-->
+
 <html lang="en">
 <head>
   <title>Certus</title>
@@ -57,20 +90,28 @@
               <i class="fa fa-lock" aria-hidden="true"></i>
             </span>
           </div>
+
+          <div class="wrap-input100">
+            <?php echo lang('login_remember_label', 'remember');?>
+            <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+          </div>
           
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">
-              <?php echo form_submit('submit', lang('login_submit_btn'));?>
+              Login
+              <?php echo form_submit('submit');?>
             </button>
           </div>
 
-          <?php echo form_close();?>
+          
 
           <div class="text-center p-t-12">
             <a class="txt2" href="forogt_password">
-              <?php echo lang('login_forgot_password');?>
+              Forgot your password?
             </a>
           </div>
+
+          <?php echo form_close();?>
 
         <!--  <div class="text-center p-t-136">
             <a class="txt2" href="#">
