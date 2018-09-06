@@ -10,7 +10,8 @@
       	$this->db->select('*');
       	$this->db->from('clients');
       	$query=$this->db->get();
-      	return $query->row_array();
+        $returnData = $query->result_array();
+      	return $returnData;
       }
 
 

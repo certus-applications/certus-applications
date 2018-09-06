@@ -136,19 +136,17 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td>John</td>
-                          <td>Smith</td>
-                          <td>August 6, 2018</td>
-                          <td>Dr. Bains</td>
-                          <td>9055505500</td>
-                          <td>john.smith@gmail.com</td>
-                          <td>
-                            <a href="" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                            <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                            <a href="" class="btn btn-danger btn-xs"><i class="fa fa-trash-o"></i> Delete </a>
-                          </td>
-                        </tr>
+                          <?php foreach($clientsAll as $clients){?>
+                            <tr>
+                              <td><?php echo $clients['first_name'];?></td>
+                              <td><?php echo $clients['last_name'];?></td>
+                              <td><?php echo $clients['last_visit'];?></td>
+                              <td><?php echo $clients['name_clinician'];?></td>
+                              <td><?php echo $clients['phone'];?></td>
+                              <td><?php echo $clients['email'];?></td>
+                              <td></td>
+                            </tr>
+                          <?php } ?>
                       </tbody>
                     </table>
                   </div>
