@@ -12,7 +12,6 @@ class Clients extends CI_Controller {
 
     public function index(){
       $data['clientsAll'] = $this->Clients_model->listAll();
-      var_dump($data);
       $this->load->view('main/header');
       //passing the data in list
       $this->load->view('clients/list', $data);
