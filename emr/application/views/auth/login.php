@@ -36,7 +36,7 @@
   <title>Certus</title>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-<!--===============================================================================================-->  
+<!--===============================================================================================-->
   <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../../../vendor_login/bootstrap/css/bootstrap.min.css">
@@ -44,7 +44,7 @@
   <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../../../vendor_login/animate/animate.css">
-<!--===============================================================================================-->  
+<!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../../../vendor_login/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../../../vendor_login/select2/select2.min.css">
@@ -54,8 +54,8 @@
 <!--===============================================================================================-->
 </head>
 <body>
-  
-  
+
+
 
   <div class="limiter">
     <div class="container-login100">
@@ -95,7 +95,7 @@
             <?php echo lang('login_remember_label', 'remember');?>
             <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
           </div>
-          
+
           <div class="container-login100-form-btn">
             <button class="login100-form-btn">
               Login
@@ -103,7 +103,7 @@
             </button>
           </div>
 
-          
+
 
           <div class="text-center p-t-12">
             <a class="txt2" href="forogt_password">
@@ -123,12 +123,12 @@
       </div>
     </div>
   </div>
-  
 
-  
 
-  
-<!--===============================================================================================-->  
+
+
+
+<!--===============================================================================================-->
   <script src="../../../vendor_login/jquery/jquery-3.2.1.min.js"></script>
 <!--===============================================================================================-->
   <script src="../../../vendor_login/bootstrap/js/popper.js"></script>
