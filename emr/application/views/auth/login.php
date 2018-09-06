@@ -37,7 +37,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->  
-  <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+  <link rel="icon" type="image/png" href="../../../img/icons/rsz_1certuslogowatermark.png"/>
 <!--===============================================================================================-->
   <link rel="stylesheet" type="text/css" href="../../../vendor_login/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
@@ -54,8 +54,6 @@
 <!--===============================================================================================-->
 </head>
 <body>
-  
-  
 
   <div class="limiter">
     <div class="container-login100">
@@ -65,14 +63,13 @@
         </div>
 
         <?php echo form_open("auth/login");?>
-
         <form class="login100-form validate-form">
           <span class="login100-form-title">
             Member Login
           </span>
 
+       
           <?php echo form_open("auth/login");?>
-
           <div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
             <?php echo lang('login_identity_label', 'identity');?>
               <?php echo form_input($identity);?>
@@ -103,23 +100,13 @@
             </button>
           </div>
 
-          
-
           <div class="text-center p-t-12">
             <a class="txt2" href="forogt_password">
               Forgot your password?
             </a>
           </div>
-
-          <?php echo form_close();?>
-
-        <!--  <div class="text-center p-t-136">
-            <a class="txt2" href="#">
-              Create your Account
-              <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
-            </a>
-          </div> -->
         </form>
+        <?php echo form_close();?>
       </div>
     </div>
   </div>
