@@ -16,6 +16,7 @@ class Main extends CI_Controller {
 
     public function beta(){
      $this->load->view('main/header');
+     $this->load->view('main/sidebar');
      $this->load->view('main/body');
      $this->load->view('main/footer');
     }
