@@ -17,7 +17,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li class="active"><a href="main/beta"><i class="fa fa-calendar"></i> Calendar</a></li>
-                  <li><a href="clients/beta"><i class="fa fa-user"></i> Clients</a></li>
+                  <li><a href="clients"><i class="fa fa-user"></i> Clients</a></li>
                   <li><a><i class="fa fa-usd"></i> Billing</a></li>
                   <li><a><i class="fa fa-bar-chart"></i> Insights</a></li>
                   <li><a><i class="fa fa-bookmark-o"></i> Activity</a></li>
@@ -56,7 +56,7 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <!-- <img src="images/img.jpg" alt=""> -->Dr. Manan Patel, PhPiece
+                    <!-- <img src="images/img.jpg" alt=""> -->Dr. Manan Patel
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
@@ -68,7 +68,7 @@
                       </a>
                     </li>
                     <li><a href="javascript:;">Help</a></li>
-                    <li><a href="login.html"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
+                    <li><a href="auth/logout"><i class="fa fa-sign-out pull-right"></i> Log Out</a></li>
                   </ul>
                 </li>
 

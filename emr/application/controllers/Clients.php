@@ -11,12 +11,12 @@ class Clients extends CI_Controller {
     }
 
     public function index(){
-      echo "string";
+      $data['clientsAll'] = $this->Clients_model->listAll();
+      var_dump($data);
+      $this->load->view('main/header');
+      $this->load->view('clients/list');
+      $this->load->view('main/footer');
     }
 
-    public function beta(){
-     $this->load->view('main/header');
-     $this->load->view('clients/list');
-     $this->load->view('main/footer');
-    }
+
 }
