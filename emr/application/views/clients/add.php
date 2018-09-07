@@ -5,6 +5,9 @@
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>New Clients <small>Add in new patients here</small></h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a href="clients"><button  type="submit" class="btn btn-success">Back</button></a></li>
+                    </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
