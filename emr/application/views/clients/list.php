@@ -6,7 +6,7 @@
                   <div class="x_title">
                     <h2>Ryerson Health Clinic <small>Clients</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><button type="submit" class="btn btn-success">Add Client</button></li>
+                      <li><a href="clients/add"><button  type="submit" class="btn btn-success">Add Client</button></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
