@@ -13,34 +13,48 @@
                   <div class="x_content">
                       <tbody>
                           <form method='post'>
-		
+							
+							<div class="col-sm-6">
 							<fieldset class="form-group">
-								<input class="form-control" type="text" name="first_name" placeholder="First Name ex. Bob">
+								First Name<input class="form-control" type="text" name="first_name" placeholder="First Name ex. Bob">
 							</fieldset> 
+							</div>
 
+							<div class="col-sm-6">
 							<fieldset class="form-group">
-								<input class="form-control" type="text" name="last_name" placeholder="Last Name ex. Dylan">
+								Last Name<input class="form-control" type="text" name="last_name" placeholder="Last Name ex. Dylan">
 							</fieldset> 
+							</div>
 
+							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								<input class="form-control" type="date" name="last_visit" placeholder="Last Visit">
+								Last Visit<input class="form-control" type="date" name="last_visit" placeholder="Last Visit">
 							</fieldset>
+							</div>
 
+							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								<input class="form-control" type="text" name="clinician" placeholder="Name of Clinician">
+								Name Of Clinician<input class="form-control" type="text" name="clinician" placeholder="Ex. Dr. Patel">
 							</fieldset>
+							</div>
 
+							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								<input class="form-control" type="number" name="telephone" placeholder="Phone Number">
+								Phone Number<input class="form-control" type="number" name="telephone" placeholder="123 456 7890">
 							</fieldset>
+							</div>
 
+							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
+								Email<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
 							</fieldset>
+							</div>
 
+							<div class="col-sm-12">
 							<fieldset class="form-group">       
 								<a href=""><button  type="submit" class="btn btn-success">Add Client</button></a>
 							</fieldset>
+							</div>
 
 					</form>
                       </tbody>
