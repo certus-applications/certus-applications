@@ -34,7 +34,7 @@
 
 							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								Name Of Clinician<input class="form-control" type="text" name="clinician" placeholder="Ex. Dr. Patel">
+								Name Of Clinician<input class="form-control" type="text" name="clinician" placeholder="Ex. Dr. Singh">
 							</fieldset>
 							</div>
 

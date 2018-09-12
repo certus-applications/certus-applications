@@ -21,7 +21,7 @@
                   <li><a><i class="fa fa-usd"></i> Billing</a></li>
                   <li><a><i class="fa fa-bar-chart"></i> Insights</a></li>
                   <li><a><i class="fa fa-bookmark-o"></i> Activity</a></li>
-                  <li><a><i class="fa fa-check-square-o"></i> Reminders</a></li>
+                  <li><a href="reminders" ><i class="fa fa-check-square-o"></i> Reminders</a></li>
               </div>
             </div>
             <!-- /sidebar menu -->
