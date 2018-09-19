@@ -26,5 +26,13 @@ class Clients extends CI_Controller {
      $this->load->view('main/footer');
     }
 
+    public function view(){
+     $this->load->view('main/header');
+     $this->load->view('main/sidebar');
+     $this->load->view('clients/view');
+     $this->load->view('main/footer');
+
+    }
+
 
 }
