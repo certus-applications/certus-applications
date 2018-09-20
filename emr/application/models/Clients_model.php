@@ -14,6 +14,9 @@
       	return $returnData;
       }
 
+      public function viewClient($id){
+
+      }
 
       public function email_check($email){
 
