@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 if (isset($_SERVER['SERVER_NAME']) ) {
     $server_name = $_SERVER['SERVER_NAME'];
-    if (($server_name == 'certus.local')) {
+    if (($server_name == 'certus.local') || (($server_name == 'http://app.certusapplications.ca'))) {
         $active_group = 'DEV';
     } else if (($server_name == 'staging.certusapplication.ca')) {
       	//  echo "string";
