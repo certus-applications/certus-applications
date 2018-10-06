@@ -76,7 +76,7 @@ if (isset($_SERVER['SERVER_NAME']) ) {
     $server_name = $_SERVER['SERVER_NAME'];
     if (($server_name == 'certus.local') || (($server_name == 'http://app.certusapplications.ca'))) {
         $active_group = 'DEV';
-    } else if (($server_name == 'staging.certusapplication.ca')) {
+    } else if (($server_name == 'staging.certusapplications.ca')) {
       	//  echo "string";
         $active_group = 'STAGING';
     } else if (($server_name == 'certus1.local')) {
