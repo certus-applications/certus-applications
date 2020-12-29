@@ -1,4 +1,4 @@
-        <!-- page content -->
+        <!-- Calendar content -->
         <div class="right_col" role="main">
           <div class="">
             <div class="page-title">
@@ -44,7 +44,13 @@
                   </div>
                   <div class="x_content">
 
-                    <div id='calendar'></div>
+                    <!-- Calendar Data -->
+                    <div id='calendar'>
+                      <!-- calendar modal -->
+                      <?php include "calData.php"; ?>
+                    </div>
+
+                    
 
                   </div>
                 </div>
@@ -56,7 +62,9 @@
       </div>
     </div>
 
-    <!-- calendar modal -->
+    
+
+    <!-- add new calendar entry -->
     <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -85,18 +93,26 @@
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit">Save changes</button>
+            <button type="button" class="btn btn-primary antosubmit" id="add_new_event">Save changes</button>
           </div>
         </div>
       </div>
     </div>
+
+    
+    
+
+    
+    
+
+    <!-- edit calendar entry -->
     <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
 
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel2">Edit Calendar Entry</h4>
+            <h4 class="modal-title" id="myModalLabel2">Edit Entry</h4>
           </div>
           <div class="modal-body">
 

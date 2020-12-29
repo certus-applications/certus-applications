@@ -51,7 +51,13 @@
                           <img class="img-responsive avatar-view" src="../../../img/mp.jpg" alt="Avatar" title="Change the avatar">
                         </div>
                       </div>
-                      <h3>Samuel Doe</h3>
+                    
+                      <?php foreach($viewClient as $k => $value){ ?>
+                        <?php if( is_array($value) && isset($value['first_name']) && isset($value['last_name']) ){ ?>
+                          <h3><?php echo $value['first_name'];?> <?php echo $value['last_name'];?></h3>
+                        <?php } else { echo 'Something went wrong';} ?>
+                      <?php } ?>
+
 
                       <ul class="list-unstyled user_data">
                         <li><i class="fa fa-map-marker user-profile-icon"></i> San Francisco, California, USA
@@ -98,6 +104,13 @@
                           </div>
                         </li>
                       </ul>
+
+                      <?php foreach($viewClient as $k => $value){ ?>
+                        <?php if( is_array($value) && isset($value['id']) ){ ?>
+                          <a href="insights/analytics/<?php echo $value['id'];?>" class="btn btn-success"><i class="fa fa-gear m-right-xs"></i>View Analytics</a>
+                        <?php } else { echo 'Something went wrong';} ?>
+                      <?php } ?>
+
                       <!-- end of skills -->
 
                     </div>

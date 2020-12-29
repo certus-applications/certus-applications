@@ -4,7 +4,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="index.html" class="site_title"><i class="fa fa-universal-access"></i> <span>Certus</span></a>
+              <a href="main/index" class="site_title"><img src="../img/rsz_1certuslogowatermark.png"><span>Certus</span></a>            
             </div>
 
             <div class="clearfix"></div>
@@ -16,10 +16,10 @@
               <div class="menu_section">
                 <h3>General</h3>
                 <ul class="nav side-menu">
-                  <li><a href="main/beta"><i class="fa fa-calendar"></i> Calendar</a></li>
+                  <li><a href="main/index"><i class="fa fa-calendar"></i> Calendar</a></li>
                   <li><a href="clients"><i class="fa fa-user"></i> Clients</a></li>
                   <li><a><i class="fa fa-usd"></i> Billing</a></li>
-                  <li><a><i class="fa fa-bar-chart"></i> Insights</a></li>
+                  <li><a href="insights"><i class="fa fa-bar-chart"></i> Insights</a></li>                  
                   <li><a><i class="fa fa-bookmark-o"></i> Activity</a></li>
                   <li><a href="reminders" ><i class="fa fa-check-square-o"></i> Reminders</a></li>
               </div>

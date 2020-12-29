@@ -1,13 +1,10 @@
                 <!-- page content -->
-        <div class="right_col" role="main">
+                <div class="right_col" role="main">
                       <div class="row">
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Ryerson Health Clinic <small>Clients</small></h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                      <li><a href="clients/add"><button  type="submit" class="btn btn-success">Add Client</button></a></li>
-                    </ul>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
@@ -17,10 +14,9 @@
                           <th>First Name</th>
                           <th>Last Name</th>
                           <th>Last Visit</th>
-                          <th>Name of Clinician</th>
                           <th>Phone Number</th>
                           <th>Email</th>
-                          <th>Edit</th>
+                          <th>Weekly Analytics</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -29,13 +25,10 @@
                               <td><?php echo $clients['first_name'];?></td>
                               <td><?php echo $clients['last_name'];?></td>
                               <td><?php echo $clients['last_visit'];?></td>
-                              <td><?php echo $clients['name_clinician'];?></td>
                               <td><?php echo $clients['phone'];?></td>
                               <td><?php echo $clients['email'];?></td>
                               <td>
-                                <a href="clients/view/<?php echo $clients['id'];?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
-                                <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
-                                <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient<?php echo $clients['id'];  ?>"><i class="fa fa-trash-o"></i> Delete </a>
+                                <a href="insights/analytics/<?php echo $clients['id'];?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View Analytics</a>
                               </td>
                             </tr>
                           <?php } ?>
@@ -49,12 +42,6 @@
         </div>
         <!-- /page content -->
 
-        <?php
-      echo "<script> var client_id = ".$clients['id']. "</script>";
-        ?>
-        <script>
-          console.log(client_id);
-        </script>
 
       </div>
     </div>
@@ -83,3 +70,4 @@
     </div>
   </div>
 <?php } ?>
+ No newline at end of file

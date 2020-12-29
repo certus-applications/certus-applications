@@ -11,13 +11,17 @@ class Main extends CI_Controller {
     }
 
     public function index(){
-      echo "string";
-    }
-
-    public function beta(){
+     //$data['eventsAll'] = $this->Events_model->listAll();
      $this->load->view('main/header');
      $this->load->view('main/sidebar');
-     $this->load->view('main/body');
+     //$this->load->view('calendar/view', $data);
+     $this->load->view('calendar/view');
      $this->load->view('main/footer');
     }
+
+    public function saveEvent() {
+      $this->output->set_content_type('application/json');
+      echo json_encode(array('check' => 'Ajax successful'));
+    }
+
 }

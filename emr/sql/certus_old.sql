@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.8.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 25, 2020 at 01:38 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.2.28
+-- Host: 127.0.0.1
+-- Generation Time: Sep 06, 2018 at 11:53 PM
+-- Server version: 5.7.19
+-- PHP Version: 7.0.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,29 +21,6 @@ SET time_zone = "+00:00";
 --
 -- Database: `certus`
 --
-
--- --------------------------------------------------------
-
---
--- Table structure for table `appointments`
---
-
-CREATE TABLE `appointments` (
-  `id` int(11) NOT NULL,
-  `title` varchar(100) NOT NULL,
-  `start_date` datetime NOT NULL,
-  `end_date` datetime NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `appointments`
---
-
-INSERT INTO `appointments` (`id`, `title`, `start_date`, `end_date`, `created_at`, `updated_at`) VALUES
-(1, 'Example Event', '2020-03-25 16:32:00', '2020-03-26 16:32:00', '2020-03-24 20:32:42', '0000-00-00 00:00:00'),
-(2, 'Example Event 2', '2020-04-01 16:32:00', '2020-04-03 16:32:00', '2020-03-24 20:32:42', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -68,7 +45,8 @@ CREATE TABLE `clients` (
 INSERT INTO `clients` (`id`, `first_name`, `last_name`, `last_visit`, `name_clinician`, `phone`, `email`) VALUES
 (1, 'John', 'Smith', '2018-08-06', 'Dr. Bains', '9055505500', 'john.smith@gmail.com'),
 (2, 'Sam', 'Smith', '2018-09-03', 'Dr. Manan Patel', '6311234090', 'sam.smith@ex.ca'),
-(3, 'Ted', 'Rogers', '2018-07-31', 'Dr. Indianna', '1234567890', 'rogers@trs.ca');
+(3, 'Ted', 'Rogers', '2018-07-31', 'Dr. Indianna', '1234567890', 'rogers@trs.ca'),
+(4, 'Manan', 'Patel', '2018-08-23', 'Dr. Vaibhev Sharma', '6471231234', 'manu@manu.ca');
 
 -- --------------------------------------------------------
 
@@ -138,7 +116,7 @@ INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`
 (2, '127.0.0.1', 'jas.lamba@certusapplication.ca', '$2y$08$LJqNblxnGFGW05wNtk9mJu8yMwkJD0SXYjLnvPIIFtAh5YxXDAps2', NULL, 'jas.lamba@certusapplication.ca', NULL, NULL, NULL, NULL, 1535638078, 1536098136, 1, 'Jaskiran', 'Lamba', 'Certus', '6474096157'),
 (3, '127.0.0.1', 'sandeep.suri@certusapplication.ca', '$2y$08$q2Y1YdroiS/I/dBNk9tGxOioWrfBHSiCMrCNuee042wKmtlGmE02u', NULL, 'sandeep.suri@certusapplication.ca', NULL, NULL, NULL, NULL, 1535638158, NULL, 1, 'Sandeep', 'Suri', 'Certus', '‭6477840040‬'),
 (4, '127.0.0.1', 'sunny.suri@gmail.com', '$2y$08$S5ktQcv2GeqHhvbXqmsSxeKhoAc4055UVkB66hzRsMvlYNKJfp9Zm', NULL, 'sunny.suri@gmail.com', NULL, NULL, NULL, NULL, 1535670538, 1536270045, 1, 'Sunny', 'Suri', 'Certus', '123456'),
-(5, '127.0.0.1', 'test@test.ca', '$2y$08$56AjCucwexNqraFyR.Jy9eIj4YMTB97lddC7xsYWe9BrZ.o8N.7ry', NULL, 'test@test.ca', NULL, NULL, NULL, NULL, 1536098199, 1585096467, 1, 'test', 'test', 'test', '123456');
+(5, '127.0.0.1', 'test@test.ca', '$2y$08$56AjCucwexNqraFyR.Jy9eIj4YMTB97lddC7xsYWe9BrZ.o8N.7ry', NULL, 'test@test.ca', NULL, NULL, NULL, NULL, 1536098199, 1536099459, 1, 'test', 'test', 'test', '123456');
 
 -- --------------------------------------------------------
 
@@ -170,12 +148,6 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 --
 -- Indexes for dumped tables
 --
-
---
--- Indexes for table `appointments`
---
-ALTER TABLE `appointments`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `clients`
@@ -215,12 +187,6 @@ ALTER TABLE `users_groups`
 --
 
 --
--- AUTO_INCREMENT for table `appointments`
---
-ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
@@ -236,7 +202,7 @@ ALTER TABLE `groups`
 -- AUTO_INCREMENT for table `login_attempts`
 --
 ALTER TABLE `login_attempts`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `users`

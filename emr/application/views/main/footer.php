@@ -7,11 +7,11 @@
         <!-- /footer content -->
       </div>
     </div>
-    <script>
+    <!-- <script>
         $(document).ready(function(){
             $('[data-toggle="tooltip"]').tooltip();
         });
-    </script>
+    </script> -->
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -75,6 +75,12 @@
 
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
+    
+    <!-- Calendar Scripts -->
+    <script src="../build/js/calendar.js"></script>
+
+    <!-- Analytic Scripts -->
+    <script src="../build/js/analytics.js"></script>
 
     <!-- Graph Scipt --><!--
     <script src="../build/js/graph.js"></script>
