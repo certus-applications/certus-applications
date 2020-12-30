@@ -24,26 +24,29 @@
         <span class="login100-form-title p-b-41">
           <?php echo lang('login_heading') ?>
         </span>
+        <!-- CREATING LOGIN FORM  -->
           <?php echo form_open("auth/login", 'class="login100-form validate-form p-b-33 p-t-5"');?>
+            <!-- Username Box -->
             <div class="wrap-input100 validate-input">
               <?php echo form_input($identity);?>
               <span class="focus-input100" data-placeholder="&#xe82a;"></span>
             </div>
-
+            <!-- Password Box -->
             <div class="wrap-input100 validate-input" data-validate="Enter password">
               <?php echo form_input($password);?>
               <span class="focus-input100" data-placeholder="&#xe80f;"></span>
             </div>
-
+            <!-- Submit Button -->
             <div class="container-login100-form-btn m-t-32">
                 <?php
                   $data = [
                     'class' => 'login100-form-btn',
                     'value' => 'Login',
                     'type' => 'submit',
-                    'name' => 'submit'
+                    'name' => 'submit',
+                    'content' => 'Login'
                   ]; 
-                  echo form_submit($data);
+                  echo form_button($data);
                 ?>
             </div>
           <?php echo form_close();?>
