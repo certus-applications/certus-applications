@@ -101,6 +101,8 @@ class Auth extends CI_Controller
 				'name' => 'identity',
 				'id' => 'identity',
 				'type' => 'text',
+				'class' => 'input100',
+				'placeholder' => 'User name',
 				'value' => $this->form_validation->set_value('identity'),
 			];
 
@@ -108,6 +110,8 @@ class Auth extends CI_Controller
 				'name' => 'password',
 				'id' => 'password',
 				'type' => 'password',
+				'class' => 'input100',
+				'placeholder' => 'Password',
 			];
 
 			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
