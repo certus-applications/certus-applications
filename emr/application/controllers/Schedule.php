@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Main extends CI_Controller {
+class Schedule extends CI_Controller {
     public function __construct() {
       parent::__construct();
 
@@ -13,23 +13,13 @@ class Main extends CI_Controller {
     public function index(){
       $this->load->model('Schedule_model');
       $data['scheduleView'] = $this->Schedule_model->getSchedule();
+      // echo json_encode($data);
+      // $this->load->view('schedule/view');
 
       if ($this->input->is_ajax_request()) {
         echo json_encode($data);
         exit;
       }
-        
-     //$data['eventsAll'] = $this->Events_model->listAll();
-      $this->load->view('main/header');
-      $this->load->view('main/sidebar');
-      //$this->load->view('calendar/view', $data);
-      $this->load->view('calendar/view');
-      $this->load->view('main/footer');
+      $this->load->view('schedule/view', $data); 
     }
-
-    public function saveEvent() {
-      $this->output->set_content_type('application/json');
-      echo json_encode(array('check' => 'Ajax successful'));
-    }
-
 }
