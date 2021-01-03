@@ -77,7 +77,7 @@
     <script src="../build/js/custom.min.js"></script>
     
     <!-- Calendar Scripts -->
-    <script src="../build/js/calendar.js"></script>
+    <script src="../build/js/calendar1.js"></script>
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
