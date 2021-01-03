@@ -56,7 +56,9 @@
               <ul class="nav navbar-nav navbar-right">
                 <li class="">
                   <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    <!-- <img src="images/img.jpg" alt=""> -->Dr. Manan Patel
+                    <!-- <img src="images/img.jpg" alt=""> -->
+                    <?php $user = $this->ion_auth->user()->row();?>
+                    <?php echo $user->first_name;?> <?php echo $user->last_name;?>
                     <span class=" fa fa-angle-down"></span>
                   </a>
                   <ul class="dropdown-menu dropdown-usermenu pull-right">
