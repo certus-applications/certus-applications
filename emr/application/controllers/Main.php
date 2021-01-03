@@ -12,17 +12,34 @@ class Main extends CI_Controller {
 
     public function index(){
       $this->load->model('Schedule_model');
-      $data['scheduleView'] = $this->Schedule_model->getSchedule();
+      $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
       if ($this->input->is_ajax_request()) {
-        echo json_encode($data);
+        echo json_encode($scheduleData);
         exit;
+      }
+
+
+      if ($this->ion_auth->is_admin()) {
+        $data["userRole"] = "ADMIN";
+        $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
+        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
+        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+      } elseif ($this->ion_auth->in_group("hostpial admin")) {
+        $data["userRole"] = "HOSPITAL ADMIN";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
+      } else {
+        $data["userRole"] = "SCREENER";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["sign-out"];
       }
         
      //$data['eventsAll'] = $this->Events_model->listAll();
       $this->load->view('main/header');
-      $this->load->view('main/sidebar');
-      //$this->load->view('calendar/view', $data);
+      $this->load->view('main/sidebar', $data);
       $this->load->view('calendar/view');
       $this->load->view('main/footer');
     }
