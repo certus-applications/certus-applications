@@ -54,95 +54,29 @@
 							</br><br>
 							<h3>Select the days you're available for</h3>
 							<div class="form-row">
-								<div class="btn-group" role="group" aria-label="Button group with nested dropdown">
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Monday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
+							<p>
+									<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">MOR/COX Location</a>
+									<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">CAC Location</button>
+									<button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">INF Location</button>
+								</p>
+								<div class="col">
+									<div class="collapse multi-collapse" id="multiCollapseExample1">
+										<div class="card card-body">
+											<div class="radio">
+												<label><input type="radio" name="optradio" checked>Time 1</label>
+											</div>
+											<div class="radio">
+												<label><input type="radio" name="optradio">Time 2</label>
+											</div>
+											<div class="radio disabled">
+												<label><input type="radio" name="optradio" disabled>Time 3</label>
+											</div>
 										</div>
 									</div>
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Tuesday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
-										</div>
-									</div>
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Wednesday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
-										</div>
-									</div>
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Thursday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
-										</div>
-									</div>
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Friday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
-										</div>
-									</div>
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Saturday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-										<label for="start-time">Start Time: </label>
-										<input id="start-time" type="time" name="appt-time" value="13:30">
-
-										<label for="end-time">End Time: </label>
-										<input id="end-time" type="time" name="appt-time" value="13:30">
-										</div>
-									</div> 
-
-									<div class="btn-group" role="group">
-										<button id="btnGroupDrop1" type="button" class="btn btn-secondary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-										Sunday
-										</button>
-										<div class="dropdown-menu" aria-labelledby="btnGroupDrop1">
-											<label for="start-time">Start Time: </label>
-											<input id="start-time" type="time" name="appt-time" value="13:30">
-
-											<label for="end-time">End Time: </label>
-											<input id="end-time" type="time" name="appt-time" value="13:30">
+								</div>
+								<div class="col">
+									<div class="collapse multi-collapse" id="multiCollapseExample2">
+										<div class="card card-body">
 										</div>
 									</div>
 								</div>
