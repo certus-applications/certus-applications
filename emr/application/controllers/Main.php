@@ -25,16 +25,22 @@ class Main extends CI_Controller {
         $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+        $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+        $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
+        $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+        $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       } else {
         $data["userRole"] = "SCREENER";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
+        $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+        $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       }
         
      //$data['eventsAll'] = $this->Events_model->listAll();
