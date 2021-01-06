@@ -12,6 +12,24 @@ class Insights extends CI_Controller {
 
     public function index(){
         $this->load->model('Clients_model');
+
+        if ($this->ion_auth->is_admin()) {
+          $data["userRole"] = "ADMIN";
+          $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
+          $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
+          $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];    
+        } elseif ($this->ion_auth->in_group("hostpial admin")) {
+          $data["userRole"] = "HOSPITAL ADMIN";
+          $data["options"] = ["Logout"];
+          $data["href"] = ["auth/logout"];
+          $data["font"] = ["refresh", "sign-out"]; 
+        } else {
+          $data["userRole"] = "SCREENER";
+          $data["options"] = ["Logout"];
+          $data["href"] = ["auth/logout"];
+          $data["font"] = ["sign-out"];
+        }
+        
         $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
         $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
         $this->load->view('main/header', $data);
