@@ -52,35 +52,46 @@
 
 							
 							</br><br>
-							<h3>Select the days you're available for</h3>
+							<h3>Select the days you're available for: <a id="current-date"></a> to <a id="twoweeks-date"></a></h3>
 							<div class="form-row">
-							<p>
-									<a class="btn btn-primary" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">MOR/COX Location</a>
-									<button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">CAC Location</button>
-									<button class="btn btn-primary" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1 multiCollapseExample2">INF Location</button>
-								</p>
-								<div class="col">
-									<div class="collapse multi-collapse" id="multiCollapseExample1">
-										<div class="card card-body">
-											<div class="radio">
-												<label><input type="radio" name="optradio" checked>Time 1</label>
-											</div>
-											<div class="radio">
-												<label><input type="radio" name="optradio">Time 2</label>
-											</div>
-											<div class="radio disabled">
-												<label><input type="radio" name="optradio" disabled>Time 3</label>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="col">
-									<div class="collapse multi-collapse" id="multiCollapseExample2">
-										<div class="card card-body">
-										</div>
-									</div>
-								</div>
+								
+							<fieldset id='week1'>
+									<input type="radio" value="mon" name="monday" style="margin: 0 10px 0 10px;"><label for="mon">Monday</label>
+   									<input type="radio" value="tues" name="tuesday" style="margin: 0 10px 0 10px;"><label for="tues">Tuesday</label>
+									<input type="radio" value="wed" name="wednesday" style="margin: 0 10px 0 10px;"><label for="wed">Wednesday</label>	
+   									<input type="radio" value="thurs" name="thursday" style="margin: 0 10px 0 10px;"><label for="thurs">Thursday</label>
+									<input type="radio" value="fri" name="friday"><label for="fri" style="margin: 0 10px 0 10px;">Friday</label>
+   									<input type="radio" value="sat" name="saturday" style="margin: 0 10px 0 10px;"><label for="sat">Saturday</label>
+									<input type="radio" value="sun" name="sunday" style="margin: 0 10px 0 10px;"><label for="sun">Sunday</label>
+								</fieldset>
+
+								<fieldset id='week2'>
+									<input type="radio" value="mon2" name="monday" style="margin: 0 10px 0 10px;"><label for="mon2">Monday</label>
+   									<input type="radio" value="tues2" name="tuesday" style="margin: 0 10px 0 10px;"><label for="tues2">Tuesday</label>
+									<input type="radio" value="wed2" name="wednesday" style="margin: 0 10px 0 10px;"><label for="wed2">Wednesday</label>	
+   									<input type="radio" value="thurs2" name="thursday" style="margin: 0 10px 0 10px;"><label for="thurs2">Thursday</label>
+									<input type="radio" value="fri2" name="friday" style="margin: 0 10px 0 10px;"><label for="fri2">Friday</label>
+   									<input type="radio" value="sat2" name="saturday" style="margin: 0 10px 0 10px;"><label for="sat2">Saturday</label>
+									<input type="radio" value="sun2" name="sunday" style="margin: 0 10px 0 10px;"><label for="sun2">Sunday</label>
+								</fieldset>
+
 							</div>
+							<br><br>
+
+							<script text="javascript">
+								let n = new Date();
+								let y = n.getFullYear();
+								let m = n.getMonth() + 1;
+								let d = n.getDate();
+
+								let two_n = new Date(Date.now() + 12096e5);
+								let two_y = two_n.getFullYear();
+								let two_m = two_n.getMonth() + 1;
+								let two_d = two_n.getDate();
+
+								document.getElementById("current-date").innerHTML = m + "/" + d + "/" + y;
+								document.getElementById("twoweeks-date").innerHTML = two_m + "/" + two_d + "/" + two_y;
+							</script>
 							<br><br>
 
 							<div class="col-sm-12">
