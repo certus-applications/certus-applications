@@ -73,7 +73,7 @@
 
 							<hr>
 							<div class="form-row col-sm-8">
-							<h3>Select the days you're Availability</h3>
+							<h3>Select the days you're Available</h3>
 								
 							<table class="table table-striped table-bordered">
 								<thead class="thead-dark">
