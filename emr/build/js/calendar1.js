@@ -1,24 +1,4 @@
-  // Your web app's Firebase configuration
-  var firebaseConfig = {
-    apiKey: "AIzaSyDxbAX1Ki1V4SKNa7en-85ladjOfjZ0TXU",
-    authDomain: "certus-6400a.firebaseapp.com",
-    databaseURL: "https://certus-6400a.firebaseio.com",
-    projectId: "certus-6400a",
-    storageBucket: "certus-6400a.appspot.com",
-    messagingSenderId: "996578780277",
-    appId: "1:996578780277:web:fb156f6545d7f59445443c",
-    measurementId: "G-VK9XDSV3WW"
-  };
-  // Initialize Firebase
-  firebase.initializeApp(firebaseConfig);
-  firebase.analytics();
-  console.log('firebase initialized');
 
-  var db = firebase.firestore();
-  var appRef =  db.collection("pat_appointments");
-
-  // Firebase Variables
-  var fb_title, fb_desc, fb_start_date, fb_end_date;
   var eventArr = [];
   var description = document.getElementById('descr2');
 /* CALENDAR */
