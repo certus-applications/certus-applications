@@ -90,35 +90,56 @@
 									<?php } ?>
 								</thead>
 								<tbody>
+								<?php 
+									$mornTimeArr = array();
+									$eveTimeArr = array();
+									$nightTimeArr = array();
+
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('5:00:00');
+										$mornTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('13:00:00');
+										$eveTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('19:00:00');
+										$nightTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}	
+								?>
 									<tr>
 									<th scope="row">Morning (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[6]; ?>></td>
 									</tr>
 									<tr>
 									<th scope="row">Afternoon (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="aft_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="aft_sun"></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[6]; ?>></td>
 									</tr>
 									<tr>
 									<th scope="row">Night (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[6]; ?>></td>
 									</tr>
 								</tbody>
 								</table>
@@ -143,35 +164,56 @@
 									</tr>
 								</thead>
 								<tbody>
+								<?php 
+									$mornTimeArr = array();
+									$eveTimeArr = array();
+									$nightTimeArr = array();
+
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('5:00:00');
+										$mornTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('13:00:00');
+										$eveTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}
+									for($i = 0; $i<7; $i++) {
+										$datetime = new DateTime($datesArr[$i]);
+										$datetime->modify('19:00:00');
+										$nightTimeArr[] = $datetime->format('m/j/Y H:i:s');
+									}	
+								?>
 									<tr>
 									<th scope="row">Morning (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="morn_times[]" value=<?php $mornTimeArr[6]; ?>></td>
 									</tr>
 									<tr>
 									<th scope="row">Afternoon (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="eve_times[]" value=<?php $eveTimeArr[6]; ?>></td>
 									</tr>
 									<tr>
 									<th scope="row">Night (5:00am - 12:00pm):</th>
-									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
-									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[0]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[1]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[2]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[3]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[4]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[5]; ?>></td>
+									<td><input type="checkbox" name="night_times[]" value=<?php $nightTimeArr[6]; ?>></td>
 									</tr>
 								</tbody>
 								</table>
