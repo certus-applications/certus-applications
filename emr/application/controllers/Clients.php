@@ -21,6 +21,14 @@ class Clients extends CI_Controller {
     }
 
     public function add(){
+     $data['morn-times'] = array($this->input->post('morn-times'));
+     $data['eve-times'] = array($this->input->post('eve-times'));
+     $data['night-times'] = array($this->input->post('night-times'));
+
+    //  foreach ( $this->input->post('morn-times') as $morn_time) {
+    //   // some stuff here
+    //  }
+
      $this->load->view('main/header');
      $this->load->view('main/sidebar');
      $this->load->view('clients/add');
