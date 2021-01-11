@@ -51,24 +51,29 @@
 							</div>
 
 							
-							</br><br><br><br>
+							<div class="col-sm-12">
+								<hr class="rounded">
+								<style>
+								hr.rounded {
+									border-top: 2px solid #bbb;
+									border-radius: 5px;
+								}
+								</style>
+							</div>
+
+							<div class="col-sm-4">
+							<fieldset class="form-group">   
+								Employee Number<input class="form-control" type="number" name="empnumb" placeholder="1234567">
+							</fieldset>
+
+							<fieldset class="form-group">   
+								Employee Username<input class="form-control" type="text" name="empuser" placeholder="sam.smith">
+							</fieldset>
+							</div>
+
+							<hr>
+							<div class="form-row col-sm-8">
 							<h3>Select the days you're Availability</h3>
-
-							<!-- <div class="form-row col-sm-6">
-							<div class="col-sm-6">
-							<fieldset class="form-group">   
-								Employee Number<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
-							</fieldset>
-							</div>
-
-							<div class="col-sm-6">
-							<fieldset class="form-group">   
-								Employee Number<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
-							</fieldset>
-							</div>
-							</div> -->
-
-							<div class="form-row">
 								
 							<table class="table table-striped table-bordered">
 								<thead class="thead-dark">
@@ -218,6 +223,9 @@
 								</tbody>
 								</table>
 							</div>
+
+
+							
 							<br><br>
 							<br><br>
 
