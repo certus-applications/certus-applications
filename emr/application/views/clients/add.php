@@ -51,47 +51,132 @@
 							</div>
 
 							
-							</br><br>
-							<h3>Select the days you're available for: <a id="current-date"></a> to <a id="twoweeks-date"></a></h3>
+							</br><br><br><br>
+							<h3>Select the days you're Availability</h3>
+
+							<!-- <div class="form-row col-sm-6">
+							<div class="col-sm-6">
+							<fieldset class="form-group">   
+								Employee Number<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
+							</fieldset>
+							</div>
+
+							<div class="col-sm-6">
+							<fieldset class="form-group">   
+								Employee Number<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
+							</fieldset>
+							</div>
+							</div> -->
+
 							<div class="form-row">
 								
-							<fieldset id='week1'>
-									<input type="radio" value="mon" name="monday" style="margin: 0 10px 0 10px;"><label for="mon">Monday</label>
-   									<input type="radio" value="tues" name="tuesday" style="margin: 0 10px 0 10px;"><label for="tues">Tuesday</label>
-									<input type="radio" value="wed" name="wednesday" style="margin: 0 10px 0 10px;"><label for="wed">Wednesday</label>	
-   									<input type="radio" value="thurs" name="thursday" style="margin: 0 10px 0 10px;"><label for="thurs">Thursday</label>
-									<input type="radio" value="fri" name="friday"><label for="fri" style="margin: 0 10px 0 10px;">Friday</label>
-   									<input type="radio" value="sat" name="saturday" style="margin: 0 10px 0 10px;"><label for="sat">Saturday</label>
-									<input type="radio" value="sun" name="sunday" style="margin: 0 10px 0 10px;"><label for="sun">Sunday</label>
-								</fieldset>
+							<table class="table table-striped table-bordered">
+								<thead class="thead-dark">
+									<?php 
+										$day = date('w'); 
+										$week_start = date('m/j/Y', strtotime('-'.$day.' days'));
+										$week_end = date('m/j/Y', strtotime('+'.(6-$day).' days'));	
+									?>
+									<tr>
+									<th scope="col">Week Of: <?php echo $week_start; ?> - <?php echo $week_end; ?></th>
 
-								<fieldset id='week2'>
-									<input type="radio" value="mon2" name="monday" style="margin: 0 10px 0 10px;"><label for="mon2">Monday</label>
-   									<input type="radio" value="tues2" name="tuesday" style="margin: 0 10px 0 10px;"><label for="tues2">Tuesday</label>
-									<input type="radio" value="wed2" name="wednesday" style="margin: 0 10px 0 10px;"><label for="wed2">Wednesday</label>	
-   									<input type="radio" value="thurs2" name="thursday" style="margin: 0 10px 0 10px;"><label for="thurs2">Thursday</label>
-									<input type="radio" value="fri2" name="friday" style="margin: 0 10px 0 10px;"><label for="fri2">Friday</label>
-   									<input type="radio" value="sat2" name="saturday" style="margin: 0 10px 0 10px;"><label for="sat2">Saturday</label>
-									<input type="radio" value="sun2" name="sunday" style="margin: 0 10px 0 10px;"><label for="sun2">Sunday</label>
-								</fieldset>
+									<?php 
+										$datesArr = array();
+										for($i = 0;  $i < 7; $i++) {
+											$date = date('m/j/Y', strtotime("$week_start + $i days"));
+											$datesArr[] = $date;
+									?>
+										<th scope="col"><?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?></th>
+									<?php } ?>
+								</thead>
+								<tbody>
+									<tr>
+									<th scope="row">Morning (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									</tr>
+									<tr>
+									<th scope="row">Afternoon (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="aft_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="aft_sun"></td>
+									</tr>
+									<tr>
+									<th scope="row">Night (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									</tr>
+								</tbody>
+								</table>
 
+								<table class="table table-striped table-bordered">
+								<thead class="thead-light">
+									<?php 
+										$day = date('w'); 
+										$week_2start = date('m/j/Y', strtotime('+'.(7-$day).' days'));
+										$week_2end = date('m/j/Y', strtotime('+'.(13-$day).' days'));	
+									?>
+									<tr>
+										<th scope="col">Week Of: <?php echo $week_2start; ?> - <?php echo $week_2end; ?></th>
+										<?php 
+										$datesArr = array();
+										for($i = 0;  $i < 7; $i++) {
+											$date = date('m/j/Y', strtotime("$week_2start + $i days"));
+											$datesArr[] = $date;
+										?>
+										<th scope="col"><?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?></th>
+									<?php } ?>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+									<th scope="row">Morning (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									</tr>
+									<tr>
+									<th scope="row">Afternoon (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									</tr>
+									<tr>
+									<th scope="row">Night (5:00am - 12:00pm):</th>
+									<td><input type="checkbox" name="check_list[]" value="morn_mon"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_tues"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_wed"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_thurs"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_fri"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sat"></td>
+									<td><input type="checkbox" name="check_list[]" value="morn_sun"></td>
+									</tr>
+								</tbody>
+								</table>
 							</div>
 							<br><br>
-
-							<script text="javascript">
-								let n = new Date();
-								let y = n.getFullYear();
-								let m = n.getMonth() + 1;
-								let d = n.getDate();
-
-								let two_n = new Date(Date.now() + 12096e5);
-								let two_y = two_n.getFullYear();
-								let two_m = two_n.getMonth() + 1;
-								let two_d = two_n.getDate();
-
-								document.getElementById("current-date").innerHTML = m + "/" + d + "/" + y;
-								document.getElementById("twoweeks-date").innerHTML = two_m + "/" + two_d + "/" + two_y;
-							</script>
 							<br><br>
 
 							<div class="col-sm-12">
