@@ -75,7 +75,7 @@
                  title: title,
                  start: started,
                  end: end,
-                 allDay: allDay
+                 allDay: false
                },
                true // make the event "stick"
              );
@@ -97,7 +97,8 @@
        eventClick: function(calEvent, jsEvent, view) {
          $('#fc_edit').click();
          $('#title2').val(calEvent.title);
-         $('#descr2').val(calEvent.description);
+         $('#descr2').val(calEvent.location);
+         $('#userID').val(calEvent.userID);
 
 
          categoryClass = $("#event_type").val();
@@ -117,7 +118,52 @@
 
        },
        editable: true,
-       events: eventArr
+
+       events: [{
+          userID: '1',
+          title: 'All Day Event',
+          start: new Date(y, m, 1),
+          location: 'Location 1',
+          color: 'coral'
+          }, {
+          userID: '2',
+          title: 'Long Event',
+          start: new Date(y, m, d - 5),
+          end: new Date(y, m, d - 2),
+          location: 'Location 2',
+          color: 'red'
+          }, {
+          userID: '3',
+          title: 'Meeting',
+          start: new Date(y, m, d, 10, 30),
+          allDay: false,
+          location: 'Location 3',
+          color: 'blue'
+          }, {
+          userID: '4',
+          title: 'Lunch',
+          start: new Date(y, m, d + 14, 12, 0),
+          end: new Date(y, m, d, 14, 0),
+          allDay: false,
+          location: 'Location 4',
+          color: 'aqua'
+          }, {
+          userID: '5',
+          title: 'Birthday Party',
+          start: new Date(y, m, d + 1, 19, 0),
+          end: new Date(y, m, d + 1, 22, 30),
+          allDay: false,
+          location: 'Location 5',
+          color: 'maroon'
+          }, {
+          userID: '6',
+          title: 'Click for Google',
+          start: new Date(y, m, 28),
+          end: new Date(y, m, 29),
+          url: 'http://google.com/',
+          location: 'Location 6',
+          color: 'navy'
+          }],
      });
     }).catch(function (error) {
         console.log("Error Connecting: ", error);

@@ -22,7 +22,7 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- FullCalendar -->
     <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../vendors/fullcalendar/dist/fullcalendar.js"></script>
     <!-- jQuery Smart Wizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- Chart.js -->
@@ -77,7 +77,7 @@
     <script src="../build/js/custom.min.js"></script>
     
     <!-- Calendar Scripts -->
-    <script src="../build/js/calendar1.js"></script>
+    <script src="../build/js/calendar.js"></script>
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
