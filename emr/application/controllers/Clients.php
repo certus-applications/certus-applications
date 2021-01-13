@@ -45,34 +45,74 @@ class Clients extends CI_Controller {
       $nightTimeArr = array();
 
       for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i]);
-        $datetime->modify('5:00:00');
-        $mornTimeArr[] = $datetime->format('m/j/Y H:i:s');
+        $datetime = new DateTime($datesArr[$i].'05:00:00');
+        $mornTimeArr[] = $datetime->format('Y-m-d H:i:s a');
       }
       for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i]);
-        $datetime->modify('13:00:00');
-        $eveTimeArr[] = $datetime->format('m/j/Y H:i:s');
+        $datetime = new DateTime($datesArr[$i].'13:00:00');
+        $eveTimeArr[] = $datetime->format('Y-m-d h:i:s');
       }
       for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i]);
-        $datetime->modify('19:00:00');
-        $nightTimeArr[] = $datetime->format('m/j/Y H:i:s');
+        $datetime = new DateTime($datesArr[$i].'19:00:00');
+        $nightTimeArr[] = $datetime->format('Y-m-d h:i:s');
       }	
 
-      $data['datesArr'] = $datesArr;
-      $data['mornTimeArr'] = $mornTimeArr;
-      $data['eveTimeArr'] = $eveTimeArr;
-      $data['nightTimeArr'] = $nightTimeArr;
-
-    //  foreach ( $this->input->post('morn-times') as $morn_time) {
-    //   // some stuff here
-    //  }
+     $data['datesArr'] = $datesArr;
+     $data['mornTimeArr'] = $mornTimeArr;
+     $data['eveTimeArr'] = $eveTimeArr;
+     $data['nightTimeArr'] = $nightTimeArr;
 
      $this->load->view('main/header');
      $this->load->view('main/sidebar');
      $this->load->view('clients/add', $data);
      $this->load->view('main/footer');
+    }
+
+    public function added_time() {
+      $morn_times = $this->input->post('morn_times');
+      $eve_times = $this->input->post('eve_times');
+      $night_times = $this->input->post('night_times');
+
+      for ($i=0; $i < sizeof($morn_times); $i++){
+        $my_dt = new DateTime($morn_times[$i]);
+        $expires_at = $my_dt->modify(' +8 hour');
+        $end_date = $expires_at->format('Y-m-d h:i:s');
+        
+        $morn = array(
+          'title' => 'John Doe',
+          'start' => $morn_times[$i],
+          'end' => $end_date
+        );
+        $this->db->insert('schedule', $morn);
+      }
+
+      for($i=0; $i < sizeof($eve_times); $i++){
+        $my_dt = new DateTime($eve_times[$i]);
+        $expires_at = $my_dt->modify(' +8 hour');
+        $end_date = $expires_at->format('Y-m-d h:i:s');
+
+        $eve = array(
+          'title' => 'Evening Smith',
+          'start' => $eve_times[$i],
+          'end' => $end_date
+        );
+        $this->db->insert('schedule', $eve);
+      }
+
+      for($i=0; $i < sizeof($night_times); $i++){
+        $my_dt = new DateTime($morn_times[$i]);
+        $expires_at = $my_dt->modify(' +8 hour');
+        $end_date = $expires_at->format('Y-m-d h:i:s');
+
+        $night = array(
+          'title' => 'Night James',
+          'start' => $night_times[$i],
+          'end' => $end_date
+        );
+        $this->db->insert('schedule', $night);
+      
+      }
+    return redirect('clients');
     }
 
     public function view($id){

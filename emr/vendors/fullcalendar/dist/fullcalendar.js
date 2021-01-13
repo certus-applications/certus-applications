@@ -6321,7 +6321,7 @@ DayGrid.mixin({
 
 		titleHtml =
 			'<span class="fc-title">' +
-				(htmlEscape(event.title || '') || '&nbsp;') + // we always want one line of height
+				(htmlEscape(event.title || '') || '&nbsp;') + ' - ' + (htmlEscape(event.location || '') || '&nbsp;') + // we always want one line of height
 			'</span>';
 		
 		return '<a class="' + classes.join(' ') + '"' +
@@ -7726,7 +7726,7 @@ TimeGrid.mixin({
 						) +
 					(event.title ?
 						'<div class="fc-title">' +
-							htmlEscape(event.title) +
+							htmlEscape(event.title) + ' - ' + htmlEscape(event.location) + 
 						'</div>' :
 						''
 						) +
@@ -14147,7 +14147,7 @@ var ListViewGrid = Grid.extend({
 			'</td>' +
 			'<td class="fc-list-item-title ' + view.widgetContentClass + '">' +
 				'<a' + (url ? ' href="' + htmlEscape(url) + '"' : '') + '>' +
-					htmlEscape(seg.event.title || '') +
+					htmlEscape(seg.event.title || '') + ' - ' + htmlEscape(seg.event.location || '') + 
 				'</a>' +
 			'</td>' +
 		'</tr>';
