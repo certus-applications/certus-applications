@@ -9,13 +9,28 @@
 	        type: 'POST',
 	        dataType: 'json',
 	        success: function ( data) {
-	            // console.log(data);
 		        jQuery.each(data, function(index, value){
 		        	jQuery.each(value, function(index, eventArray){
+		        		var title = eventArray.first_name + " " + eventArray.last_name
+		        		var color = ""
+		        		if (eventArray.location === 'MOR') {
+		        			color = 'coral'
+		        		} else if (eventArray.location === 'COX') {
+		        			color = 'red'
+		        		} else if (eventArray.location === 'SCNR') {
+		        			color = 'blue'
+		        		} else if (eventArray.location === 'CAC') {
+		        			color = 'aqua'
+		        		} else if (eventArray.location === 'OHS DC') {
+		        			color = 'maroon'
+		        		}
+
 			            eventArr.push({
-			            	title: eventArray.title,
+			            	title: title,
 			            	start: eventArray.start,
-			            	end: eventArray.end
+			            	end: eventArray.end,
+			            	location: eventArray.location,
+			            	color: color
 			            })
 			        })
 		        });
@@ -80,7 +95,8 @@
 			       eventClick: function(calEvent, jsEvent, view) {
 			         $('#fc_edit').click();
 			         $('#title2').val(calEvent.title);
-			         $('#descr2').val(calEvent.description);
+			         $('#descr2').val(calEvent.location);
+        			 $('#userID').val(calEvent.userID);
 
 
 			         categoryClass = $("#event_type").val();
@@ -96,7 +112,6 @@
 			        //  var descr = $('#descr2').val();
 
 			         calendar.fullCalendar('unselect');
-
 
 			       },
 			       editable: true,
