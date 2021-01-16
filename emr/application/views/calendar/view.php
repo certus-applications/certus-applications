@@ -119,15 +119,16 @@
             <div id="testmodal2" style="padding: 5px 20px;">
               <form id="antoform2" class="form-horizontal calender" role="form">
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">Title</label>
+                  <label class="col-sm-3 control-label">Name</label>
                   <div class="col-sm-9">
                     <input type="text" class="form-control" id="title2" name="title2">
+                    <input type="hidden" class="form-control" id="userID" name="userID">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label class="col-sm-3 control-label">Description</label>
+                  <label class="col-sm-3 control-label">Location</label>
                   <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr2" name="descr"></textarea>
+                    <input type="text" class="form-control" id="descr2" name="descr">
                   </div>
                 </div>
 

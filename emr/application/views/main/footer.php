@@ -22,7 +22,7 @@
     <script src="../vendors/nprogress/nprogress.js"></script>
     <!-- FullCalendar -->
     <script src="../vendors/moment/min/moment.min.js"></script>
-    <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
+    <script src="../vendors/fullcalendar/dist/fullcalendar.js"></script>
     <!-- jQuery Smart Wizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- Chart.js -->
