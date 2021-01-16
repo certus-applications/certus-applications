@@ -63,7 +63,7 @@ class Clients extends CI_Controller {
      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
      $this->load->view('main/header');
      $this->load->view('main/sidebar', $data);
-     $this->load->view('clients/add');
+    //  $this->load->view('clients/add');
 
       // Week 1 and week 2 timespan
       $day = date('w'); 
@@ -106,10 +106,8 @@ class Clients extends CI_Controller {
      $data['eveTimeArr'] = $eveTimeArr;
      $data['nightTimeArr'] = $nightTimeArr;
 
-     $this->load->view('main/header');
-     $this->load->view('main/sidebar');
-     $this->load->view('clients/add', $data);
 
+     $this->load->view('clients/add', $data);
      $this->load->view('main/footer');
     }
 
