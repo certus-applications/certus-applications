@@ -90,15 +90,15 @@ class Clients extends CI_Controller {
 
       for($i = 0; $i<14; $i++) {
         $datetime = new DateTime($datesArr[$i].'05:00:00');
-        $mornTimeArr[] = $datetime->format('Y-m-d H:i:s a');
+        $mornTimeArr[] = $datetime->format('Y-m-d H:i:s');
       }
       for($i = 0; $i<14; $i++) {
         $datetime = new DateTime($datesArr[$i].'13:00:00');
-        $eveTimeArr[] = $datetime->format('Y-m-d h:i:s');
+        $eveTimeArr[] = $datetime->format('Y-m-d H:i:s');
       }
       for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i].'19:00:00');
-        $nightTimeArr[] = $datetime->format('Y-m-d h:i:s');
+        $datetime = new DateTime($datesArr[$i].'23:00:00');
+        $nightTimeArr[] = $datetime->format('Y-m-d H:i:s');
       }	
 
      $data['datesArr'] = $datesArr;
@@ -112,6 +112,11 @@ class Clients extends CI_Controller {
     }
 
     public function added_time() {
+      // Getting Names
+      $first_name = $this->input->post('first_name');
+      $last_name = $this->input->post('last_name');
+
+      // Getting Dates
       $morn_times = $this->input->post('morn_times');
       $eve_times = $this->input->post('eve_times');
       $night_times = $this->input->post('night_times');
@@ -119,10 +124,11 @@ class Clients extends CI_Controller {
       for ($i=0; $i < sizeof($morn_times); $i++){
         $my_dt = new DateTime($morn_times[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
-        $end_date = $expires_at->format('Y-m-d h:i:s');
+        $end_date = $expires_at->format('Y-m-d H:i:s');
         
         $morn = array(
-          'title' => 'John Doe',
+          'first_name' => $first_name,
+          'last_name' => $last_name,
           'start' => $morn_times[$i],
           'end' => $end_date
         );
@@ -132,10 +138,11 @@ class Clients extends CI_Controller {
       for($i=0; $i < sizeof($eve_times); $i++){
         $my_dt = new DateTime($eve_times[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
-        $end_date = $expires_at->format('Y-m-d h:i:s');
+        $end_date = $expires_at->format('Y-m-d H:i:s');
 
         $eve = array(
-          'title' => 'Evening Smith',
+          'first_name' => $first_name,
+          'last_name' => $last_name,
           'start' => $eve_times[$i],
           'end' => $end_date
         );
@@ -143,12 +150,13 @@ class Clients extends CI_Controller {
       }
 
       for($i=0; $i < sizeof($night_times); $i++){
-        $my_dt = new DateTime($morn_times[$i]);
+        $my_dt = new DateTime($night_times[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
-        $end_date = $expires_at->format('Y-m-d h:i:s');
+        $end_date = $expires_at->format('Y-m-d H:i:s');
 
         $night = array(
-          'title' => 'Night James',
+          'first_name' => $first_name,
+          'last_name' => $last_name,
           'start' => $night_times[$i],
           'end' => $end_date
         );
