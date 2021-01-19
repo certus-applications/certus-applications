@@ -20,7 +20,7 @@
 		        		} else if (eventArray.location === 'SCNR') {
 		        			color = 'blue'
 		        		} else if (eventArray.location === 'CAC') {
-		        			color = 'aqua'
+		        			color = 'aqua1'
 		        		} else if (eventArray.location === 'OHS DC') {
 		        			color = 'maroon'
 		        		}
