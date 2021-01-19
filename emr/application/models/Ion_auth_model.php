@@ -1784,6 +1784,16 @@ class Ion_auth_model extends CI_Model
 
 		$user = $this->user($id)->row();
 
+		$this->db->select('employeeid');
+        $this->db->from('users');
+		$this->db->where('employeeid', $data['employeeid']);
+      	$query = $this->db->get();
+
+      	if ($query->num_rows() > 0) 
+      	{
+      		$this->set_error('duplicate_employeeid');
+      	}
+
 		$this->db->trans_begin();
 
 		if (array_key_exists($this->identity_column, $data) && $this->identity_check($data[$this->identity_column]) && $user->{$this->identity_column} !== $data[$this->identity_column])

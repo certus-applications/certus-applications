@@ -37,8 +37,8 @@
       </p>
 
       <p>
-            <?php echo lang('create_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone);?>
+            <?php echo lang('create_user_employeeid_label', 'employeeid');?> <br />
+            <?php echo form_input($employeeid);?>
       </p>
 
       <p>
@@ -52,6 +52,9 @@
       </p>
 
 
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
+      <p>
+        <?php echo form_submit('submit', lang('create_user_submit_btn'));?>
+        <button type="button"><?php echo anchor('auth/index', "Back")?></button>
+      </p>
 
 <?php echo form_close();?>

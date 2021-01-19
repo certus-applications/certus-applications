@@ -50,6 +50,7 @@ $lang['update_successful']                   = 'Account Information Successfully
 $lang['update_unsuccessful']                 = 'Unable to Update Account Information';
 $lang['delete_successful']                   = 'User Deleted';
 $lang['delete_unsuccessful']                 = 'Unable to Delete User';
+$lang['duplicate_employeeid']                = 'Employee ID already exists';
 
 // Groups
 $lang['group_creation_successful']           = 'Group created Successfully';
