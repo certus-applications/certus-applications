@@ -106,7 +106,6 @@ class Clients extends CI_Controller {
      $data['eveTimeArr'] = $eveTimeArr;
      $data['nightTimeArr'] = $nightTimeArr;
 
-
      $this->load->view('clients/add', $data);
      $this->load->view('main/footer');
     }
