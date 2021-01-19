@@ -14,15 +14,15 @@
 		        		var title = eventArray.first_name + " " + eventArray.last_name
 		        		var color = ""
 		        		if (eventArray.location === 'MOR') {
-		        			color = 'coral'
+		        			color = '#2E8B57'
 		        		} else if (eventArray.location === 'COX') {
-		        			color = 'red'
+		        			color = '#1E90FF'
 		        		} else if (eventArray.location === 'SCNR') {
-		        			color = 'blue'
+		        			color = '#9370DB'
 		        		} else if (eventArray.location === 'CAC') {
-		        			color = 'aqua1'
+		        			color = '#DA70D6'
 		        		} else if (eventArray.location === 'OHS DC') {
-		        			color = 'maroon'
+		        			color = '#20B2AA'
 		        		}
 
 			            eventArr.push({
