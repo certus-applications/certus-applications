@@ -19,7 +19,6 @@ class Main extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];  
 
-
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
         if ($this->input->is_ajax_request()) {
@@ -32,7 +31,6 @@ class Main extends CI_Controller {
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];  
-
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
@@ -57,10 +55,7 @@ class Main extends CI_Controller {
 
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-
-
-
-        
+              
      //$data['eventsAll'] = $this->Events_model->listAll();
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
