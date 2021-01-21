@@ -74,7 +74,7 @@
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
     <!-- Custom Theme Scripts -->
-    <script src="../build/js/custom.min.js"></script>
+    <script src="../build/js/custom.js"></script>
     
     <!-- Calendar Scripts -->
     <script src="../build/js/calendar1.js"></script>
