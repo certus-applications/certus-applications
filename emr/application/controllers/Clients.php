@@ -111,7 +111,6 @@ class Clients extends CI_Controller {
      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
      $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
      $data['email'] = $this->ion_auth->user()->row()->email;
-     $data['username'] = $this->ion_auth->user()->row()->username;
 
      $this->load->view('clients/add', $data);
      $this->load->view('main/footer');
@@ -123,7 +122,6 @@ class Clients extends CI_Controller {
       $data['last_name'] = $this->ion_auth->user()->row()->last_name;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
-      $data['username'] = $this->ion_auth->user()->row()->username;
 
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
