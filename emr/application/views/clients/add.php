@@ -17,13 +17,13 @@
 							
 							<div class="col-sm-6">
 							<fieldset class="form-group">
-								First Name<input class="form-control" type="text" name="first_name" placeholder="First Name ex. Bob">
+								First Name<input class="form-control" type="text" name="first_name" placeholder="<?php echo $first_name;?>" readonly>
 							</fieldset> 
 							</div>
 
 							<div class="col-sm-6">
 							<fieldset class="form-group">
-								Last Name<input class="form-control" type="text" name="last_name" placeholder="Last Name ex. Dylan">
+								Last Name<input class="form-control" type="text" name="last_name" placeholder="<?php echo $last_name?>" readonly>
 							</fieldset> 
 							</div>
 
@@ -39,19 +39,34 @@
 							</fieldset>
 							</div> -->
 
-							<div class="col-sm-6">
+							<!-- <div class="col-sm-6">
 							<fieldset class="form-group">   
 								Phone Number<input class="form-control" type="number" name="telephone" placeholder="123 456 7890">
 							</fieldset>
-							</div>
+							</div> -->
 
 							<div class="col-sm-6">
 							<fieldset class="form-group">   
-								Email<input class="form-control" type="email" name="email" placeholder="email ex. bob@example.ca">
+								Email<input class="form-control" type="email" name="email" placeholder="<?php echo $email?>" readonly>
 							</fieldset>
 							</div>
 
 							
+							<div class="col-sm-6">
+							<fieldset class="form-group">   
+								Employee Number<input class="form-control" type="number" name="empnumb" placeholder="<?php echo $employeeid?>" readonly>
+							</fieldset>
+							</div>
+							<div class="col-sm-6">
+							<fieldset class="form-group">   
+								Employee Username<input class="form-control" type="text" name="empuser" placeholder="<?php echo $username?>" readonly>
+							</fieldset>
+							</div>
+
+							<div class="col-sm-12">
+								<h4>*If you would like to change any of the information shown, please contact your hospital administrator.</h4>
+							</div>
+
 							<div class="col-sm-12">
 								<hr class="rounded">
 								<style>
@@ -62,20 +77,12 @@
 								</style>
 							</div>
 
-							<div class="col-sm-6">
-							<fieldset class="form-group">   
-								Employee Number<input class="form-control" type="number" name="empnumb" placeholder="1234567">
-							</fieldset>
-							</div>
-							<div class="col-sm-6">
-							<fieldset class="form-group">   
-								Employee Username<input class="form-control" type="text" name="empuser" placeholder="sam.smith">
-							</fieldset>
-							</div>
 
 							<hr>
 							<div class="form-row">
+							<div class="col-sm-6">
 							<h3>Select the days you're Available</h3>
+							</div>
 								
 							<table class="table table-striped table-bordered">
 								<thead class="thead-dark">

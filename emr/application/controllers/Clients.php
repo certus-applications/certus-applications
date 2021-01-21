@@ -106,14 +106,24 @@ class Clients extends CI_Controller {
      $data['eveTimeArr'] = $eveTimeArr;
      $data['nightTimeArr'] = $nightTimeArr;
 
+     // Uneditable information
+     $data['first_name'] = $this->ion_auth->user()->row()->first_name;
+     $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+     $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
+     $data['email'] = $this->ion_auth->user()->row()->email;
+     $data['username'] = $this->ion_auth->user()->row()->username;
+
      $this->load->view('clients/add', $data);
      $this->load->view('main/footer');
     }
 
     public function added_time() {
-      // Getting Names
-      $first_name = $this->input->post('first_name');
-      $last_name = $this->input->post('last_name');
+      // Uneditable information
+      $data['first_name'] = $this->ion_auth->user()->row()->first_name;
+      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+      $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
+      $data['email'] = $this->ion_auth->user()->row()->email;
+      $data['username'] = $this->ion_auth->user()->row()->username;
 
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
@@ -126,12 +136,13 @@ class Clients extends CI_Controller {
         $end_date = $expires_at->format('Y-m-d H:i:s');
         
         $morn = array(
-          'first_name' => $first_name,
-          'last_name' => $last_name,
+          'employeeid' => $data['employeeid'],
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
           'start' => $morn_times[$i],
           'end' => $end_date
         );
-        $this->db->insert('schedule', $morn);
+        $this->db->insert('availability', $morn);
       }
 
       for($i=0; $i < sizeof($eve_times); $i++){
@@ -140,12 +151,13 @@ class Clients extends CI_Controller {
         $end_date = $expires_at->format('Y-m-d H:i:s');
 
         $eve = array(
-          'first_name' => $first_name,
-          'last_name' => $last_name,
+          'employeeid' => $data['employeeid'],
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
           'start' => $eve_times[$i],
           'end' => $end_date
         );
-        $this->db->insert('schedule', $eve);
+        $this->db->insert('availability', $eve);
       }
 
       for($i=0; $i < sizeof($night_times); $i++){
@@ -154,12 +166,13 @@ class Clients extends CI_Controller {
         $end_date = $expires_at->format('Y-m-d H:i:s');
 
         $night = array(
-          'first_name' => $first_name,
-          'last_name' => $last_name,
+          'employeeid' => $data['employeeid'],
+          'first_name' => $data['first_name'],
+          'last_name' => $data['last_name'],
           'start' => $night_times[$i],
           'end' => $end_date
         );
-        $this->db->insert('schedule', $night);
+        $this->db->insert('availability', $night);
       
       }
     return redirect('clients');
