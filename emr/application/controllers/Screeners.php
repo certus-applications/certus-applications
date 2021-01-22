@@ -29,14 +29,14 @@ class Screeners extends CI_Controller {
         $data["font"] = ["sign-out"];
       }
 
-      $this->load->model('Clients_model');
+      $this->load->model('Screeners_model');
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
       //passing the data in list
-      $data['clientsAll'] = $this->Clients_model->listAll();
-      $this->load->view('clients/list', $data);
+      $data['clientsAll'] = $this->Screeners_model->listAll();
+      $this->load->view('screeners/list', $data);
       $this->load->view('main/footer');
     }
 
@@ -63,7 +63,6 @@ class Screeners extends CI_Controller {
      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
      $this->load->view('main/header');
      $this->load->view('main/sidebar', $data);
-    //  $this->load->view('clients/add');
 
       // Week 1 and week 2 timespan
       $day = date('w'); 
@@ -112,7 +111,7 @@ class Screeners extends CI_Controller {
      $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
      $data['email'] = $this->ion_auth->user()->row()->email;
 
-     $this->load->view('clients/add', $data);
+     $this->load->view('screeners/add', $data);
      $this->load->view('main/footer');
     }
 
@@ -195,14 +194,13 @@ class Screeners extends CI_Controller {
        $data["font"] = ["sign-out"];
      }
 
-     $this->load->model('Clients_model');
+     $this->load->model('Screeners_model');
      $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
      $this->load->view('main/header', $data);
      $this->load->view('main/sidebar');
-     //$this->load->view('clients/view');
-     $data['viewClient'] = $this->Clients_model->viewClient($id);
-     $this->load->view('clients/view', $data);
+     $data['viewClient'] = $this->Screeners_model->viewClient($id);
+     $this->load->view('screeners/view', $data);
      $this->load->view('main/footer');
 
     }

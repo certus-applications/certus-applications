@@ -132,5 +132,5 @@ $autoload['language'] = array();
 |
 |	$autoload['model'] = array('first_model' => 'first');
 */
-$autoload['model'] = array('Clients_model');
+$autoload['model'] = array('Screeners_model');
 $autoload['model'] = array('Events_model');

@@ -1,6 +1,6 @@
 <?php
    // do all database calls here
-   class Clients_model extends CI_Model {
+   class Screeners_model extends CI_Model {
 
       function __construct() {
          parent::__construct();
