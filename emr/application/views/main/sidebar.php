@@ -17,7 +17,7 @@
                 <h3>General</h3>
                 <ul class="nav side-menu">
                   <li><a href="main/index"><i class="fa fa-calendar"></i> Calendar</a></li>
-                  <li><a href="clients"><i class="fa fa-user"></i> Screeners</a></li>
+                  <li><a href="screeners"><i class="fa fa-user"></i> Screeners</a></li>
                   <li><a><i class="fa fa-usd"></i> Billing</a></li>
                   <li><a href="insights"><i class="fa fa-bar-chart"></i> Insights</a></li>                  
                   <li><a><i class="fa fa-bookmark-o"></i> Activity</a></li>
