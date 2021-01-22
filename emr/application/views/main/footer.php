@@ -1,7 +1,7 @@
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            © Jas
+            Powered by Certus
           </div>
         </footer>
         <!-- /footer content -->
