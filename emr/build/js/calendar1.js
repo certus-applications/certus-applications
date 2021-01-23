@@ -47,6 +47,7 @@ function init_calendar(eventArr) {
     if (typeof($.fn.fullCalendar) === 'undefined') {
         return;
     }
+    var cookiePreference = findCookie("preference")
     console.log('init_calendar');
     console.log(eventArr)
     var date = new Date(),
@@ -57,6 +58,7 @@ function init_calendar(eventArr) {
         categoryClass;
 
     var calendar = $('#calendar').fullCalendar({
+        defaultView: cookiePreference,
         header: {
             left: 'prev,next today',
             center: 'title',
@@ -127,3 +129,27 @@ function init_calendar(eventArr) {
         events: eventArr
     });
 }
+
+function createCookie() {
+    if (document.cookie.indexOf('preference') === -1) { //cookie does not exsist
+        document.cookie = "preference=month";
+    }
+}
+
+function findCookie(cname) {
+  var name = cname + "=";
+  var decodedCookie = decodeURIComponent(document.cookie);
+  var ca = decodedCookie.split(';');
+  for(var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
+
+createCookie()
