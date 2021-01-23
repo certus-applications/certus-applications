@@ -17,7 +17,11 @@ class Main extends CI_Controller {
         $data["userRole"] = "ADMIN";
         $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
-        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];  
+        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
@@ -30,7 +34,11 @@ class Main extends CI_Controller {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
-        $data["font"] = ["refresh", "sign-out"];  
+        $data["font"] = ["refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];    
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
@@ -43,6 +51,10 @@ class Main extends CI_Controller {
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Add Availability"];
+        $data["link"] = ["main/index", "screeners/add"];
+        $data["icon"] = ["calendar","user"];
 
         $employeeid = $this->ion_auth->user()->row()->employeeid;
         $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($employeeid);
@@ -59,6 +71,7 @@ class Main extends CI_Controller {
      //$data['eventsAll'] = $this->Events_model->listAll();
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
+      $this->load->view('main/topbar', $data);
       $this->load->view('calendar/view');
       $this->load->view('main/footer');
     }
