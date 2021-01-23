@@ -33,7 +33,7 @@
                               <td><?php echo $clients['phone'];?></td>
                               <td><?php echo $clients['email'];?></td>
                               <td>
-                                <a href="clients/view/<?php echo $clients['id'];?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
+                                <a href="screeners/view/<?php echo $clients['id'];?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View </a>
                                 <a href="" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a>
                                 <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient<?php echo $clients['id'];  ?>"><i class="fa fa-trash-o"></i> Delete </a>
                               </td>
