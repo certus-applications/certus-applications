@@ -34,74 +34,38 @@
                   </div>
                 </div>
               </div>
-
-              <div class="col-md-9 col-md-3">
-                <div class="x_panel">
-                  <div class="x_title">
-                    <h2>Availability</h2>
-                    <div class="clearfix"></div>
-                  </div>
-                  <div class="x_content" id = "external-events">                    
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                      <div class='fc-event-main'>My Event 1</div>
+              <?php if ($this->ion_auth->is_admin()): ?>
+                <div class="col-md-9 col-md-3">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Availability</h2>
+                      <div class="clearfix"></div>
                     </div>
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                      <div class='fc-event-main'>My Event 2</div>
+                    <div class="x_content" id = "external-events">                    
+                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main'>My Event 1</div>
+                      </div>
+                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main'>My Event 2</div>
+                      </div>
+                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main'>My Event 3</div>
+                      </div>
+                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main'>My Event 4</div>
+                      </div>
+                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                        <div class='fc-event-main'>My Event 5</div>
+                      </div>
+                      <!-- Calendar Data -->
                     </div>
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                      <div class='fc-event-main'>My Event 3</div>
-                    </div>
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                      <div class='fc-event-main'>My Event 4</div>
-                    </div>
-                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                      <div class='fc-event-main'>My Event 5</div>
-                    </div>
-                    <!-- Calendar Data -->
                   </div>
                 </div>
-              </div>
+              <?php endif ?>
             </div>
           </div>
         </div>
         <!-- /page content -->
-      </div>
-    </div>
-
-    
-
-    <!-- add new calendar entry -->
-    <div id="CalenderModalNew" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel">New Calendar Entry</h4>
-          </div>
-          <div class="modal-body">
-            <div id="testmodal" style="padding: 5px 20px;">
-              <form id="antoform" class="form-horizontal calender" role="form">
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Title</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title" name="title">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Description</label>
-                  <div class="col-sm-9">
-                    <textarea class="form-control" style="height:55px;" id="descr" name="descr"></textarea>
-                  </div>
-                </div>
-              </form>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit" id="add_new_event">Save changes</button>
-          </div>
-        </div>
       </div>
     </div>
 
