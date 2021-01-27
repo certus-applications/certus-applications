@@ -90,7 +90,7 @@
           <div class="modal-body">
 
             <div id="testmodal2" style="padding: 5px 20px;">
-              <form id="antoform2" class="form-horizontal calender" role="form">
+              <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
                 <div class="form-group">
                   <label class="col-sm-3 control-label">Name</label>
                   <div class="col-sm-9">
@@ -113,16 +113,21 @@
                   <label class="col-sm-3 control-label">End (EST)</label>
                   <div class="col-sm-9">
                     <input type="datetime-local" class="form-control" id="end" name="end">
+                    <input type="hidden" class="form-control" id="id" name="id">
                   </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary antosubmit2">Save changes</button>
                 </div>
 
               </form>
             </div>
           </div>
-          <div class="modal-footer">
+          <!-- <div class="modal-footer">
             <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
             <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

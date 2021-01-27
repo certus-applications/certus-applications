@@ -75,18 +75,15 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
             url: 'http://certus.local/screeners/editSchedule/',
             type: 'POST',
             dataType: 'json',
-            data: JSON.stringify(scheduleData),
+            data: scheduleData,
             success: function(data) {
                 console.log(data)
+                alert("Record added successfully");  
             },
             error: function(data) {
                 console.log('error');
             }
         });
-        console.log(scheduleid)
-        console.log(startTime)
-        console.log(endTime)
-        console.log(locationName)
     });
 
 }
@@ -174,6 +171,7 @@ function init_calendar(eventArr) {
             $('#title2').val(calEvent.title);
             $('#start').val(startDateTime);
             $('#end').val(endDateTime);
+            $('#id').val(calEvent.scheduleid);
 
             var node = document.getElementById('location');
             node.innerHTML = '<option value = ' + calEvent.location + '>' + calEvent.location + '</option>' + get_locations();
@@ -185,7 +183,7 @@ function init_calendar(eventArr) {
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
 
-                set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                // set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 $('.antoclose2').click();

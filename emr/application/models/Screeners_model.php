@@ -49,4 +49,10 @@
           return false;
         }
       }
+
+      public function editSchedule($scheduleData){
+        extract($scheduleData);
+        $this->db->where('id', $id);
+        $this->db->update('schedule', $scheduleData);
+      }
     }

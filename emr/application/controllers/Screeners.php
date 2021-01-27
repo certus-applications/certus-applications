@@ -236,11 +236,21 @@ class Screeners extends CI_Controller {
     }
 
     public function editSchedule(){
-      if ($this->input->is_ajax_request()) {
-          echo $this->input->raw_input_stream;
-          exit;
-      } else {
-        echo "string";
-      }
+      // if ($this->input->is_ajax_request()) {
+
+          $scheduleData = array(
+            'location' => $this->input->post('location'),
+            'start' => $this->input->post('start'),
+            'end' => $this->input->post('end'),
+            'id' => $this->input->post('id')
+
+          );
+          $this->load->model('Screeners_model');
+          $this->Screeners_model->editSchedule($scheduleData);
+          return redirect('main/index');
+      //     exit;
+      // } else {
+      //   echo "string";
+      // }
     }
 }
