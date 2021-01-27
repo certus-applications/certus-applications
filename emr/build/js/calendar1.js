@@ -94,6 +94,20 @@ function init_calendar(eventArr) {
     }
     var cookiePreference = findCookie("preference")
     console.log('init_calendar');
+
+    $('#external-events .fc-event').each(function() {
+        $(this).data('event', {
+            title: $.trim($(this).text()),
+            stick: true
+        });
+        
+        $(this).draggable({
+            zIndex: 999,
+            revert: true,
+            revertDuration: 0
+        });
+    });
+
     var date = new Date(),
         d = date.getDate(),
         m = date.getMonth(),
@@ -108,6 +122,7 @@ function init_calendar(eventArr) {
             center: 'title',
             right: 'month,agendaWeek,agendaDay,listMonth'
         },
+        droppable: true,
         selectable: true,
         selectHelper: true,
         select: function(start, end, allDay) {

@@ -3,7 +3,7 @@
           <div class="">
             <div class="clearfix"></div>
             <div class="row">
-              <div class="col-md-12">
+              <div class="col-md-9 col-sm-3">
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Calendar Events <small>Sessions</small></h2>
@@ -31,6 +31,33 @@
                   <div class="x_content">
                     <!-- Calendar Data -->
                     <div id='calendar'> </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-9 col-md-3">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>Availability</h2>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content" id = "external-events">                    
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                      <div class='fc-event-main'>My Event 1</div>
+                    </div>
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                      <div class='fc-event-main'>My Event 2</div>
+                    </div>
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                      <div class='fc-event-main'>My Event 3</div>
+                    </div>
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                      <div class='fc-event-main'>My Event 4</div>
+                    </div>
+                    <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+                      <div class='fc-event-main'>My Event 5</div>
+                    </div>
+                    <!-- Calendar Data -->
                   </div>
                 </div>
               </div>
