@@ -1,13 +1,12 @@
 <!-- page content -->
 	<div class="right_col" role="main">
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">
+			<div class="col-md-12 col-sm-12 col-xs-12">			
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>Screener Information</h2>
 						<div class="clearfix"></div>
 					</div>
-
 					<form action ="<?php echo base_url(); ?>screeners/added_time" method="POST">
 						<div class="x_content">
 							<tbody>
@@ -39,9 +38,8 @@
 
 						<div class="x_content">
 							<div class="col-sm"><h2>Select Your Bi-Weekly Availability</h2></div>
-
-							<div class="col-sm-12">
-								<table class="table table-striped table-bordered">
+							<div class="col-xs-12 table-responsive">
+								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-dark">
 										<tr>
 											<th scope="col">
@@ -54,7 +52,6 @@
 											</th>
 											<?php } ?>
 									</thead>
-
 									<tbody>
 										<tr>
 											<th scope="row">Morning (5:00am - 12:00pm):</th>
@@ -78,17 +75,23 @@
 										</tr>
 									</tbody>
 								</table>
-			
-								<table class="table table-striped table-bordered">
+							</div>
+							
+							<div class="col-xs-12 table-responsive">
+								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-light">
 										<tr>
-											<th scope="col">Week Of: <?php echo $week_2start; ?> - <?php echo $week_2end; ?></th>
+											<th scope="col">
+												Week Of: <?php echo $week_2start; ?> - <?php echo $week_2end; ?>
+											</th>
+											
 											<?php for($i = 7;  $i < 14; $i++) {?>
-											<th scope="col"><?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?></th>
+											<th scope="col">
+												<?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?>
+											</th>
 										<?php } ?>
 										</tr>
 									</thead>
-
 									<tbody>
 										<tr>
 											<th scope="row">Morning (5:00am - 12:00pm):</th>
@@ -116,20 +119,10 @@
 
 							<div class="col-sm-12">
 								<ul class="nav navbar-left panel_toolbox">
-									<li><a href="screeners"><button  type="submit" class="btn btn-danger">Back</button></a></li>
+									<li><input type="button" class="btn btn-danger" value="Go Back" onclick=history.back()></li>
 								</ul>
-
 								<ul class="nav navbar-right panel_toolbox">      
-								<?php
-									$data = [
-										'class' => 'btn btn-success',
-										'value' => 'Submit',
-										'type' => 'submit',
-										'name' => 'submit',
-										'content' => 'Submit'
-									]; 
-									echo form_button($data);
-								?>
+									<li><button type="submit" class="btn btn-success" value="Submit">Submit</button></li>
 								</ul>
 							</div>
 						</div>
