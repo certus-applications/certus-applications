@@ -1,5 +1,23 @@
 var eventArr = [];
 var description = document.getElementById('descr2');
+
+function get_locations() {
+    var locations = [
+        "MOR", "COX", "Receiving", "840C", "INF", 
+        "Vaccine Clinic", "BRK", "CAC", "J-Wing", 
+        "D1 –Out", "PAE", "OHS DC" //Paediatric Stream
+    ]
+
+    sortedLocations = locations.sort()
+
+    for (var location = 0; location < sortedLocations.length; location++) {
+        var options = '<option value = ' + sortedLocations[location] + '>' + sortedLocations[location] + '</option>'
+        var allOptions = allOptions + options
+    }
+
+    return allOptions;
+}
+
 /* CALENDAR */
 function get_data() {
     $(document).ready(function() {
@@ -8,6 +26,7 @@ function get_data() {
             type: 'POST',
             dataType: 'json',
             success: function(data) {
+                console.log(data)
                 jQuery.each(data, function(index, value) {
                     jQuery.each(value, function(index, eventArray) {
                         var fullName = eventArray.first_name + " " + eventArray.last_name
@@ -29,6 +48,7 @@ function get_data() {
                             start: eventArray.start,
                             end: eventArray.end,
                             location: eventArray.location,
+                            employeeid: eventArray.employeeid,
                             color: color
                         })
                     })
@@ -41,6 +61,22 @@ function get_data() {
             }
         });
     });
+}
+
+function set_data(userID) {
+    $(document).ready(function() {
+        $.ajax({
+            url: 'http://certus.local/screener/edit',
+            type: 'POST',
+            dataType: 'json',
+            success: function(data) {
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    });
+
 }
 
 function init_calendar(eventArr) {
@@ -105,19 +141,53 @@ function init_calendar(eventArr) {
 
         },
         eventClick: function(calEvent, jsEvent, view) {
+            dateTimeStart = new Date(calEvent.start);
+            yearStart = dateTimeStart.getFullYear().toString().padStart(4, '0');
+            monthStart = (dateTimeStart.getMonth()+1).toString().padStart(2, '0');
+            dayStart = dateTimeStart.getDate().toString().padStart(2, '0');
+            hoursStart = (dateTimeStart.getHours()+5).toString().padStart(2, '0');
+            minutesStart = dateTimeStart.getMinutes().toString().padStart(2, '0')
+
+            startDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursStart + ':' + minutesStart)
+
+            dateTimeEnd = new Date(calEvent.end);
+            yearEnd = dateTimeEnd.getFullYear().toString().padStart(4, '0');
+            monthEnd = (dateTimeEnd.getMonth()+1).toString().padStart(2, '0');
+            dayEnd = dateTimeEnd.getDate().toString().padStart(2, '0');
+            hoursEnd = (dateTimeEnd.getHours()+5).toString().padStart(2, '0');
+            minutesEnd = dateTimeEnd.getMinutes().toString().padStart(2, '0')
+
+            endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd) 
+
             $('#fc_edit').click();
             $('#title2').val(calEvent.title);
-            $('#descr2').val(calEvent.location);
-            $('#userID').val(calEvent.userID);
+            $('#employeeid').val(calEvent.employeeid);
+            $('#start').val(startDateTime);
+            $('#end').val(endDateTime);
+
+            var node = document.getElementById('location');
+            node.innerHTML = '<option value = ' + calEvent.location + '>' + calEvent.location + '</option>' + get_locations();
+
+            // $('#location').append($(document.createElement('option')).prop({
+            //     value: calEvent.location,
+            //     text: calEvent.location.charAt(0).toUpperCase() + calEvent.location.slice(1)
+            // }))
 
             categoryClass = $("#event_type").val();
 
             $(".antosubmit2").on("click", function() {
                 calEvent.fullName = $("#title2").val();
-                calEvent.description = $('#descr2').val();
+                calEvent.location = $('#location').val();
+                calEvent.employeeid = $('#employeeid').val();
+                calEvent.startDateTime = $('#start').val();
+                calEvent.startDateTime = $('#end').val();
+
+                console.log(calEvent.location)
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 $('.antoclose2').click();
+
+                // setData(eventArr)
             });
 
             //  var descr = $('#descr2').val();

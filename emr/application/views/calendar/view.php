@@ -94,14 +94,25 @@
                 <div class="form-group">
                   <label class="col-sm-3 control-label">Name</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title2" name="title2">
-                    <input type="hidden" class="form-control" id="userID" name="userID">
+                    <input type="text" class="form-control" id="title2" name="title2" readonly>
                   </div>
                 </div>
                 <div class="form-group">
                   <label class="col-sm-3 control-label">Location</label>
                   <div class="col-sm-9">
-                    <input type="text" class="form-control" id="descr2" name="descr">
+                    <select class="form-control" id="location" name="location"></select>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">Start (EST)</label>
+                  <div class="col-sm-9">
+                    <input type="datetime-local" class="form-control" id="start" name="start">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-sm-3 control-label">End (EST)</label>
+                  <div class="col-sm-9">
+                    <input type="datetime-local" class="form-control" id="end" name="end">
                   </div>
                 </div>
 
