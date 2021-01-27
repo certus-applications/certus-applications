@@ -26,7 +26,6 @@ function get_data() {
             type: 'POST',
             dataType: 'json',
             success: function(data) {
-                console.log(data)
                 jQuery.each(data, function(index, value) {
                     jQuery.each(value, function(index, eventArray) {
                         var fullName = eventArray.first_name + " " + eventArray.last_name
@@ -48,7 +47,7 @@ function get_data() {
                             start: eventArray.start,
                             end: eventArray.end,
                             location: eventArray.location,
-                            employeeid: eventArray.employeeid,
+                            scheduleid: eventArray.id,
                             color: color
                         })
                     })
@@ -63,18 +62,31 @@ function get_data() {
     });
 }
 
-function set_data(userID) {
+function set_schedule_data(startTime, endTime, locationName, scheduleid) {
     $(document).ready(function() {
+        var scheduleData = {
+            id: scheduleid,
+            start: startTime,
+            end: endTime,
+            location: locationName
+        }
+
         $.ajax({
-            url: 'http://certus.local/screener/edit',
+            url: 'http://certus.local/screeners/editSchedule/',
             type: 'POST',
             dataType: 'json',
+            data: JSON.stringify(scheduleData),
             success: function(data) {
+                console.log(data)
             },
             error: function(data) {
                 console.log('error');
             }
         });
+        console.log(scheduleid)
+        console.log(startTime)
+        console.log(endTime)
+        console.log(locationName)
     });
 
 }
@@ -85,7 +97,6 @@ function init_calendar(eventArr) {
     }
     var cookiePreference = findCookie("preference")
     console.log('init_calendar');
-    console.log(eventArr)
     var date = new Date(),
         d = date.getDate(),
         m = date.getMonth(),
@@ -161,28 +172,20 @@ function init_calendar(eventArr) {
 
             $('#fc_edit').click();
             $('#title2').val(calEvent.title);
-            $('#employeeid').val(calEvent.employeeid);
             $('#start').val(startDateTime);
             $('#end').val(endDateTime);
 
             var node = document.getElementById('location');
             node.innerHTML = '<option value = ' + calEvent.location + '>' + calEvent.location + '</option>' + get_locations();
 
-            // $('#location').append($(document.createElement('option')).prop({
-            //     value: calEvent.location,
-            //     text: calEvent.location.charAt(0).toUpperCase() + calEvent.location.slice(1)
-            // }))
-
             categoryClass = $("#event_type").val();
 
             $(".antosubmit2").on("click", function() {
-                calEvent.fullName = $("#title2").val();
                 calEvent.location = $('#location').val();
-                calEvent.employeeid = $('#employeeid').val();
                 calEvent.startDateTime = $('#start').val();
-                calEvent.startDateTime = $('#end').val();
+                calEvent.endDateTime = $('#end').val();
 
-                console.log(calEvent.location)
+                set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 $('.antoclose2').click();

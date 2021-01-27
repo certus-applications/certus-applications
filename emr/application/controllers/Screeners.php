@@ -233,6 +233,14 @@ class Screeners extends CI_Controller {
      $data['viewClient'] = $this->Screeners_model->viewClient($id);
      $this->load->view('screeners/view', $data);
      $this->load->view('main/footer');
+    }
 
+    public function editSchedule(){
+      if ($this->input->is_ajax_request()) {
+          echo $this->input->raw_input_stream;
+          exit;
+      } else {
+        echo "string";
+      }
     }
 }
