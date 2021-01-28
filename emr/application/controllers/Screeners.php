@@ -176,7 +176,8 @@ class Screeners extends CI_Controller {
           'start' => $morn_time[$i],
           'end' => $end_date
         );
-        $this->db->insert('availability', $morn);
+          $this->load->model('Availability_model');
+          $this->Availability_model->add_morning($morn);
       }
 
       for($i=0; $i < sizeof($eve_time); $i++){
@@ -191,7 +192,8 @@ class Screeners extends CI_Controller {
           'start' => $eve_time[$i],
           'end' => $end_date
         );
-        $this->db->insert('availability', $eve);
+        $this->load->model('Availability_model');
+        $this->Availability_model->add_morning($eve);
       }
 
       for($i=0; $i < sizeof($night_time); $i++){
@@ -206,7 +208,8 @@ class Screeners extends CI_Controller {
           'start' => $night_time[$i],
           'end' => $end_date
         );
-        $this->db->insert('availability', $night);
+        $this->load->model('Availability_model');
+        $this->Availability_model->add_morning($night);
       }
         
 
