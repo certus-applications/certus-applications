@@ -3,11 +3,21 @@
 		<div class="row">
 			<div class="col-md-12 col-sm-12 col-xs-12">			
 				<div class="x_panel">
+					<?php if($this->session->flashdata('err')){ ?>
+						<div class = "alert alert-danger"> 
+							<?php 
+								echo $this->session->flashdata('err'); 
+								echo validation_errors(); 
+							?>
+						</div>
+					<?php } ?>
+					<?php if($this->session->flashdata('success')){ ?>
+                  		<div class="alert alert-success"> <?php  echo $this->session->flashdata('success'); }?></div>
 					<div class="x_title">
 						<h2>Screener Information</h2>
 						<div class="clearfix"></div>
 					</div>
-					<form action ="<?php echo base_url(); ?>screeners/added_time" method="POST">
+					<?php echo form_open('screeners/added_time'); ?>
 						<div class="x_content">
 							<tbody>
 							 	<div class="col-sm-6">
@@ -30,7 +40,7 @@
 								
 								<div class="col-sm-6">
 									<fieldset class="form-group">   
-										Employee Number<input class="form-control" type="number" name="empnumb" placeholder="<?php echo $employeeid?>" readonly>
+										Employee Number<input class="form-control" type="text" name="employeeid" placeholder="<?php echo $employeeid?>" readonly>
 									</fieldset>
 								</div>
 							</tbody>
@@ -125,6 +135,8 @@
 									<li><button type="submit" class="btn btn-success" value="Submit">Submit</button></li>
 								</ul>
 							</div>
+
+							<?php echo form_close(); ?>
 						</div>
 					</form>
 				</div>

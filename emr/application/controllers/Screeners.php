@@ -141,13 +141,36 @@ class Screeners extends CI_Controller {
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
 
+      $this->load->helper('url');
+      $this->load->helper('form');
+      $this->load->library('form_validation');
+
+    
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
-      $eve_times = $this->input->post('eve_times');
-      $night_times = $this->input->post('night_times');
+      if ($morn_times != null) {
+        $morn_time = $morn_times;
+      } else {
+        $morn_time = [];
+      }
 
-      for ($i=0; $i < sizeof($morn_times); $i++){
-        $my_dt = new DateTime($morn_times[$i]);
+      $eve_times = $this->input->post('eve_times');
+      
+      if ($eve_times != null) {
+        $eve_time = $eve_times;
+      } else {
+        $eve_time = [];
+      }
+
+      $night_times = $this->input->post('night_times');
+      if ($night_times != null) {
+        $night_time = $night_times;
+      } else {
+        $night_time = [];
+      }
+
+      for ($i=0; $i < sizeof($morn_time); $i++){
+        $my_dt = new DateTime($morn_time[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
         $end_date = $expires_at->format('Y-m-d H:i:s');
         
@@ -155,14 +178,14 @@ class Screeners extends CI_Controller {
           'employeeid' => $data['employeeid'],
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
-          'start' => $morn_times[$i],
+          'start' => $morn_time[$i],
           'end' => $end_date
         );
         $this->db->insert('availability', $morn);
       }
 
-      for($i=0; $i < sizeof($eve_times); $i++){
-        $my_dt = new DateTime($eve_times[$i]);
+      for($i=0; $i < sizeof($eve_time); $i++){
+        $my_dt = new DateTime($eve_time[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
         $end_date = $expires_at->format('Y-m-d H:i:s');
 
@@ -170,14 +193,14 @@ class Screeners extends CI_Controller {
           'employeeid' => $data['employeeid'],
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
-          'start' => $eve_times[$i],
+          'start' => $eve_time[$i],
           'end' => $end_date
         );
         $this->db->insert('availability', $eve);
       }
 
-      for($i=0; $i < sizeof($night_times); $i++){
-        $my_dt = new DateTime($night_times[$i]);
+      for($i=0; $i < sizeof($night_time); $i++){
+        $my_dt = new DateTime($night_time[$i]);
         $expires_at = $my_dt->modify(' +8 hour');
         $end_date = $expires_at->format('Y-m-d H:i:s');
 
@@ -185,13 +208,45 @@ class Screeners extends CI_Controller {
           'employeeid' => $data['employeeid'],
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
-          'start' => $night_times[$i],
+          'start' => $night_time[$i],
           'end' => $end_date
         );
         $this->db->insert('availability', $night);
-      
       }
-    return redirect('screeners');
+        
+
+      $morn_rule = $this->form_validation->set_rules('morn_times[]', 'Morn Times', 'required');
+      $eve_rule = $this->form_validation->set_rules('eve_times[]', 'Eve Times', 'required');
+      $night_rule = $this->form_validation->set_rules('night_times[]', 'Night Times', 'required');
+
+
+      if ($this->form_validation->run() === FALSE){
+        if ($morn_time === [] && $eve_time === [] && $night_time === []) {
+          // If User selects nothing
+          $this->session->set_flashdata("err", "Pick 1 or more date(s) for your availability.");
+          return redirect('screeners/add', 'refresh');
+        } 
+        // If User only selects one date
+        elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
+          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          return redirect('screeners/add', 'refresh');
+        } 
+        // If User only selects two dates
+        elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
+          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          return redirect('screeners/add', 'refresh');
+        } 
+        else {
+          $this->session->set_flashdata("err", "Something went wrong!");
+          return redirect('screeners/add', 'refresh');
+        }
+      }
+      else {
+        $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+        return redirect('screeners/add', 'refresh');
+      }
+
+      
     }
 
     public function view($id){
@@ -253,4 +308,6 @@ class Screeners extends CI_Controller {
       //   echo "string";
       // }
     }
+
+    
 }
