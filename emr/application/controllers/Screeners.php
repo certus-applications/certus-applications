@@ -140,11 +140,6 @@ class Screeners extends CI_Controller {
       $data['last_name'] = $this->ion_auth->user()->row()->last_name;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
-
-      $this->load->helper('url');
-      $this->load->helper('form');
-      $this->load->library('form_validation');
-
     
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
