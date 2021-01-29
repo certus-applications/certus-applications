@@ -176,7 +176,6 @@ class Screeners extends CI_Controller {
           'start' => $morn_time[$i],
           'end' => $end_date
         );
-          $this->load->model('Availability_model');
           $this->Availability_model->add_morning($morn);
       }
 
@@ -192,7 +191,6 @@ class Screeners extends CI_Controller {
           'start' => $eve_time[$i],
           'end' => $end_date
         );
-        $this->load->model('Availability_model');
         $this->Availability_model->add_morning($eve);
       }
 
@@ -208,7 +206,6 @@ class Screeners extends CI_Controller {
           'start' => $night_time[$i],
           'end' => $end_date
         );
-        $this->load->model('Availability_model');
         $this->Availability_model->add_morning($night);
       }
         
