@@ -174,7 +174,8 @@ class Screeners extends CI_Controller {
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
           'start' => $morn_time[$i],
-          'end' => $end_date
+          'end' => $end_date,
+          'shift_type' => 'Morning'
         );
           $this->Availability_model->add_morning($morn);
       }
@@ -189,7 +190,8 @@ class Screeners extends CI_Controller {
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
           'start' => $eve_time[$i],
-          'end' => $end_date
+          'end' => $end_date,
+          'shift_type' => 'Evening'
         );
         $this->Availability_model->add_morning($eve);
       }
@@ -204,7 +206,8 @@ class Screeners extends CI_Controller {
           'first_name' => $data['first_name'],
           'last_name' => $data['last_name'],
           'start' => $night_time[$i],
-          'end' => $end_date
+          'end' => $end_date,
+          'shift_type' => 'Night'
         );
         $this->Availability_model->add_morning($night);
       }
