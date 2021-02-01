@@ -1,8 +1,5 @@
         <!-- footer content -->
         <footer>
-          <div class="pull-right">
-            Powered by Certus
-          </div>
         </footer>
         <!-- /footer content -->
       </div>

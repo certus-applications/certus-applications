@@ -14,6 +14,21 @@ class Availability_model extends CI_Model {
         return $returnData;
     }
 
+    public function add_morning($morn) {
+        extract($morn);
+        $this->db->insert('availability', $morn);
+    }
+
+    public function add_eve($eve) {
+        extract($eve);
+        $this->db->insert('availability', $eve);
+    }
+
+    public function add_night($night) {
+        extract($night);
+        $this->db->insert('availability', $night);
+    }
+
     // public function getScheduleScreener($employeeid){
     //     $this->db->select('*');
     //     $this->db->from('schedule');
