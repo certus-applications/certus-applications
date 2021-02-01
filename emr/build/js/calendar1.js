@@ -78,7 +78,7 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
             data: scheduleData,
             success: function(data) {
                 console.log(data)
-                alert("Record added successfully");  
+                alert("Event updated successfully!");  
             },
             error: function(data) {
                 console.log('error');
@@ -198,12 +198,8 @@ function init_calendar(eventArr) {
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
 
-                // set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
-
                 calendar.fullCalendar('updateEvent', calEvent);
                 $('.antoclose2').click();
-
-                // setData(eventArr)
             });
 
             //  var descr = $('#descr2').val();
@@ -212,6 +208,9 @@ function init_calendar(eventArr) {
 
         },
         editable: true,
+        eventDrop: function(event, delta, revertFunc) {
+            set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
+        },
         events: eventArr
     });
 }
