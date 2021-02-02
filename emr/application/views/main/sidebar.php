@@ -22,9 +22,9 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small" style="background: #172D44; padding: 10px 0 -5px;">
+            <div class="sidebar-footer hidden-small" style="background: #172D44; padding: 5px 0 10px;">
               <div class="block">
-                  <center>Powered by Certus<img src="../img/rsz_1certuslogowatermark.png" style="width: 20%; height:20%; padding: 0 0 0 2px;"></center>
+                  <center>Powered by Certus</center>
               </div>
 
             </div>
