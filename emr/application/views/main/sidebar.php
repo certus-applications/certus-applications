@@ -4,7 +4,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-                <a href="main/index" class="site_title"><span><img src="../img/MGH.svg" style="padding: 0 0 10px 40px; "></span></a>
+                <a href="main/index" class="site_title"><span><img src="../img/MGH.svg" style="padding: 0 0 10px 50px; "></span></a>
             </div>
             <div class="clearfix"></div>
 

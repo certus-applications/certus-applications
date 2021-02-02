@@ -106,7 +106,7 @@
 							</div>	
 							<div class="col-xs-6">
 								<ul class="nav navbar-right panel_toolbox">
-									<li><button type="button" class="btn btn-danger" onclick=history.back() style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;">Back</button></li>
+									<li><button type="button" class="btn btn-danger" onclick="window.location.href='screeners'" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;">Back</button></li>
 								</ul>
 							</div>
 							<div class="col-xs-6">
