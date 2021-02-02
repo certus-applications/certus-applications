@@ -42,7 +42,13 @@
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content" id = "external-events">
-
+                      <button class="btn btn-secondary source" onclick="new PNotify({
+                          title: 'Regular Success',
+                          text: 'That thing that you were trying to do worked!',
+                          type: 'success',
+                          styling: 'bootstrap3',
+                          delay: 2000
+                      });">Success</button>
                       <!-- start accordion -->
                       <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel">
