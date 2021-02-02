@@ -106,12 +106,12 @@
 							</div>	
 							<div class="col-xs-6">
 								<ul class="nav navbar-right panel_toolbox">
-									<li><button type="button" class="btn btn-danger" onclick=history.back()>Back</button></li>
+									<li><button type="button" class="btn btn-danger" onclick=history.back() style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;">Back</button></li>
 								</ul>
 							</div>
 							<div class="col-xs-6">
 								<ul class="nav navbar-left panel_toolbox">      
-									<li><button type="submit" class="btn btn-success">Submit</button></li>
+									<li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
 								</ul>
 							</div>			
 							<?php echo form_close(); ?>

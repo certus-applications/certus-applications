@@ -823,8 +823,7 @@ a:focus {
     line-height: 59px;
     display: block;
     height: 55px;
-    margin: 0;
-    padding-left: 10px
+    margin: 0
 }
 .site_title:hover,
 .site_title:focus {
