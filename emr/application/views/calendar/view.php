@@ -41,23 +41,99 @@
                       <h2>Availability</h2>
                       <div class="clearfix"></div>
                     </div>
-                    <div class="x_content" id = "external-events">                    
-                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>My Event 1</div>
+                    <div class="x_content" id = "external-events">
+
+                      <!-- start accordion -->
+                      <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel">
+                          <a class="panel-heading" role="tab" id="morningShift" data-toggle="collapse" data-parent="#accordion" href="#morning" aria-expanded="true" aria-controls="morning">
+                            <h4 class="panel-title" style="color: #73879C">Morning</h4>
+                          </a>
+                          <div id="morning" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="morningShift">
+                            <ul class="list-unstyled msg_list">
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C" >Screener 1</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 2</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 3</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 4</div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="panel">
+                          <a class="panel-heading collapsed" role="tab" id="eveningShift" data-toggle="collapse" data-parent="#accordion" href="#evening" aria-expanded="false" aria-controls="evening">
+                            <h4 class="panel-title" style="color: #73879C">Evening</h4>
+                          </a>
+                          <div id="evening" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eveningShift">
+                            <ul class="list-unstyled msg_list">
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C" >Screener 5</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 6</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 7</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 8</div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
+                        <div class="panel">
+                          <a class="panel-heading collapsed" role="tab" id="nightShift" data-toggle="collapse" data-parent="#accordion" href="#night" aria-expanded="false" aria-controls="night">
+                            <h4 class="panel-title" style="color: #73879C">Night</h4>
+                          </a>
+                          <div id="night" class="panel-collapse collapse" role="tabpanel" aria-labelledby="nightShift">
+                            <ul class="list-unstyled msg_list">
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C" >Screener 9</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 10</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 11</div>
+                                </a>
+                              </li>
+                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                <a>
+                                    <div class='fc-event-main' style="color: #73879C">Screener 12</div>
+                                </a>
+                              </li>
+                            </ul>
+                          </div>
+                        </div>
                       </div>
-                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>My Event 2</div>
-                      </div>
-                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>My Event 3</div>
-                      </div>
-                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>My Event 4</div>
-                      </div>
-                      <div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-                        <div class='fc-event-main'>My Event 5</div>
-                      </div>
-                      <!-- Calendar Data -->
+                      <!-- end of accordion -->
                     </div>
                   </div>
                 </div>
