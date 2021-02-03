@@ -823,8 +823,7 @@ a:focus {
     line-height: 59px;
     display: block;
     height: 55px;
-    margin: 0;
-    padding-left: 10px
+    margin: 0
 }
 .site_title:hover,
 .site_title:focus {
@@ -4268,3 +4267,10 @@ td {
     /* center checkbox vertically */
 }
 
+.mobileView  {
+    display: none;
+}
+
+@media only screen and (min-device-width : 280px) and (max-device-width : 990px) {
+    .mobileView{display: inline;}
+}

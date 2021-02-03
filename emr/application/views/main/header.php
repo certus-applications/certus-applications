@@ -9,6 +9,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Certus Applications</title>
+    <link rel="icon" type="image/png" href="../img/certus_logo-remove.png" sizes="32x32">
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
