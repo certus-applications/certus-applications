@@ -52,9 +52,9 @@ class Main extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Add Availability"];
-        $data["link"] = ["main/index", "screeners/add"];
-        $data["icon"] = ["calendar","user"];
+        $data["sideMenu"] = ["Calendar", "Availability", "Request"];
+        $data["link"] = ["main/index", "screeners/add", ""];
+        $data["icon"] = ["calendar","user", "exclamation-triangle"];
 
         $employeeid = $this->ion_auth->user()->row()->employeeid;
         $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($employeeid);
