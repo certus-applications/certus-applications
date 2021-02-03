@@ -37,9 +37,9 @@ class Insights extends CI_Controller {
           $data["href"] = ["auth/logout"];
           $data["font"] = ["sign-out"];
 
-          $data["sideMenu"] = ["Calendar", "Add Availability"];
-          $data["link"] = ["main/index", "screeners/add"];
-          $data["icon"] = ["calendar","user"];
+          $data["sideMenu"] = ["Calendar", "Availability", "Request"];
+          $data["link"] = ["main/index", "screeners/add", "screeners/request"];
+          $data["icon"] = ["calendar","user", "exclamation-triangle"];
         }
         
         $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;

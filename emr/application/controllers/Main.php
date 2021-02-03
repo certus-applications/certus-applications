@@ -53,7 +53,7 @@ class Main extends CI_Controller {
         $data["font"] = ["sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "Request"];
-        $data["link"] = ["main/index", "screeners/add", ""];
+        $data["link"] = ["main/index", "screeners/add", "screeners/request"];
         $data["icon"] = ["calendar","user", "exclamation-triangle"];
 
         $employeeid = $this->ion_auth->user()->row()->employeeid;
