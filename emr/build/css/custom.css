@@ -4267,3 +4267,10 @@ td {
     /* center checkbox vertically */
 }
 
+.mobileView  {
+    display: none;
+}
+
+@media only screen and (min-device-width : 280px) and (max-device-width : 990px) {
+    .mobileView{display: inline;}
+}
