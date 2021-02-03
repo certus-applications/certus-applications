@@ -1,9 +1,8 @@
 <!-- page content -->
 	<div class="right_col" role="main">
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">			
-				<div class="x_panel">
-					<?php if($this->session->flashdata('err')){ ?>
+			<div class="col-md-12 col-sm-12 col-xs-12">		
+				<?php if($this->session->flashdata('err')){ ?>
 						<div class = "alert alert-danger"> 
 							<?php 
 								echo $this->session->flashdata('err'); 
@@ -12,11 +11,14 @@
 						</div>
 					<?php } ?>
 					<?php if($this->session->flashdata('success')){ ?>
-                  		<div class="alert alert-success"> <?php  echo $this->session->flashdata('success'); }?></div>
+                  		<div class="alert alert-success"> <?php  echo $this->session->flashdata('success'); }?></div>	
+				
+				<div class="x_panel">
 					<div class="x_title">
 						<h2>Screener Information</h2>
 						<div class="clearfix"></div>
 					</div>
+
 					<?php echo form_open('screeners/added_time'); ?>
 						<div class="x_content">
 							<tbody>
@@ -76,7 +78,7 @@
 							</div>
 							
 							<div class="col-xs-6 table-responsive">
-							<table class="table table-hover table-striped table-bordered">
+								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-dark">
 										<tr>
 											<th class='th_center' scope="col">
@@ -106,18 +108,18 @@
 							</div>	
 							<div class="col-xs-6">
 								<ul class="nav navbar-right panel_toolbox">
-									<li><button type="button" class="btn btn-danger" onclick=history.back()>Back</button></li>
+									<li>
+										<button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="screeners" style="color: white">Back</a></button>
+									</li>
 								</ul>
 							</div>
 							<div class="col-xs-6">
 								<ul class="nav navbar-left panel_toolbox">      
-									<li><button type="submit" class="btn btn-success">Submit</button></li>
+									<li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
 								</ul>
 							</div>			
-							<?php echo form_close(); ?>
 						</div>
-
-					</form>
+					<?php echo form_close(); ?>
 				</div>
 			</div>
 		</div>
