@@ -154,7 +154,6 @@
             <h4 class="modal-title" id="myModalLabel2">Edit Entry</h4>
           </div>
           <div class="modal-body">
-
             <div id="testmodal2" style="padding: 5px 20px;">
               <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
                 <div class="form-group">
@@ -186,7 +185,6 @@
                   <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
                   <button type="submit" class="btn btn-primary antosubmit2">Save changes</button>
                 </div>
-
               </form>
             </div>
           </div>
