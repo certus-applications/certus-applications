@@ -206,6 +206,18 @@ function init_calendar(eventArr) {
                 calEvent.endDateTime = $('#end').val();
 
                 calendar.fullCalendar('updateEvent', calEvent);
+                if (calEvent.startDateTime > calEvent.endDateTime) {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'The start time must be before end time.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });                  
+                } else {
+                    set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                    $('.antoclose2').click();                    
+                }
             });
 
             //  var descr = $('#descr2').val();
