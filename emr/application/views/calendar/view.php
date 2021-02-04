@@ -199,17 +199,6 @@
     <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
     <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
     <!-- /calendar modal -->
-
-      <div id="setCookieSuccess" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title" id="myModalLabel2" style="text-align: center;">Preferences updated!</h4>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div id="setCookie" data-toggle="modal" data-target="#setCookieSuccess"></div>
