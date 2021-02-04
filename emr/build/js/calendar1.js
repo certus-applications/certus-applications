@@ -205,7 +205,12 @@ function init_calendar(eventArr) {
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
 
+                startDateTime = new Date(calEvent.startDateTime);
+                endDateTime = new Date(calEvent.endDateTime);
+
                 calendar.fullCalendar('updateEvent', calEvent);
+                var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
+                console.log(timeDifference);
                 if (calEvent.startDateTime > calEvent.endDateTime) {
                     new PNotify({
                         title: 'Error!',
@@ -213,7 +218,15 @@ function init_calendar(eventArr) {
                         type: 'error',
                         styling: 'bootstrap3',
                         delay: 2000
-                    });                  
+                    });
+                } else if (timeDifference > 8) {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'A shift must be less than 8 hours.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });                    
                 } else {
                     set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
                     $('.antoclose2').click();                    
