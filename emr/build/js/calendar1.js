@@ -97,6 +97,9 @@ function init_calendar(eventArr) {
     if (typeof($.fn.fullCalendar) === 'undefined') {
         return;
     }
+    var loader = document.getElementById("loader");
+    loader.style.display = "none";
+
     var cookiePreference = findCookie("preference")
     console.log('init_calendar');
 
@@ -200,6 +203,7 @@ function init_calendar(eventArr) {
 
             $(".antosubmit2").on("click", function() {
                 event.preventDefault();
+                PNotify.removeAll()
 
                 calEvent.location = $('#location').val();
                 calEvent.startDateTime = $('#start').val();
@@ -226,10 +230,20 @@ function init_calendar(eventArr) {
                         type: 'error',
                         styling: 'bootstrap3',
                         delay: 2000
-                    });                    
+                    });
                 } else {
+                    var saveButton = document.getElementById("saveButton");
+                    var closeButton = document.getElementById("closeButton");
+                    saveButton.style.display = "none";
+                    closeButton.style.display = "none";
+
+
                     set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
-                    $('.antoclose2').click();                    
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 2000);
+                    // $('.antoclose2').click();
+                    loader.style.display = "block";                    
                 }
             });
 
