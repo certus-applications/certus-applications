@@ -199,12 +199,13 @@ function init_calendar(eventArr) {
             categoryClass = $("#event_type").val();
 
             $(".antosubmit2").on("click", function() {
+                event.preventDefault();
+
                 calEvent.location = $('#location').val();
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
 
                 calendar.fullCalendar('updateEvent', calEvent);
-                $('.antoclose2').click();
             });
 
             //  var descr = $('#descr2').val();
