@@ -77,8 +77,13 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
             dataType: 'json',
             data: scheduleData,
             success: function(data) {
-                console.log(data)
-                alert("Event updated successfully!");  
+              new PNotify({
+                title: 'Success',
+                text: 'Event updated!',
+                type: 'success',
+                styling: 'bootstrap3',
+                delay: 2000
+              });
             },
             error: function(data) {
                 console.log('error');
