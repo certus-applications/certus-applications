@@ -214,7 +214,6 @@ function init_calendar(eventArr) {
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
-                console.log(timeDifference);
                 if (calEvent.startDateTime > calEvent.endDateTime) {
                     new PNotify({
                         title: 'Error!',
