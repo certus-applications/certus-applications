@@ -71,6 +71,11 @@
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
 
+    <!-- PNotify -->
+    <script src="../vendors/pnotify/dist/pnotify.js"></script>
+    <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
+    <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
+
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.js"></script>
     
@@ -79,11 +84,5 @@
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
-
-    <!-- Graph Scipt --><!--
-    <script src="../build/js/graph.js"></script>
-    <script src="../build/js/graph1.js"></script>
-    <script src="../build/js/graph2.js"></script> -->
-
   </body>
 </html>

@@ -77,8 +77,13 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
             dataType: 'json',
             data: scheduleData,
             success: function(data) {
-                console.log(data)
-                alert("Event updated successfully!");  
+              new PNotify({
+                title: 'Success',
+                text: 'Event updated!',
+                type: 'success',
+                styling: 'bootstrap3',
+                delay: 2000
+              });
             },
             error: function(data) {
                 console.log('error');
@@ -92,6 +97,9 @@ function init_calendar(eventArr) {
     if (typeof($.fn.fullCalendar) === 'undefined') {
         return;
     }
+    var loader = document.getElementById("loader");
+    loader.style.display = "none";
+
     var cookiePreference = findCookie("preference")
     console.log('init_calendar');
 
@@ -194,12 +202,48 @@ function init_calendar(eventArr) {
             categoryClass = $("#event_type").val();
 
             $(".antosubmit2").on("click", function() {
+                event.preventDefault();
+                PNotify.removeAll()
+
                 calEvent.location = $('#location').val();
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
 
+                startDateTime = new Date(calEvent.startDateTime);
+                endDateTime = new Date(calEvent.endDateTime);
+
                 calendar.fullCalendar('updateEvent', calEvent);
-                $('.antoclose2').click();
+                var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
+                if (calEvent.startDateTime > calEvent.endDateTime) {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'The start time must be before end time.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });
+                } else if (timeDifference > 8) {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'A shift must be less than 8 hours.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });
+                } else {
+                    var saveButton = document.getElementById("saveButton");
+                    var closeButton = document.getElementById("closeButton");
+                    saveButton.style.display = "none";
+                    closeButton.style.display = "none";
+
+
+                    set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                    setTimeout(function () {
+                        location.reload(true);
+                    }, 2000);
+                    // $('.antoclose2').click();
+                    loader.style.display = "block";                    
+                }
             });
 
             //  var descr = $('#descr2').val();

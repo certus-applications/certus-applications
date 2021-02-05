@@ -42,7 +42,6 @@
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content" id = "external-events">
-
                       <!-- start accordion -->
                       <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
                         <div class="panel">
@@ -155,7 +154,6 @@
             <h4 class="modal-title" id="myModalLabel2">Edit Entry</h4>
           </div>
           <div class="modal-body">
-
             <div id="testmodal2" style="padding: 5px 20px;">
               <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
                 <div class="form-group">
@@ -184,10 +182,12 @@
                   </div>
                 </div>
                 <div class="modal-footer">
-                  <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
-                  <button type="submit" class="btn btn-primary antosubmit2">Save changes</button>
+                  <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
+                  <button type="submit" class="btn btn-primary antosubmit2" id="saveButton">Save changes</button>
+                  <center id = "loader">
+                    <div class="loaderAnimation"></div>
+                  </center>
                 </div>
-
               </form>
             </div>
           </div>
@@ -202,17 +202,6 @@
     <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
     <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
     <!-- /calendar modal -->
-
-      <div id="setCookieSuccess" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-              <h4 class="modal-title" id="myModalLabel2" style="text-align: center;">Preferences updated!</h4>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div id="setCookie" data-toggle="modal" data-target="#setCookieSuccess"></div>
@@ -221,7 +210,50 @@
 
   <script type="text/javascript">
     function updateCookie(preference) {
-      $('#setCookie').click();
+      var preferenceText = ""
+      $('#calendar').fullCalendar('changeView', preference);
+
+      if (preference == "agendaWeek") {
+        preferenceText = "week"
+      } else if (preference == "agendaDay") {
+        preferenceText = "day"
+      } else if (preference == "listMonth") {
+        preferenceText = "list"
+      } else {
+        preferenceText = "month"
+      }
+
+      new PNotify({
+        title: 'Preferences updated!',
+        text: 'Default view set to ' + preferenceText + '.',
+        type: 'success',
+        styling: 'bootstrap3',
+        delay: 2000
+      });
+
       document.cookie = "preference="+preference;
     }
   </script>
+
+  <style type="text/css">
+    .loaderAnimation {
+      border: 4px solid #f3f3f3;
+      border-radius: 50%;
+      border-top: 4px solid #3498db;
+      width: 39px;
+      height: 39px;
+      -webkit-animation: spin 2s linear infinite; /* Safari */
+      animation: spin 2s linear infinite;
+    }
+
+    /* Safari */
+    @-webkit-keyframes spin {
+      0% { -webkit-transform: rotate(0deg); }
+      100% { -webkit-transform: rotate(360deg); }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
