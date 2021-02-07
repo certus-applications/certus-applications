@@ -43,40 +43,40 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
                         <ul class="dropdown-menu" role="menu">
                           <li>
-                            <a>Filter for MOR</a>
+                            <a>Filter by MOR</a>
                           </li>
                           <li>
-                            <a>Filter for COX</a>
+                            <a>Filter by COX</a>
                           </li>
                           <li>
-                            <a>Filter for Receiving</a>
+                            <a>Filter by Receiving</a>
                           </li>
                           <li>
-                            <a>Filter for 840C</a>
+                            <a>Filter by 840C</a>
                           </li>
                           <li>
-                            <a>Filter for INF</a>
+                            <a>Filter by INF</a>
                           </li>
                           <li>
-                            <a>Filter for Vaccine Clinic</a>
+                            <a>Filter by Vaccine Clinic</a>
                           </li>
                           <li>
-                            <a>Filter for BRK</a>
+                            <a>Filter by BRK</a>
                           </li>
                           <li>
-                            <a>Filter for CAC</a>
+                            <a>Filter by CAC</a>
                           </li>
                           <li>
-                            <a>Filter for J-Wing</a>
+                            <a>Filter by J-Wing</a>
                           </li>
                           <li>
-                            <a>Filter for D1 –Out</a>
+                            <a>Filter by D1 –Out</a>
                           </li>
                           <li>
-                            <a>Filter for PAE</a>
+                            <a>Filter by PAE</a>
                           </li>
                           <li>
-                            <a>Filter for OHS DC</a>
+                            <a>Filter by OHS DC</a>
                           </li>
                         </ul>
                       </li>
@@ -200,7 +200,7 @@
     </div>
 
     <!-- Admin: edit calendar entry -->
-    <?php if($this->ion_auth->in_group("hostpial admin")): ?>
+    <?php if($this->ion_auth->in_group("hostpial admin") || $this->ion_auth->is_admin()): ?>
       <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -254,9 +254,9 @@
           </div>
         </div>
       </div>
+    <?php endif ?>
     
-    <?php else: ?>
-    
+    <?php if($this->ion_auth->in_group("screener")): ?>
     <!-- Screener: edit calendar entry -->
       <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">

@@ -22,7 +22,7 @@
             <!-- /sidebar menu -->
 
             <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small" style="background: #172D44; padding: 5px 0 10px;">
+            <div class="sidebar-footer hidden-small" style="background: #22155B; padding: 5px 0 10px;">
               <div class="block">
                   <center>Powered by Certus</center>
               </div>
