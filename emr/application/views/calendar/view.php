@@ -144,60 +144,119 @@
       </div>
     </div>
 
-    <!-- edit calendar entry -->
-    <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
+    <!-- Admin: edit calendar entry -->
+    <?php if($this->ion_auth->in_group("hostpial admin")): ?>
+      <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
 
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title" id="myModalLabel2">Edit Entry</h4>
-          </div>
-          <div class="modal-body">
-            <div id="testmodal2" style="padding: 5px 20px;">
-              <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Name</label>
-                  <div class="col-sm-9">
-                    <input type="text" class="form-control" id="title2" name="title2" readonly>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Location</label>
-                  <div class="col-sm-9">
-                    <select class="form-control" id="location" name="location"></select>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">Start (EST)</label>
-                  <div class="col-sm-9">
-                    <input type="datetime-local" class="form-control" id="start" name="start">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label class="col-sm-3 control-label">End (EST)</label>
-                  <div class="col-sm-9">
-                    <input type="datetime-local" class="form-control" id="end" name="end">
-                    <input type="hidden" class="form-control" id="id" name="id">
-                  </div>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
-                  <button type="submit" class="btn btn-primary antosubmit2" id="saveButton">Save changes</button>
-                  <center id = "loader">
-                    <div class="loaderAnimation"></div>
-                  </center>
-                </div>
-              </form>
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="myModalLabel2">Edit Entry</h4>
             </div>
+            <div class="modal-body">
+              <div id="testmodal2" style="padding: 5px 20px;">
+                <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="title2" name="title2" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" id="location" name="location"></select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Start (EST)</label>
+                    <div class="col-sm-9">
+                      <input type="datetime-local" class="form-control" id="start" name="start">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">End (EST)</label>
+                    <div class="col-sm-9">
+                      <input type="datetime-local" class="form-control" id="end" name="end">
+                      <input type="hidden" class="form-control" id="id" name="id">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
+                    <button type="submit" class="btn btn-primary antosubmit2" id="saveButton">Save changes</button>
+                    <center id = "loader">
+                      <div class="loaderAnimation"></div>
+                    </center>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
+            </div> -->
           </div>
-          <!-- <div class="modal-footer">
-            <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
-          </div> -->
         </div>
       </div>
-    </div>
+    
+    <?php else: ?>
+    
+    <!-- Screener: edit calendar entry -->
+      <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+              <h4 class="modal-title" id="myModalLabel2">Request Shift Change</h4>
+            </div>
+            <div class="modal-body">
+              <div id="testmodal2" style="padding: 5px 20px;">
+                <form action ="<?php echo base_url(); ?>screeners/editSchedule" method="post" id="antoform2" class="form-horizontal calender" role="form">
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Name</label>
+                    <div class="col-sm-9">
+                      <input type="text" class="form-control" id="title2" name="title2" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Location</label>
+                    <div class="col-sm-9">
+                      <select class="form-control" id="location" name="location" readonly></select>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">Start (EST)</label>
+                    <div class="col-sm-9">
+                      <input type="datetime-local" class="form-control" id="start" name="start" readonly>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-3 control-label">End (EST)</label>
+                    <div class="col-sm-9">
+                      <input type="datetime-local" class="form-control" id="end" name="end" readonly>
+                      <input type="hidden" class="form-control" id="id" name="id">
+                    </div>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
+                    <button type="button" class="btn btn-primary" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request" style="color: white">Request Time-Off</a></button>
+                    <center id = "loader">
+                      <div class="loaderAnimation"></div>
+                    </center>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <!-- <div class="modal-footer">
+              <button type="button" class="btn btn-default antoclose2" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary antosubmit2">Save changes</button>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    <?php endif ?>
 
     <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
     <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
