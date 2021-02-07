@@ -49,35 +49,9 @@
 						</div>
 
 						<div class="x_content">
-							<div class="col-sm"><h2>Select Your Bi-Weekly Availability</h2></div>
+							<div class="col-sm"><h2>Select Your Weekly Availability</h2></div>
 							
-							<div class="col-xs-6 table-responsive">
-								<table class="table table-hover table-striped table-bordered">
-									<thead class="thead-dark">
-										<tr>
-											<th class ='th_center' scope="col">
-												Week Of: <?php echo $week_start; ?> - <?php echo $week_end; ?>
-											</th>
-											<th class='th_center' scope="col">Morning <br>(5:00am - 12:00pm)</th>
-											<th class='th_center' scope="col">Evening <br>(1:00pm - 9:00pm)</th>
-											<th class='th_center' scope="col">Night <br>(11:00pm - 4:00am)</th>
-										</tr>
-										
-										<?php for($i = 0;  $i < 7; $i++) { echo "<tr>"; ?>
-											<th scope="col">
-												<?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?>
-											</th>
-											<div class='double'>
-												<td><input type="checkbox" name="morn_times[]" value=<?php echo json_encode($mornTimeArr[$i]); ?>></td>
-												<td><input type="checkbox" name="eve_times[]" value=<?php echo json_encode($eveTimeArr[$i]); ?>></td>
-												<td><input type="checkbox" name="night_times[]" value=<?php echo json_encode($nightTimeArr[$i]); ?>></td>
-											</div>
-										<?php echo "</tr>"; } ?>
-									</thead>
-								</table>
-							</div>
-							
-							<div class="col-xs-6 table-responsive">
+							<div class="col-xs-12 table-responsive">
 								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-dark">
 										<tr>
