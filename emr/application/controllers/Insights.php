@@ -19,27 +19,27 @@ class Insights extends CI_Controller {
           $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
           $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-          $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+          $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
           $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-          $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];    
+          $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];    
         } elseif ($this->ion_auth->in_group("hostpial admin")) {
           $data["userRole"] = "HOSPITAL ADMIN";
           $data["options"] = ["Logout"];
           $data["href"] = ["auth/logout"];
           $data["font"] = ["refresh", "sign-out"];
 
-          $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+          $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
           $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-          $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];  
+          $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];  
         } else {
           $data["userRole"] = "SCREENER";
           $data["options"] = ["Logout"];
           $data["href"] = ["auth/logout"];
           $data["font"] = ["sign-out"];
 
-          $data["sideMenu"] = ["Calendar", "Add Availability"];
-          $data["link"] = ["main/index", "screeners/add"];
-          $data["icon"] = ["calendar","user"];
+          $data["sideMenu"] = ["Calendar", "Availability", "Request"];
+          $data["link"] = ["main/index", "screeners/add", "screeners/request"];
+          $data["icon"] = ["calendar","user", "exclamation-triangle"];
         }
         
         $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
@@ -60,18 +60,18 @@ class Insights extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
         $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];    
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];    
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
         $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];  
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];  
       } else {
         $data["userRole"] = "SCREENER";
         $data["options"] = ["Logout"];

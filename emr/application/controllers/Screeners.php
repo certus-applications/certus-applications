@@ -18,18 +18,18 @@ class Screeners extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"]; 
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
         $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];   
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
         $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];  
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];  
       } else {
         redirect('main/index', 'refresh');
       }
@@ -48,90 +48,90 @@ class Screeners extends CI_Controller {
 
     public function add(){
 
-    if ($this->ion_auth->is_admin()) {
-      $data["userRole"] = "ADMIN";
-      $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
-      $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
-      $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+      if ($this->ion_auth->is_admin()) {
+        $data["userRole"] = "ADMIN";
+        $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
+        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
+        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-      $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
-      $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-      $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];      
-    } elseif ($this->ion_auth->in_group("hostpial admin")) {
-      $data["userRole"] = "HOSPITAL ADMIN";
-      $data["options"] = ["Logout"];
-      $data["href"] = ["auth/logout"];
-      $data["font"] = ["refresh", "sign-out"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];      
+      } elseif ($this->ion_auth->in_group("hostpial admin")) {
+        $data["userRole"] = "HOSPITAL ADMIN";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
-      $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
-      $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-      $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];
-    } else {
-      $data["userRole"] = "SCREENER";
-      $data["options"] = ["Logout"];
-      $data["href"] = ["auth/logout"];
-      $data["font"] = ["sign-out"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
+      } else {
+        $data["userRole"] = "SCREENER";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["sign-out"];
 
-      $data["sideMenu"] = ["Calendar", "Add Availability"];
-      $data["link"] = ["main/index", "screeners/add"];
-      $data["icon"] = ["calendar","user"];
-    }
-      
-     $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
-     $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-     $this->load->view('main/header');
-     $this->load->view('main/sidebar', $data);
-     $this->load->view('main/topbar', $data);
-
-      // Week 1 and week 2 timespan
-      $day = date('w'); 
-      $week_start = date('m/j/Y', strtotime('-'.$day.' days'));
-      $week_end = date('m/j/Y', strtotime('+'.(6-$day).' days'));	
-      $week_2start = date('m/j/Y', strtotime('+'.(7-$day).' days'));
-      $week_2end = date('m/j/Y', strtotime('+'.(13-$day).' days'));
-
-      // Getting individual dates for each day
-      $datesArr = array();
-      for($i = 0;  $i < 14; $i++) {
-        $date = date('m/j/Y', strtotime("$week_start + $i days"));
-        $datesArr[] = $date;
+        $data["sideMenu"] = ["Calendar", "Availability"];
+        $data["link"] = ["main/index", "screeners/add"];
+        $data["icon"] = ["calendar","user"];
       }
+        
+      $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
+      $this->load->view('main/header');
+      $this->load->view('main/sidebar', $data);
+      $this->load->view('main/topbar', $data);
 
-      $data['week_start'] = $week_start;
-      $data['week_2start'] = $week_2start;
-      $data['week_end'] = $week_end;
-      $data['week_2end'] = $week_2end;
+        // Week 1 and week 2 timespan
+        $day = date('w'); 
+        $week_start = date('m/j/Y', strtotime('-'.$day.' days'));
+        $week_end = date('m/j/Y', strtotime('+'.(6-$day).' days'));	
+        $week_2start = date('m/j/Y', strtotime('+'.(7-$day).' days'));
+        $week_2end = date('m/j/Y', strtotime('+'.(13-$day).' days'));
 
-      $mornTimeArr = array();
-      $eveTimeArr = array();
-      $nightTimeArr = array();
+        // Getting individual dates for each day
+        $datesArr = array();
+        for($i = 0;  $i < 14; $i++) {
+          $date = date('m/j/Y', strtotime("$week_start + $i days"));
+          $datesArr[] = $date;
+        }
 
-      for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i].'05:00:00');
-        $mornTimeArr[] = $datetime->format('Y-m-d H:i:s');
-      }
-      for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i].'13:00:00');
-        $eveTimeArr[] = $datetime->format('Y-m-d H:i:s');
-      }
-      for($i = 0; $i<14; $i++) {
-        $datetime = new DateTime($datesArr[$i].'23:00:00');
-        $nightTimeArr[] = $datetime->format('Y-m-d H:i:s');
-      }	
+        $data['week_start'] = $week_start;
+        $data['week_2start'] = $week_2start;
+        $data['week_end'] = $week_end;
+        $data['week_2end'] = $week_2end;
 
-     $data['datesArr'] = $datesArr;
-     $data['mornTimeArr'] = $mornTimeArr;
-     $data['eveTimeArr'] = $eveTimeArr;
-     $data['nightTimeArr'] = $nightTimeArr;
+        $mornTimeArr = array();
+        $eveTimeArr = array();
+        $nightTimeArr = array();
 
-     // Uneditable information
-     $data['first_name'] = $this->ion_auth->user()->row()->first_name;
-     $data['last_name'] = $this->ion_auth->user()->row()->last_name;
-     $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
-     $data['email'] = $this->ion_auth->user()->row()->email;
+        for($i = 0; $i<14; $i++) {
+          $datetime = new DateTime($datesArr[$i].'05:00:00');
+          $mornTimeArr[] = $datetime->format('Y-m-d H:i:s');
+        }
+        for($i = 0; $i<14; $i++) {
+          $datetime = new DateTime($datesArr[$i].'13:00:00');
+          $eveTimeArr[] = $datetime->format('Y-m-d H:i:s');
+        }
+        for($i = 0; $i<14; $i++) {
+          $datetime = new DateTime($datesArr[$i].'23:00:00');
+          $nightTimeArr[] = $datetime->format('Y-m-d H:i:s');
+        }	
 
-     $this->load->view('screeners/add', $data);
-     $this->load->view('main/footer');
+      $data['datesArr'] = $datesArr;
+      $data['mornTimeArr'] = $mornTimeArr;
+      $data['eveTimeArr'] = $eveTimeArr;
+      $data['nightTimeArr'] = $nightTimeArr;
+
+      // Uneditable information
+      $data['first_name'] = $this->ion_auth->user()->row()->first_name;
+      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+      $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
+      $data['email'] = $this->ion_auth->user()->row()->email;
+
+      $this->load->view('screeners/add', $data);
+      $this->load->view('main/footer');
     }
 
     public function added_time() {
@@ -255,18 +255,18 @@ class Screeners extends CI_Controller {
        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-       $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];   
+       $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
      } elseif ($this->ion_auth->in_group("hostpial admin")) {
        $data["userRole"] = "HOSPITAL ADMIN";
        $data["options"] = ["Logout"];
        $data["href"] = ["auth/logout"];
        $data["font"] = ["refresh", "sign-out"]; 
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Billing", "Insights", "Activity", "Reminders"];
+       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
-       $data["icon"] = ["calendar","user", "usd", "bar-chart", "bookmark-o", "check-square-o"];
+       $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
      } else {
        $data["userRole"] = "SCREENER";
        $data["options"] = ["Logout"];

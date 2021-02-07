@@ -144,7 +144,7 @@ html , body{
     padding: 0 0 4px 0
 }
 .left_col {
-    background: #2A3F54
+    background: #544D71
 }
 .nav-sm .container.body .col-md-3.left_col {
     min-height: 100%;
@@ -360,7 +360,7 @@ body .container.body .right_col {
 .nav_title {
     width: 230px;
     float: left;
-    background: #2A3F54;
+    background: #544D71;
     border-radius: 0;
     height: 57px
 }
@@ -492,7 +492,7 @@ body .container.body .right_col {
 }
 body {
     color: #73879C;
-    background: #2A3F54;
+    background: #544D71;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 13px;
     font-weight: 400;
@@ -789,7 +789,7 @@ a:focus {
 }
 .nav.side-menu>li.current-page,
 .nav.side-menu>li.active {
-    border-right: 5px solid #1ABB9C
+    border-right: 5px solid #B2D235
 }
 .nav li.current-page {
     background: rgba(255, 255, 255, 0.05)
@@ -802,7 +802,7 @@ a:focus {
 }
 .nav.side-menu>li.active>a {
     text-shadow: rgba(0, 0, 0, 0.25) 0 -1px 0;
-    background: linear-gradient(#334556, #2C4257), #2A3F54;
+    background: linear-gradient(#334556, #2C4257), #544D71;
     box-shadow: rgba(0, 0, 0, 0.25) 0 1px 0, inset rgba(255, 255, 255, 0.16) 0 1px 0
 }
 .navbar-brand,
@@ -1498,7 +1498,7 @@ ul.msg_list li a .time {
     font-style: italic;
     font-weight: bold;
     position: absolute;
-    right: 35px
+    right: 5px
 }
 ul.msg_list li a .message {
     display: block !important;
@@ -1671,7 +1671,7 @@ span.right {
     padding: 5px 0 0 0;
     position: fixed;
     width: 230px;
-    background: #2A3F54;
+    background: #544D71;
 	z-index:999;
 }
 .sidebar-footer a {
@@ -2344,15 +2344,15 @@ a.btn-danger {
     color: #fff
 }
 .btn-success {
-    background: #26B99A;
-    border: 1px solid #169F85
+    background: #B2D235;
+    border: 1px solid #B2D235
 }
 .btn-success:hover,
 .btn-success:focus,
 .btn-success:active,
 .btn-success.active,
 .open .dropdown-toggle.btn-success {
-    background: #169F85
+    background: #B2D235
 }
 .btn-dark {
     color: #E9EDEF;

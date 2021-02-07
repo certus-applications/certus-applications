@@ -4,7 +4,7 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>MGH <small>Screener Schedules</small></h2>
+                    <h2>MGH <small>Screeners</small></h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li><a href="screeners/add"><button  type="submit" class="btn btn-success">Add Availability</button></a></li>
                     </ul>
@@ -16,8 +16,7 @@
                         <tr>
                           <th>First Name</th>
                           <th>Last Name</th>
-                          <th>Last Visit</th>
-                          <th>Name of Clinician</th>
+                          <th>Employee ID</th>
                           <th>Phone Number</th>
                           <th>Email</th>
                           <th>Edit</th>
@@ -28,8 +27,7 @@
                             <tr>
                               <td><?php echo $clients['first_name'];?></td>
                               <td><?php echo $clients['last_name'];?></td>
-                              <td><?php echo $clients['last_visit'];?></td>
-                              <td><?php echo $clients['name_clinician'];?></td>
+                              <td><?php echo $clients['employeeid'];?></td>
                               <td><?php echo $clients['phone'];?></td>
                               <td><?php echo $clients['email'];?></td>
                               <td>

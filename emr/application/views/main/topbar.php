@@ -24,20 +24,51 @@
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge bg-green">1</span>
+                    <span class="badge" style="background: #B2D235 !important; border: 1px solid #B2D235 !important;">3</span>
                   </a>
                   <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
-                        <!-- <span class="image"><img src="images/img.jpg" alt="Profile Image" /></span> -->
                         <span>
-                          <span>Dr. Smith</span>
-                          <span class="time">3 mins ago</span>
+                          <span>Paige Branch</span>
+                          <span class="time">13 mins ago</span>
                         </span>
                         <span class="message">
-                          They were where...
+                          Is requesting shift change for Feb 28
                         </span>
                       </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>
+                          <span>Janet Burn</span>
+                          <span class="time">53 mins ago</span>
+                        </span>
+                        <span class="message">
+                          Is requesting shift change for Mar 02
+                        </span>
+                      </a>
+                    </li>
+                    <li>
+                      <a>
+                        <span>
+                          <span>Katelyn Smith</span>
+                          <span class="time">2 hours ago</span>
+                        </span>
+                        <span>
+                          <span class="message">
+                            Is requesting shift change for Feb 15
+                          </span>
+                        </span>
+                      </a>
+                    </li>
+                    <li class="nav-item">
+                      <div class="text-center">
+                        <a class="dropdown-item">
+                          <strong>See All Requests</strong>
+                          <i class="fa fa-angle-right"></i>
+                        </a>
+                      </div>
                     </li>
                   </ul>
                 </li>

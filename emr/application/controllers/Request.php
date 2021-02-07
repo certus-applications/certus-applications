@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Reminders extends CI_Controller {
+class Request extends CI_Controller {
     public function __construct() {
       parent::__construct();
 
@@ -36,9 +36,9 @@ class Reminders extends CI_Controller {
       $data["href"] = ["auth/logout"];
       $data["font"] = ["sign-out"];
 
-      $data["sideMenu"] = ["Calendar", "Availability", "Request"];
-      $data["link"] = ["main/index", "screeners/add", "screeners/request"];
-      $data["icon"] = ["calendar","user", "exclamation-triangle"];
+      $data["sideMenu"] = ["Calendar", "Availability"];
+      $data["link"] = ["main/index", "screeners/add"];
+      $data["icon"] = ["calendar","user"];
     }
 
      $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
@@ -46,7 +46,7 @@ class Reminders extends CI_Controller {
      $this->load->view('main/header');
      $this->load->view('main/sidebar', $data);
      $this->load->view('main/topbar', $data);
-     $this->load->view('reminders/view');
+     $this->load->view('screeners/request');
      $this->load->view('main/footer');
     }
 }
