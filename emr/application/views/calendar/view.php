@@ -93,7 +93,34 @@
                 <div class="col-md-9 col-md-3">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Availability</h2>
+                      <h2>Availability</h2><ul class="nav navbar-right panel_toolbox">
+                      <li class="dropdown" style="float: right;">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <a>View tomorrow</a>
+                          </li>
+                          <li>
+                            <a>View Feb 09</a>
+                          </li>
+                          <li>
+                            <a>View Feb 10</a>
+                          </li>
+                          <li>
+                            <a>View Feb 11</a>
+                          </li>
+                          <li>
+                            <a>View Feb 12</a>
+                          </li>
+                          <li>
+                            <a>View Feb 13</a>
+                          </li>
+                          <li>
+                            <a>View Feb 14</a>
+                          </li>
+                        </ul>
+                      </li>
+                    </ul>
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content" id = "external-events">
