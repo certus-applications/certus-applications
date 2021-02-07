@@ -1,6 +1,19 @@
         <!-- Calendar content -->
         <div class="right_col" role="main">
           <div class="">
+
+
+            <div class="title_right">
+              <div class="col-md-3 col-sm-3  form-group pull-right top_search">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search by name...">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+                  </span>
+                </div>
+              </div>
+            </div>
+
             <div class="clearfix"></div>
             <div class="row">
               <div class="col-md-9 col-sm-3">
@@ -22,6 +35,48 @@
                           </li>
                           <li>
                             <a onclick="updateCookie('listMonth'); return false;">Make list view default</a>
+                          </li>
+                        </ul>
+                      </li>
+
+                      <li class="dropdown" style="float: right;">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li>
+                            <a>Filter for MOR</a>
+                          </li>
+                          <li>
+                            <a>Filter for COX</a>
+                          </li>
+                          <li>
+                            <a>Filter for Receiving</a>
+                          </li>
+                          <li>
+                            <a>Filter for 840C</a>
+                          </li>
+                          <li>
+                            <a>Filter for INF</a>
+                          </li>
+                          <li>
+                            <a>Filter for Vaccine Clinic</a>
+                          </li>
+                          <li>
+                            <a>Filter for BRK</a>
+                          </li>
+                          <li>
+                            <a>Filter for CAC</a>
+                          </li>
+                          <li>
+                            <a>Filter for J-Wing</a>
+                          </li>
+                          <li>
+                            <a>Filter for D1 –Out</a>
+                          </li>
+                          <li>
+                            <a>Filter for PAE</a>
+                          </li>
+                          <li>
+                            <a>Filter for OHS DC</a>
                           </li>
                         </ul>
                       </li>
@@ -52,22 +107,22 @@
                             <ul class="list-unstyled msg_list">
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Screener 1</div>
+                                    <div class='fc-event-main' style="color: #73879C" >Arjan Randall</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 2</div>
+                                    <div class='fc-event-main' style="color: #73879C">Edward Figueroa</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 3</div>
+                                    <div class='fc-event-main' style="color: #73879C">Bobbi Pennington</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 4</div>
+                                    <div class='fc-event-main' style="color: #73879C">Ed Bateman</div>
                                 </a>
                               </li>
                             </ul>
@@ -81,22 +136,22 @@
                             <ul class="list-unstyled msg_list">
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Screener 5</div>
+                                    <div class='fc-event-main' style="color: #73879C" >Killian Bellamy</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 6</div>
+                                    <div class='fc-event-main' style="color: #73879C">Jess Poole</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 7</div>
+                                    <div class='fc-event-main' style="color: #73879C">Callam Eaton</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 8</div>
+                                    <div class='fc-event-main' style="color: #73879C">Timur Grey</div>
                                 </a>
                               </li>
                             </ul>
@@ -110,22 +165,22 @@
                             <ul class="list-unstyled msg_list">
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Screener 9</div>
+                                    <div class='fc-event-main' style="color: #73879C" >Shirley Cross</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 10</div>
+                                    <div class='fc-event-main' style="color: #73879C">Hareem Cairns</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 11</div>
+                                    <div class='fc-event-main' style="color: #73879C">Neave Howe</div>
                                 </a>
                               </li>
                               <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                 <a>
-                                    <div class='fc-event-main' style="color: #73879C">Screener 12</div>
+                                    <div class='fc-event-main' style="color: #73879C">Chaya Finney</div>
                                 </a>
                               </li>
                             </ul>
