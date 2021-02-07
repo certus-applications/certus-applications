@@ -30,7 +30,7 @@
                     <li>
                       <a>
                         <span>
-                          <span>Paige Branch</span>
+                          <span>Page Branch</span>
                           <span class="time">13 mins ago</span>
                         </span>
                         <span class="message">

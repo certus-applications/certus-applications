@@ -4,34 +4,85 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Ryerson Health Clinic <small>Clients</small></h2>
+                    <h2>MGH <small>Screener Requests</small></h2>
                     <div class="clearfix"></div>
                   </div>
                   <div class="x_content">
-                    <table id="datatable" class="table table-striped table-bordered">
+                    <h3>Availability Update</h3>
+                    <table class="table table-striped table-bordered">
                       <thead>
                         <tr>
                           <th>First Name</th>
                           <th>Last Name</th>
-                          <th>Last Visit</th>
-                          <th>Phone Number</th>
-                          <th>Email</th>
-                          <th>Weekly Analytics</th>
+                          <th>Employee ID</th>
+                          <th>Date of request</th>
+                          <th>New Availability</th>
+                          <th>Message</th>
+                          <th>Accept/Decline Changes</th>
                         </tr>
                       </thead>
                       <tbody>
-                          <?php foreach($clientsAll as $clients){?>
+
                             <tr>
-                              <td><?php echo $clients['first_name'];?></td>
-                              <td><?php echo $clients['last_name'];?></td>
-                              <td><?php echo $clients['last_visit'];?></td>
-                              <td><?php echo $clients['phone'];?></td>
-                              <td><?php echo $clients['email'];?></td>
+                              <td>Page</td>
+                              <td>Branch</td>
+                              <td>3YIEN</td>
+                              <td>Feb. 28, 2021</td>
+                              <td><a href="" class="btn btn-info btn-xs">View</a></td>
+                              <td>I'm no longer available for Monday morning, I can do Monday evening or night.</td>
                               <td>
-                                <a href="insights/analytics/<?php echo $clients['id'];?>" class="btn btn-primary btn-xs"><i class="fa fa-folder"></i> View Analytics</a>
+                                
+                                <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
+                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
                               </td>
                             </tr>
-                          <?php } ?>
+
+                            <tr>
+                              <td>Janet</td>
+                              <td>Burn</td>
+                              <td>2E6OA</td>
+                              <td>Mar. 02, 2021</td>
+                              <td><a href="" class="btn btn-info btn-xs">View</a></td>
+                              <td>I can now do shifts on Friday as well.</td>
+                              <td>
+                                <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
+                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
+                              </td>
+                            </tr>
+
+                      </tbody>
+                    </table>
+                  </div>
+
+                  <div class="x_content">
+                    <h3>Emergency</h3>
+                    <table class="table table-striped table-bordered">
+                      <thead>
+                        <tr>
+                          <th>First Name</th>
+                          <th>Last Name</th>
+                          <th>Employee ID</th>
+                          <th>Date of request</th>
+                          <th>Date of time-off</th>
+                          <th>Request Type</th>
+                          <th>Message</th>
+                          <th>Accept/Decline Changes</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                            <tr>
+                              <td>Katelyn</td>
+                              <td>Smith</td>
+                              <td>X5FQ5</td>
+                              <td>Feb. 10, 2021</td>
+                              <td>Feb. 15, 2021</td>
+                              <td>Other</td>
+                              <td>I have a family emergency so I won't be able to come in for my shift.</td>
+                              <td>
+                                <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
+                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
+                              </td>
+                            </tr>
                       </tbody>
                     </table>
                   </div>
@@ -70,4 +121,4 @@
     </div>
   </div>
 <?php } ?>
- No newline at end of file
+
