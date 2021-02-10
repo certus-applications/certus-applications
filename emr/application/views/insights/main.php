@@ -22,7 +22,6 @@
                         </tr>
                       </thead>
                       <tbody>
-
                             <tr>
                               <td>Page</td>
                               <td>Branch</td>
@@ -43,7 +42,7 @@
                               <td>2E6OA</td>
                               <td>Mar. 02, 2021</td>
                               <td><a href="" class="btn btn-info btn-xs">View</a></td>
-                              <td>I can now do shifts on Friday as well.</td>
+                              <td>I can now do shifts on Friday.</td>
                               <td>
                                 <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
                                 <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
@@ -64,25 +63,25 @@
                           <th>Employee ID</th>
                           <th>Date of request</th>
                           <th>Date of time-off</th>
-                          <th>Request Type</th>
-                          <th>Message</th>
+                          <th>Reason for time-off</th>
                           <th>Accept/Decline Changes</th>
                         </tr>
                       </thead>
                       <tbody>
+                        <?php foreach($avail as $availability) {?>
                             <tr>
-                              <td>Katelyn</td>
-                              <td>Smith</td>
-                              <td>X5FQ5</td>
-                              <td>Feb. 10, 2021</td>
-                              <td>Feb. 15, 2021</td>
-                              <td>Other</td>
-                              <td>I have a family emergency so I won't be able to come in for my shift.</td>
+                              <td><?php echo $availability['first_name'];?></td>
+                              <td><?php echo $availability['last_name'];?></td>
+                              <td><?php echo $availability['employeeid'];?></td>
+                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
+                              <td><?php echo $availability['reason'];?></td>
                               <td>
                                 <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
                                 <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
                               </td>
                             </tr>
+                        <?php } ?>
                       </tbody>
                     </table>
                   </div>

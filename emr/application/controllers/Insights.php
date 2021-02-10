@@ -47,7 +47,7 @@ class Insights extends CI_Controller {
         $this->load->view('main/header');
         $this->load->view('main/sidebar', $data);
         $this->load->view('main/topbar', $data);
-        $data['clientsAll'] = $this->Screeners_model->listAll();
+        $data['avail'] = $this->Request_model->getAvailability();
         $this->load->view('insights/main', $data);
         $this->load->view('main/footer');
     }
