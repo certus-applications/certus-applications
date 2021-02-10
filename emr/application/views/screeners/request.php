@@ -1,25 +1,7 @@
 <!-- page content -->
 <div class="right_col" role="main">
     <div class="row">
-        <style>
-            #reveal-if-active {
-            opacity: 1;
-            max-height: 100px;
-            padding: 5px 20px;
-            transform: scale(1);
-            overflow: visible;
-                
-            label {
-                display: block;
-                margin: 0 0 3px 0;
-            }
-            input[type=text] {
-                width: 100%;
-            }
 
-            
-            }
-        </style>
         <div class="col-md-12 col-sm-12 col-xs-12">		
             
             <div class="x_panel">
@@ -28,49 +10,50 @@
                     <div class="clearfix"></div>
                 </div>
                 
-                <form>
+                <?php echo form_open('request/addRequest'); ?>
                     <fieldset>
                         <legend for="919003939">Type of time-off requested</legend>
                         <div class="form-group">
 
                             <div>
-                                <input type="radio" id="f-option" name="selector">
+                                <input type="radio" id="f-option" name="timeoff_type" onclick="hide();" value="Sick Leave"> 
                                 <label for="f-option">Sick Leave</label>
                                 
                                 <div class="check"></div>
                              </div>
                             
                             <div>
-                                <input type="radio" id="s-option" name="selector">
+                                <input type="radio" id="s-option" name="timeoff_type" onclick="hide();" value="Jury Duty">
                                 <label for="s-option">Jury Duty</label>
                                 
                                 <div class="check"><div class="inside"></div></div>
                              </div>
 
                             <div>
-                                <input type="radio" id="s-option" name="selector">
+                                <input type="radio" id="s-option" name="timeoff_type" onclick="hide();" value="Breavement">
                                 <label for="s-option">Breavement</label>
                                 
                                 <div class="check"><div class="inside"></div></div>
                             </div>
 
                             <div>
-                                <input type="radio" id="s-option" name="selector">
+                                <input type="radio" id="s-option" name="timeoff_type" onclick="hide();" value="Vacation">
                                 <label for="s-option">Vacation</label>
                                 
                                 <div class="check"><div class="inside"></div></div>
                             </div>
                             
                             <div>
-                                <input type="radio" name="other-click" id="choice-others-click">
+                                <input type="radio" id="choice-others-click" name="timeoff_type" onclick="show();" value="Other:">
                                 <label for="choice-others-click">Other</label>
-                                
-                                <div id="reveal-if-active">
-                                    <label for="other-text">Please explain.</label>
-                                    <input type="text" id="other-text" name="other-text" class="require-if-active" data-require-pair="#choice-others-click">
-                                </div>
+
+                                <label for="other-text" id="text-title" style="display: none">Please explain.</label>
 
                                 <div class="check"><div class="inside"></div></div>
+                            </div>
+
+                            <div>
+                            <TEXTAREA type="text" id="other-text" name="other-text" style="display:none"></TEXTAREA>
                             </div>
 
 
@@ -82,13 +65,13 @@
                         <tbody>
                             <div class="col-sm-6">
                                 <fieldset class="form-group">
-                                    Start Date<input id="start_date" class="form-control" type="date" name="start_date" placeholder="" required>
+                                    Start Date<input id="start_date" class="form-control" type="date" name="start_date" placeholder="" value="date" required>
                                 </fieldset>
                             </div>
 
                             <div class="col-sm-6">
                                 <fieldset class="form-group">
-                                    End Date<input id="end_date" class="form-control" type="date" name="end_date" placeholder="" required>
+                                    End Date<input id="end_date" class="form-control" type="date" name="end_date" placeholder="" value="date" required>
                                 </fieldset> 
                             </div>
                         </tbody>
@@ -112,41 +95,17 @@
                             </ul>
                         </div>			
                     </div>
-                </form>
+                    <?php echo form_close(); ?>
 
                 <script type="text/javascript">
                     var tomorrow = new Date();
                     tomorrow.setDate(new Date().getDate()+1);
                     document.getElementById("start_date").valueAsDate = new Date();
                     document.getElementById("end_date").valueAsDate = tomorrow;
-
-                    var FormStuff = {
-  
-                        init: function() {
-                            this.applyConditionalRequired();
-                            this.bindUIActions();
-                        },
-                        
-                        bindUIActions: function() {
-                            $("input[type='radio'], input[type='checkbox']").on("change", this.applyConditionalRequired);
-                        },
-                        
-                        applyConditionalRequired: function() {
-                            
-                            $("#require-if-active").each(function() {
-                            var el = $(this);
-                            if ($(el.data("require-pair")).is(":checked")) {
-                                el.prop("required", true);
-                            } else {
-                                el.prop("required", false);
-                            }
-                            });
-                            
-                        }
-                        
-                    };
-
-                    FormStuff.init();
+                    
+                    function show() { document.getElementById('other-text').style.display = 'block'; }
+                    function hide() { document.getElementById('other-text').style.display = 'none'; }
+                    
                 </script>
             </div>
         </div>
