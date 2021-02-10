@@ -135,3 +135,4 @@ $autoload['language'] = array();
 $autoload['model'] = array('Screeners_model');
 $autoload['model'] = array('Events_model');
 $autoload['model'] = array('Availability_model');
+$autoload['model'] = array('Request_model');
