@@ -99,11 +99,6 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
 }
 
 function init_calendar(eventArr, accountType) {
-    if (accountType == 'admin') {
-        eventDropAllowed = true
-    } else {
-        eventDropAllowed = false
-    }
     if (typeof($.fn.fullCalendar) === 'undefined') {
         return;
     }
@@ -263,7 +258,7 @@ function init_calendar(eventArr, accountType) {
         },
         editable: ((accountType == 'admin') ? true : false),
         eventDrop: function(event, delta, revertFunc) {
-            if (eventDropAllowed) {
+            if (accountType == 'admin') {
                 set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
             }
         },
