@@ -35,9 +35,9 @@ class Request extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability"];
-        $data["link"] = ["main/index", "screeners/add"];
-        $data["icon"] = ["calendar","user"];
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+        $data["icon"] = ["calendar","user", "check-square-o"];
       }
 
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
@@ -74,5 +74,69 @@ class Request extends CI_Controller {
       $this->Request_model->addRequest($request);
 
       return redirect('request', 'refresh');
+    }
+
+    public function updateRequest() {
+      $choice = $this->input->post('choice');
+
+      if($choice == 'Approve') {
+        $update_req = array (
+          'id' => $this->input->post('id'),
+          'approved' => TRUE
+        );
+        $this->Request_model->updateRequest($update_req);
+        return redirect('insights', 'refresh');
+      } else{
+        $update_req = array (
+          'id' => $this->input->post('id'),
+          'approved' => FALSE
+        );
+        $this->Request_model->updateRequest($update_req);
+        return redirect('insights', 'refresh');
+      }
+
+    }
+
+    public function viewRequest(){
+      $this->load->model('Availability_model');
+      if ($this->ion_auth->is_admin()) {
+        $data["userRole"] = "ADMIN";
+        $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
+        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
+        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];    
+      } elseif ($this->ion_auth->in_group("hostpial admin")) {
+        $data["userRole"] = "HOSPITAL ADMIN";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
+        $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
+      } else {
+        $data["userRole"] = "SCREENER";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+        $data["icon"] = ["calendar","user", "check-square-o"];;
+      }
+
+      $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
+
+      $this->load->view('main/header');
+      $this->load->view('main/sidebar', $data);
+      $this->load->view('main/topbar', $data);
+      $employeeid = $this->ion_auth->user()->row()->employeeid;
+      $data['viewReq'] = $this->Request_model->viewRequest($employeeid);
+      $this->load->view('screeners/viewRequests', $data);
+      $this->load->view('main/footer');
     }
 }

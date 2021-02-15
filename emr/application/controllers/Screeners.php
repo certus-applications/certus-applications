@@ -72,9 +72,9 @@ class Screeners extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability"];
-        $data["link"] = ["main/index", "screeners/add"];
-        $data["icon"] = ["calendar","user"];
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+        $data["icon"] = ["calendar","user", "check-square-o"];
       }
         
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
@@ -140,6 +140,8 @@ class Screeners extends CI_Controller {
       $data['last_name'] = $this->ion_auth->user()->row()->last_name;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
+
+      $this->load->model('Availability_model');
     
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
@@ -273,9 +275,9 @@ class Screeners extends CI_Controller {
        $data["href"] = ["auth/logout"];
        $data["font"] = ["sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Add Availability"];
-       $data["link"] = ["main/index", "screeners/add"];
-       $data["icon"] = ["calendar","user"];
+       $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+       $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+       $data["icon"] = ["calendar","user", "check-square-o"];
      }
 
      $this->load->model('Screeners_model');
