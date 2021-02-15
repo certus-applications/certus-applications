@@ -70,27 +70,27 @@
                       <tbody>
                         <?php foreach($avail as $availability) {?>
                         <?php if($availability['approved']==TRUE && $availability['approved']!=NULL ) { ?>
-                            <tr class="strikeout" style="background-color: green;">
-                              <td><?php echo $availability['first_name'];?></td>
-                              <td><?php echo $availability['last_name'];?></td>
-                              <td><?php echo $availability['employeeid'];?></td>
-                              <td><?php date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                              <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
-                              <td><?php echo $availability['reason'];?></td>
-                              <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
-                            </tr>
-                          <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL) { ?>
-                            <tr class="strikeout" style="background-color: red;">
+                            <tr style=" background-color: rgba(50, 205, 50, 0.3); color: black;">
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
                               <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                               <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
                               <td><?php echo $availability['reason'];?></td>
-                              <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
+                              <td><a class="btn btn-danger btn-xs" style="background-color: #32CD32; border-color: #32CD32" readonly> Approved </a></td>
+                            </tr>
+                          <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL) { ?>
+                            <tr style="background-color: rgba(128, 0, 0, 0.3); color: black;">
+                              <td><?php echo $availability['first_name'];?></td>
+                              <td><?php echo $availability['last_name'];?></td>
+                              <td><?php echo $availability['employeeid'];?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
+                              <td><?php echo $availability['reason'];?></td>
+                              <td><a class="btn btn-danger btn-xs" style="background-color: #800000; border-color: #800000;" readonly> Declined </a></td>
                             </tr>
                           <?php } else { ?>
-                            <tr class="strikeout" style="background-color: none;">
+                            <tr style="background-color: none;">
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
@@ -99,8 +99,8 @@
                               <td><?php echo $availability['reason'];?></td>
                               <td>
                                 <?php echo form_open('request/updateRequest'); ?>
-                                  <input type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
-                                  <input type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
+                                  <input type="submit" class="btn btn-danger btn-xs"  style="background-color: #4e0000;" name="choice" value="Decline"></button>
+                                  <input type="submit" class="btn btn-success btn-xs" style="background-color: #006700;" name="choice" value="Approve"></button>
                                   <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
                                 <?php echo form_close(); ?>
                               </td>
