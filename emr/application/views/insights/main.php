@@ -69,7 +69,28 @@
                       </thead>
                       <tbody>
                         <?php foreach($avail as $availability) {?>
-                            <tr>
+                        <?php if($availability['approved']==TRUE && $availability['approved']!=NULL ) { ?>
+                            <tr class="strikeout" style="background-color: green;">
+                              <td><?php echo $availability['first_name'];?></td>
+                              <td><?php echo $availability['last_name'];?></td>
+                              <td><?php echo $availability['employeeid'];?></td>
+                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
+                              <td><?php echo $availability['reason'];?></td>
+                              <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
+                            </tr>
+                          <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL) { ?>
+                            <tr class="strikeout" style="background-color: red;">
+                              <td><?php echo $availability['first_name'];?></td>
+                              <td><?php echo $availability['last_name'];?></td>
+                              <td><?php echo $availability['employeeid'];?></td>
+                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
+                              <td><?php echo $availability['reason'];?></td>
+                              <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
+                            </tr>
+                          <?php } else { ?>
+                            <tr class="strikeout" style="background-color: none;">
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
@@ -77,11 +98,14 @@
                               <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
                               <td><?php echo $availability['reason'];?></td>
                               <td>
-                                <a data-toggle="modal" class="btn btn-danger btn-xs" data-target="#deleteClient"><i class="fa fa-trash-o"></i> Decline </a>
-                                <a href="" class="btn btn-success btn-xs"><i class="fa fa-pencil"></i> Accept </a>
+                                <?php echo form_open('request/updateRequest'); ?>
+                                  <input type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
+                                  <input type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
+                                  <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
+                                <?php echo form_close(); ?>
                               </td>
                             </tr>
-                        <?php } ?>
+                        <?php } } ?>
                       </tbody>
                     </table>
                   </div>
@@ -98,26 +122,4 @@
 
   </body>
 
-  <!-- Modal -->
-<?php foreach($clientsAll as $clients){?>
-  <div class="modal fade" id="deleteClient<?php echo $clients['id'];  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-          <h2 class="modal-title" id="exampleModalLabel">Delete Client</h5>
-        </div>
-        <div class="modal-body">
-          Are you sure you want to delete <?php echo $clients['first_name'].' '.$clients['last_name'];?>?
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-          <button type="button" class="btn btn-danger">Delete</button>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
 
