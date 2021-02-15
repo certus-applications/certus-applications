@@ -36,7 +36,7 @@ class Request extends CI_Controller {
         $data["font"] = ["sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+        $data["link"] = ["main/index", "screeners/add", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];
       }
 
@@ -98,7 +98,7 @@ class Request extends CI_Controller {
 
     }
 
-    public function viewRequest(){
+    public function view(){
       $this->load->model('Availability_model');
       if ($this->ion_auth->is_admin()) {
         $data["userRole"] = "ADMIN";
@@ -125,7 +125,7 @@ class Request extends CI_Controller {
         $data["font"] = ["sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/viewRequest"];
+        $data["link"] = ["main/index", "screeners/add", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];;
       }
 
