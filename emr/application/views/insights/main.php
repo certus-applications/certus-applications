@@ -74,7 +74,7 @@
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
-                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                               <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
                               <td><?php echo $availability['reason'];?></td>
                               <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
@@ -84,7 +84,7 @@
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
-                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                               <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
                               <td><?php echo $availability['reason'];?></td>
                               <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
@@ -94,7 +94,7 @@
                               <td><?php echo $availability['first_name'];?></td>
                               <td><?php echo $availability['last_name'];?></td>
                               <td><?php echo $availability['employeeid'];?></td>
-                              <td><?php echo date('M jS, Y'); ?></td>
+                              <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                               <td><?php echo date("M jS, Y", strtotime($availability['start']));?> to <?php echo date("M jS, Y", strtotime($availability['start']));?></td>
                               <td><?php echo $availability['reason'];?></td>
                               <td>

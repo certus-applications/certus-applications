@@ -64,6 +64,7 @@ class Request extends CI_Controller {
       $request = array(
         'first_name' => $data['first_name'],
         'last_name' => $data['last_name'],
+        'timestamp' => date('Y-m-d H:i:s'),
         'employeeid' => $data['employeeid'],
         'start' => date('Y-m-d', strtotime ($start)),
         'end' => date('Y-m-d', strtotime ($end)),
