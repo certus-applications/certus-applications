@@ -99,8 +99,8 @@
                               <td><?php echo $availability['reason'];?></td>
                               <td>
                                 <?php echo form_open('request/updateRequest'); ?>
-                                  <input type="submit" class="btn btn-danger btn-xs"  style="background-color: #4e0000;" name="choice" value="Decline"></button>
-                                  <input type="submit" class="btn btn-success btn-xs" style="background-color: #006700;" name="choice" value="Approve"></button>
+                                  <input type="submit" class="btn btn-danger btn-xs"  style="background-color: #800000; border-color: #800000;" name="choice" value="Decline"></button>
+                                  <input type="submit" class="btn btn-success btn-xs" style="background-color: #32CD32; border-color: #32CD32" name="choice" value="Approve"></button>
                                   <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
                                 <?php echo form_close(); ?>
                               </td>
