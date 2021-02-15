@@ -26,6 +26,12 @@ function get_data() {
             type: 'POST',
             dataType: 'json',
             success: function(data) {
+                var accountType = ""
+                if (Object.getOwnPropertyNames(data)[0] == "scheduleView") {
+                    accountType = "admin"
+                } else {
+                    accountType = "screener"
+                }
                 jQuery.each(data, function(index, value) {
                     jQuery.each(value, function(index, eventArray) {
                         var fullName = eventArray.first_name + " " + eventArray.last_name
@@ -52,8 +58,7 @@ function get_data() {
                         })
                     })
                 });
-
-	            init_calendar(eventArr)
+	            init_calendar(eventArr, accountType)
             },
             error: function(data) {
                 console.log('error');
@@ -93,7 +98,7 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
 
 }
 
-function init_calendar(eventArr) {
+function init_calendar(eventArr, accountType) {
     if (typeof($.fn.fullCalendar) === 'undefined') {
         return;
     }
@@ -251,9 +256,11 @@ function init_calendar(eventArr) {
             calendar.fullCalendar('unselect');
 
         },
-        editable: true,
+        editable: ((accountType == 'admin') ? true : false),
         eventDrop: function(event, delta, revertFunc) {
-            set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
+            if (accountType == 'admin') {
+                set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
+            }
         },
         events: eventArr
     });
