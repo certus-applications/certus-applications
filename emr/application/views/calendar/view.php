@@ -2,21 +2,26 @@
         <div class="right_col" role="main">
           <div class="">
 
-
-            <div class="title_right">
-              <div class="col-md-3 col-sm-3  form-group pull-right top_search">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Search by name...">
-                  <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                  </span>
+            <?php if ($this->ion_auth->is_admin()): ?>
+              <div class="title_right">
+                <div class="col-md-3 col-sm-3  form-group pull-right top_search">
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Search by name...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
+            <?php endif ?>
 
             <div class="clearfix"></div>
             <div class="row">
+              <?php if ($this->ion_auth->is_admin()): ?>
               <div class="col-md-9 col-sm-3">
+              <?php else: ?>
+                <div class="col-md-12 col-sm-3">
+              <?php endif ?>
                 <div class="x_panel">
                   <div class="x_title">
                     <h2>Calendar Events <small>Sessions</small></h2>
