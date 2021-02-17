@@ -174,7 +174,6 @@ function init_calendar(eventArr, accountType) {
 
                 return false;
             });
-
         },
         eventClick: function(calEvent, jsEvent, view) {
             dateTimeStart = new Date(calEvent.start);
@@ -262,8 +261,21 @@ function init_calendar(eventArr, accountType) {
                 set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
             }
         },
-        events: eventArr
-    });
+        events: eventArr,
+        eventRender: function eventRender( event, element, view ) {
+            $("#buildingFilter li").click(function() {
+                var filteredLocation = this.id;
+                if (event.location == filteredLocation) {
+                    element.css('display', 'block');
+                } else {
+                    element.css('display', 'none');
+                }
+            }
+        });
+
+    $('#buildingFilter').on('change',function(){
+        $('#calendar').fullCalendar('rerenderEvents');
+    })
 }
 
 function createCookie() {

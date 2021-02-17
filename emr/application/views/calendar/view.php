@@ -46,11 +46,11 @@
 
                       <li class="dropdown" style="float: right;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li>
+                        <ul class="dropdown-menu" role="menu" id="buildingFilter">
+                          <li id = "MOR">
                             <a>Filter by MOR</a>
                           </li>
-                          <li>
+                          <li id = "COX">
                             <a>Filter by COX</a>
                           </li>
                           <li>
