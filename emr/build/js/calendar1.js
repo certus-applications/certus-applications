@@ -270,8 +270,9 @@ function init_calendar(eventArr, accountType) {
                 } else {
                     element.css('display', 'none');
                 }
-            }
-        });
+            });                
+        }
+    });
 
     $('#buildingFilter').on('change',function(){
         $('#calendar').fullCalendar('rerenderEvents');
