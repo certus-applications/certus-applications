@@ -1,18 +1,7 @@
 <!-- page content -->
 	<div class="right_col" role="main">
 		<div class="row">
-			<div class="col-md-12 col-sm-12 col-xs-12">		
-				<?php if($this->session->flashdata('err')){ ?>
-						<div class = "alert alert-danger"> 
-							<?php 
-								echo $this->session->flashdata('err'); 
-								echo validation_errors(); 
-							?>
-						</div>
-					<?php } ?>
-					<?php if($this->session->flashdata('success')){ ?>
-                  		<div class="alert alert-success"> <?php  echo $this->session->flashdata('success'); }?></div>	
-				
+			<div class="col-md-12 col-sm-12 col-xs-12">						
 				<div class="x_panel">
 					<div class="x_title">
 						<h2>Screener Information</h2>
@@ -98,3 +87,35 @@
 			</div>
 		</div>
 	</div>
+
+<script type="text/javascript">
+	function notifyUser(message) {
+		if(message == "error_nothing") {
+		new PNotify({
+			title: 'Error!',
+			text: "Please select at least one date before submitting.",
+			type: 'error',
+			styling: 'bootstrap3',
+			delay: 2000
+		});
+		} else if(message == "error") {
+		new PNotify({
+			title: 'Error!',
+			text: "An error has occurred, please try submitting again.",
+			type: 'error',
+			styling: 'bootstrap3',
+			delay: 2000
+		});
+		} else if(message == "success") {
+			new PNotify({
+			title: 'Success!',
+			text: "Your availability has been submitted in successfully!",
+			type: 'success',
+			styling: 'bootstrap3',
+			delay: 2000
+		});
+		}
+  	}
+
+
+</script>

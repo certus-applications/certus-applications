@@ -44,10 +44,14 @@ class Request extends CI_Controller {
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
 
+      $employeeid = $this->ion_auth->user()->row()->employeeid;
+      $this->load->model('Schedule_model');
+      $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
+
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
-      $this->load->view('screeners/request');
+      $this->load->view('screeners/request', $data);
       $this->load->view('main/footer');
     }
 
@@ -62,12 +66,24 @@ class Request extends CI_Controller {
       $text = $this->input->post('other-text');
       $start = $this->input->post('start_date');
       $end = $this->input->post('end_date');
+      $timeoff_type = $this->input->post('timeoffType');
+      $selected_day = $this->input->post('update_time');
+
+      if (empty($end)) {
+        $end = $start;
+      }
+
+      if (empty($selected_day)) {
+        $selected_day = NULL;
+      }
 
       $request = array(
         'first_name' => $data['first_name'],
         'last_name' => $data['last_name'],
         'timestamp' => date('Y-m-d H:i:s'),
         'employeeid' => $data['employeeid'],
+        'timeoff_type' => $timeoff_type,
+        'requested_date_timeoff' => $selected_day,
         'start' => date('Y-m-d', strtotime ($start)),
         'end' => date('Y-m-d', strtotime ($end)),
         'reason' => $type.' '.$text
@@ -89,14 +105,26 @@ class Request extends CI_Controller {
           'approved' => TRUE
         );
         $this->Request_model->updateRequest($update_req);
-        return redirect('insights', 'refresh');
+        echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('approved');
+                    });
+                </script>";
+        return redirect('request/screener_requests');
       } else{
         $update_req = array (
           'id' => $this->input->post('id'),
           'approved' => FALSE
         );
         $this->Request_model->updateRequest($update_req);
-        return redirect('insights', 'refresh');
+        echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('declined');
+                    });
+                </script>";
+        return redirect('request/screener_requests', 'refresh');
       }
 
     }

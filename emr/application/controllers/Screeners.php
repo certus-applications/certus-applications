@@ -223,26 +223,51 @@ class Screeners extends CI_Controller {
       if ($this->form_validation->run() === FALSE){
         if ($morn_time === [] && $eve_time === [] && $night_time === []) {
           // If User selects nothing
-          $this->session->set_flashdata("err", "Pick 1 or more date(s) for your availability.");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        console.log('hello');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
-          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
-          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         else {
-          $this->session->set_flashdata("err", "Something went wrong!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('error');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         }
       }
       else {
-        $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+        echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
         return redirect('screeners/add', 'refresh');
       }
 
