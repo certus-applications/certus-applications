@@ -14,7 +14,7 @@
                 <div class="x_content">
                 <h3>Emergency Time Off Requests</h3>
                 <div class="col-xs-12 table-responsive">
-                    <table class="table table-striped table-bordered">
+                    <table class="display table table-striped table-bordered">
                     <thead>
                         <tr>
                         <th>First Name</th>
@@ -275,8 +275,7 @@
 </body>
 
 <script type="text/javascript">
-  $(document).ready(function notifyUser(message) {
-    PNotify.removeAll();
+  function notifyUser(message) {
     if(message == "approved") {
       new PNotify({
         title: 'Screener Approved!',
@@ -294,7 +293,7 @@
         delay: 2000
       });
     }
-  });
+  }
 
   $(document).ready(function() {
     $('table.display').DataTable();
