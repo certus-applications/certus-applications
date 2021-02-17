@@ -169,7 +169,7 @@ class Request extends CI_Controller {
       $this->load->view('main/topbar', $data);
       $employeeid = $this->ion_auth->user()->row()->employeeid;
       $data['viewReq'] = $this->Request_model->viewRequest($employeeid);
-      $this->load->view('screeners/viewRequests', $data);
+      $this->load->view('requests/view', $data);
       $this->load->view('main/footer');
     }
 
