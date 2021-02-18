@@ -265,7 +265,10 @@ function init_calendar(eventArr, accountType) {
         eventRender: function eventRender( event, element, view ) {
             $("#buildingFilter li").click(function() {
                 var filteredLocation = this.id;
-                if (event.location == filteredLocation) {
+
+                if (filteredLocation == "all") {
+                    element.css('display', 'block');
+                }else if (event.location == filteredLocation) {
                     element.css('display', 'block');
                 } else {
                     element.css('display', 'none');
