@@ -19,7 +19,7 @@ class Reminders extends CI_Controller {
        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+       $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];    
      } elseif ($this->ion_auth->in_group("hostpial admin")) {
        $data["userRole"] = "HOSPITAL ADMIN";
@@ -28,7 +28,7 @@ class Reminders extends CI_Controller {
        $data["font"] = ["refresh", "sign-out"];
 
        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "billing", "insights", "activity", "reminders"];
+       $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
     } else {
       $data["userRole"] = "SCREENER";
