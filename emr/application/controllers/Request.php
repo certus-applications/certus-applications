@@ -48,6 +48,22 @@ class Request extends CI_Controller {
       $this->load->model('Schedule_model');
       $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
 
+      // Week 1 and week 2 timespan
+      $day = date('w'); 
+      $week_2start = date('m/j/Y', strtotime('+'.(7-$day).' days'));
+      $week_2end = date('m/j/Y', strtotime('+'.(13-$day).' days'));
+
+      // Getting individual dates for each day
+      $datesArr = array();
+      for($i = 0;  $i < 7; $i++) {
+        $date = date('m/j/Y', strtotime("$week_2start + $i days"));
+        $datesArr[] = $date;
+      }
+
+      $data['week_2start'] = $week_2start;
+      $data['week_2end'] = $week_2end;
+      $data['datesArr'] = $datesArr;
+
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
@@ -131,7 +147,7 @@ class Request extends CI_Controller {
 
     }
 
-    // View Requests (Screeners)
+    // View Requests
     public function view(){
       $this->load->model('Availability_model');
       if ($this->ion_auth->is_admin()) {

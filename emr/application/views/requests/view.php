@@ -23,7 +23,7 @@
                         <th>Date of request</th>
                         <th>Date of time-off</th>
                         <th>Reason for time-off</th>
-                        <th>Accept/Decline Changes</th>
+                        <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -82,7 +82,7 @@
                         <th>Employee ID</th>
                         <th>Date of request</th>
                         <th>Requested Date</th>
-                        <th>Accept/Decline Changes</th>
+                        <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
