@@ -56,9 +56,9 @@
 											<th scope="col">
 												<?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?>
 											</th>
-											<td><input type="checkbox" name="morn_times[]" value=<?php echo json_encode($mornTimeArr[$i]); ?>></td>
-											<td><input type="checkbox" name="eve_times[]" value=<?php echo json_encode($eveTimeArr[$i]); ?>></td>
-											<td><input type="checkbox" name="night_times[]" value=<?php echo json_encode($nightTimeArr[$i]); ?>></td>
+											<td id="morn"><input type="checkbox" name="morn_times[]" value=<?php echo json_encode($mornTimeArr[$i]); ?>></td>
+											<td id="eve"><input type="checkbox" name="eve_times[]" value=<?php echo json_encode($eveTimeArr[$i]); ?>></td>
+											<td id="night"><input type="checkbox" name="night_times[]" value=<?php echo json_encode($nightTimeArr[$i]); ?>></td>
 										<?php echo "</tr>"; } ?>
 									</thead>
 								</table>

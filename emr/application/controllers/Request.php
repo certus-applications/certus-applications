@@ -65,12 +65,19 @@ class Request extends CI_Controller {
       $type = $this->input->post('timeoff_type');
       $text = $this->input->post('other-text');
       $start = $this->input->post('start_date');
+      $start2 = $this->input->post('start_date2');
       $end = $this->input->post('end_date');
       $timeoff_type = $this->input->post('timeoffType');
       $selected_day = $this->input->post('update_time');
 
       if (empty($end)) {
         $end = $start;
+      }
+
+      if (empty($start2)) {
+        $start2 = $start;
+      } elseif((!empty($start2))) {
+        $start = $start2;
       }
 
       if (empty($selected_day)) {
@@ -105,13 +112,8 @@ class Request extends CI_Controller {
           'approved' => TRUE
         );
         $this->Request_model->updateRequest($update_req);
-        echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        notifyUser('approved');
-                    });
-                </script>";
-        return redirect('request/view');
+        echo "<script language=\"javascript\">alert('test');</script>";
+        return redirect('request/view')."<script language=\"javascript\">alert('test');</script>";;
       } else{
         $update_req = array (
           'id' => $this->input->post('id'),
@@ -120,7 +122,7 @@ class Request extends CI_Controller {
         $this->Request_model->updateRequest($update_req);
         echo "
                 <script type='text/javascript'>
-                    $(document).ready(function(e) {
+                    $(document).ready(function() {
                         notifyUser('declined');
                     });
                 </script>";
