@@ -81,15 +81,18 @@ class Request extends CI_Controller {
 
       $type = $this->input->post('timeoff_type');
       $text = $this->input->post('other-text');
-      $timeoff_type = $this->input->post('timeoffType');
-      $dates = $this->input->post('dates');
+      $timeoff_type1 = $this->input->post('timeoffType1');
+      $timeoff_type2 = $this->input->post('timeoffType2');
+      $new_dates = $this->input->post('dates');
       $shifts = $this->input->post('shift_date');
       
       
-      if ($dates != null) {
-        $date = json_encode($dates);
+      if ($new_dates != null) {
+        $date = json_encode($new_dates);
+        $timeoff_type = $timeoff_type2;
       } else {
         $date = NULL;
+        $timeoff_type = $timeoff_type1;
       }
 
       if ($shifts != null) {

@@ -26,7 +26,7 @@
                                     <div id="timeoff">
                                         <div class="col-xs-6">
                                             <?php echo form_open('request/add'); ?>
-                                            <input type="hidden" class="form-control" name="timeoffType" value="Emergency Time Off">
+                                            <input type="hidden" class="form-control" name="timeoffType1" value="Emergency Time Off">
                                             <fieldset>
                                                 <div class="form-group">
 
@@ -115,7 +115,7 @@
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="shift-tab">
                                     <div id="shift">
                                             <?php echo form_open('request/add'); ?>
-                                                <input type="hidden" class="form-control" name="timeoffType" value="Request Shift Change">
+                                                <input type="hidden" class="form-control" name="timeoffType2" value="Request Shift Change">
                                                 <div class="x_content">
                                                     <h3> Which day do you want to reschedule for? </h3>
                                                     <table class="table table-hover table-striped table-bordered">
