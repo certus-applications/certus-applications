@@ -63,6 +63,7 @@ class Request extends CI_Controller {
       $data['week_2start'] = $week_2start;
       $data['week_2end'] = $week_2end;
       $data['datesArr'] = $datesArr;
+      $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
 
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
@@ -80,25 +81,23 @@ class Request extends CI_Controller {
 
       $type = $this->input->post('timeoff_type');
       $text = $this->input->post('other-text');
-      $start = $this->input->post('start_date');
-      $start2 = $this->input->post('start_date2');
-      $end = $this->input->post('end_date');
       $timeoff_type = $this->input->post('timeoffType');
-      $selected_day = $this->input->post('update_time');
-
-      if (empty($end)) {
-        $end = $start;
+      $dates = $this->input->post('dates');
+      $shifts = $this->input->post('shift_date');
+      
+      
+      if ($dates != null) {
+        $date = json_encode($dates);
+      } else {
+        $date = NULL;
       }
 
-      if (empty($start2)) {
-        $start2 = $start;
-      } elseif((!empty($start2))) {
-        $start = $start2;
+      if ($shifts != null) {
+        $shift = json_encode($shifts);
+      } else {
+        $shift = [];
       }
 
-      if (empty($selected_day)) {
-        $selected_day = NULL;
-      }
 
       $request = array(
         'first_name' => $data['first_name'],
@@ -106,9 +105,8 @@ class Request extends CI_Controller {
         'timestamp' => date('Y-m-d H:i:s'),
         'employeeid' => $data['employeeid'],
         'timeoff_type' => $timeoff_type,
-        'requested_date_timeoff' => $selected_day,
-        'start' => date('Y-m-d', strtotime ($start)),
-        'end' => date('Y-m-d', strtotime ($end)),
+        'updated_start_req' => $date,
+        'timeoff_shift' => $shift,
         'reason' => $type.' '.$text
       );
 
