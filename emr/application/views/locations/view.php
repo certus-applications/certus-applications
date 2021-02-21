@@ -4,9 +4,9 @@
               <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Buildings</h2>
+                    <h2>Locations</h2>
                     <ul class="nav navbar-right panel_toolbox">
-                      <li><a href="Buildings/add"><button  type="submit" class="btn btn-success">Add Building</button></a></li>
+                      <li><a href="locations/add"><button  type="submit" class="btn btn-success">Add Location</button></a></li>
                     </ul>
                     <div class="clearfix"></div>
                   </div>
@@ -19,10 +19,10 @@
                         </tr>
                       </thead>
                       <tbody>
-                          <?php foreach($buildings as $building){?>
+                          <?php foreach($locations as $location){?>
                             <tr>
-                              <td><?php echo $building['id'];?></td>
-                              <td><?php echo $building['name'];?></td>
+                              <td><?php echo $location['id'];?></td>
+                              <td><?php echo $location['name'];?></td>
                             </tr>
                           <?php } ?>
                       </tbody>

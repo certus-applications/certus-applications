@@ -1,6 +1,6 @@
 <?php
    // do all database calls here
-   class Buildings_model extends CI_Model {
+   class Locations_model extends CI_Model {
 
       function __construct() {
          parent::__construct();

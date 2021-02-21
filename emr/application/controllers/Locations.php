@@ -17,8 +17,8 @@ class Locations extends CI_Controller {
 			$data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
 			$data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-			$data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
+			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
 			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
 		} elseif ($this->ion_auth->in_group("hostpial admin")) {
 			$data["userRole"] = "HOSPITAL ADMIN";
@@ -26,8 +26,8 @@ class Locations extends CI_Controller {
 			$data["href"] = ["auth/logout"];
 			$data["font"] = ["refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-			$data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
+			$data["sideMenu"] = ["Calendar", "Screeners", "Locatons", "Requests"];
+			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
 			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"]; 
 		} else {
 			$data["userRole"] = "SCREENER";
@@ -43,12 +43,12 @@ class Locations extends CI_Controller {
 		$this->load->model('Buildings_model');
 		$data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
 		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-		$data['buildings'] = $this->Buildings_model->listAll();
+		$data['locations'] = $this->Buildings_model->listAll();
 
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
 		$this->load->view('main/topbar', $data);
-		$this->load->view('buildings/view', $data);
+		$this->load->view('locations/view', $data);
 		$this->load->view('main/footer');
     }
 
@@ -85,11 +85,11 @@ class Locations extends CI_Controller {
 		$this->load->model('Buildings_model');
 		$data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
 		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-		$data['buildings'] = $this->Buildings_model->listAll();    
+		$data['locations'] = $this->Buildings_model->listAll();    
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
 		$this->load->view('main/topbar', $data);
-		$this->load->view('buildings/add');
+		$this->load->view('locations/add');
 		$this->load->view('main/footer');
     }
 }
