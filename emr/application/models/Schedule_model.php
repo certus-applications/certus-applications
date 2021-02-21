@@ -21,4 +21,10 @@ class Schedule_model extends CI_Model {
         $query=$this->db->get();
         return $query->result_array();
     }
+
+    
+    public function deleteSchedule($employeeid){
+        $this->db->where('employeeid', $employeeid);
+        $this->db->delete('schedule');
+    }
 }

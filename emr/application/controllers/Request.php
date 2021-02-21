@@ -128,21 +128,22 @@ class Request extends CI_Controller {
           'id' => $this->input->post('id'),
           'approved' => TRUE
         );
+        
+        $date = $this->input->post('timeoff_date');
+        $send_date = date("Y-m-d", strtotime($date));
+        $employeeid = $this->input->post('employeeid');
+        
+        $this->load->model('Schedule_model');
+        $this->Schedule_model->deleteSchedule($employeeid, $send_date);
         $this->Request_model->updateRequest($update_req);
-        echo "<script language=\"javascript\">alert('test');</script>";
-        return redirect('request/view')."<script language=\"javascript\">alert('test');</script>";;
-      } else{
+        // return redirect('request/view');
+
+      } else {
         $update_req = array (
           'id' => $this->input->post('id'),
           'approved' => FALSE
         );
         $this->Request_model->updateRequest($update_req);
-        echo "
-                <script type='text/javascript'>
-                    $(document).ready(function() {
-                        notifyUser('declined');
-                    });
-                </script>";
         return redirect('request/view', 'refresh');
       }
 
