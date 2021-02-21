@@ -40,10 +40,10 @@ class Locations extends CI_Controller {
 			$data["icon"] = ["calendar","user", "exclamation-triangle"];
 		}
 
-		$this->load->model('Buildings_model');
+		$this->load->model('Locations_model');
 		$data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
 		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-		$data['locations'] = $this->Buildings_model->listAll();
+		$data['locations'] = $this->Locations_model->listAll();
 
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
@@ -82,10 +82,10 @@ class Locations extends CI_Controller {
 			$data["icon"] = ["calendar","user", "exclamation-triangle"];
 		}
       
-		$this->load->model('Buildings_model');
+		$this->load->model('Locations_model');
 		$data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
 		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-		$data['locations'] = $this->Buildings_model->listAll();    
+		$data['locations'] = $this->Locations_model->listAll();    
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
 		$this->load->view('main/topbar', $data);
