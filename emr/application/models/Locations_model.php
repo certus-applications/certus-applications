@@ -14,6 +14,10 @@
       	return $returnData;
       }
 
+      public function add($locationData){
+        $this->db->insert('locations', $locationData);
+      }
+
       public function viewClient($id){
         $this->db->select('*');
         $this->db->from('clients');

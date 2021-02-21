@@ -84,12 +84,21 @@ class Locations extends CI_Controller {
       
 		$this->load->model('Locations_model');
 		$data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
-		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;
-		$data['locations'] = $this->Locations_model->listAll();    
+		$data["userLastName"] = $this->ion_auth->user()->row()->last_name;    
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
 		$this->load->view('main/topbar', $data);
 		$this->load->view('locations/add');
 		$this->load->view('main/footer');
+    }
+
+    public function addData(){
+		$locationData = array(
+			'name' => $this->input->post('name')
+		);
+
+		$this->load->model('Locations_model');
+		$this->Locations_model->add($locationData);
+		return redirect('main/index');
     }
 }

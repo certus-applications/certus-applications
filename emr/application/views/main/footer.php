@@ -81,6 +81,9 @@
     
     <!-- Calendar Scripts -->
     <script src="../build/js/calendar1.js"></script>
+    
+    <!-- Locations Scripts -->
+    <script src="../build/js/locations.js"></script>
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
