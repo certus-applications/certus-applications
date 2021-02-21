@@ -20,7 +20,7 @@ class Main extends CI_Controller {
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "Buildings/index", "insights", "activity", "reminders"];
+        $data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
