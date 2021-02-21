@@ -307,6 +307,21 @@ class Ion_auth_model extends CI_Model
 		return FALSE;
 	}
 
+	public function hash_employeeid($employeeid, $identity = NULL)
+	{
+		$algo = $this->_get_hash_algo();
+		$params = $this->_get_hash_parameters($identity);
+		$password = $employeeid;
+
+		if ($algo !== FALSE)
+		{
+			// using the same hash as password
+			return password_hash($password, $algo, $params);
+		}
+
+		return FALSE;
+	}
+
 	/**
 	 * This function takes a password and validates it
 	 * against an entry in the users table.
@@ -802,7 +817,7 @@ class Ion_auth_model extends CI_Model
 	 * @return    bool
 	 * @author    Mathew
 	 */
-	public function register($identity, $password, $email, $additional_data = [], $groups = [])
+	public function register($identity, $password, $email, $employeeid, $additional_data = [], $groups = [])
 	{
 		$this->trigger_events('pre_register');
 
@@ -836,6 +851,8 @@ class Ion_auth_model extends CI_Model
 		// Do not pass $identity as user is not known yet so there is no need
 		$password = $this->hash_password($password);
 
+		$employeeid = $this->hash_employeeid($employeeid);
+
 		if ($password === FALSE)
 		{
 			$this->set_error('account_creation_unsuccessful');
@@ -847,6 +864,7 @@ class Ion_auth_model extends CI_Model
 			$this->identity_column => $identity,
 			'password' => $password,
 			'email' => $email,
+			'employeeid' => $employeeid,
 			'ip_address' => $ip_address,
 			'created_on' => time(),
 			'active' => ($manual_activation === FALSE ? 1 : 0)
