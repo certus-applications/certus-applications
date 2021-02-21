@@ -128,15 +128,24 @@ class Request extends CI_Controller {
           'id' => $this->input->post('id'),
           'approved' => TRUE
         );
-        
-        $date = $this->input->post('timeoff_date');
-        $send_date = date("Y-m-d", strtotime($date));
-        $employeeid = $this->input->post('employeeid');
-        
-        $this->load->model('Schedule_model');
-        $this->Schedule_model->deleteSchedule($employeeid, $send_date);
+
+        $dates = $this->input->post('timeoff_date');
+        if ($dates != null) {
+          $date = $dates;
+        } else {
+          $date = [];
+        }
+
+        for ($i=0; $i < sizeof($date); $i++){
+          $my_dt = new DateTime($date[$i]);
+          // $expires_at = $my_dt->modify(' +8 hour');
+          $send_date = $my_dt->format('Y-m-d H:i:s');
+          $employeeid = $this->input->post('employeeid');
+          $this->load->model('Schedule_model');
+          $this->Schedule_model->deleteSchedule($employeeid, $send_date);
+        }      
         $this->Request_model->updateRequest($update_req);
-        // return redirect('request/view');
+        return redirect('request/view');
 
       } else {
         $update_req = array (
