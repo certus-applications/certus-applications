@@ -8,7 +8,7 @@
 
       public function listAll(){
       	$this->db->select('*');
-      	$this->db->from('buildings');
+      	$this->db->from('locations');
       	$query=$this->db->get();
         $returnData = $query->result_array();
       	return $returnData;
