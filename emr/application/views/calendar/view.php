@@ -140,26 +140,16 @@
                           </a>
                           <div id="morning" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="morningShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Arjan Randall</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Edward Figueroa</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Bobbi Pennington</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Ed Bateman</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "morning"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>
@@ -169,26 +159,16 @@
                           </a>
                           <div id="evening" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eveningShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Killian Bellamy</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Jess Poole</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Callam Eaton</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Timur Grey</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "evening"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>
@@ -198,26 +178,16 @@
                           </a>
                           <div id="night" class="panel-collapse collapse" role="tabpanel" aria-labelledby="nightShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Shirley Cross</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Hareem Cairns</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Neave Howe</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Chaya Finney</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "night"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>
