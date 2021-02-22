@@ -29,87 +29,82 @@
                     <tbody>
                         <?php 
                             foreach($avail as $availability) {
-                                // $time[] = $availability['timeoff_shift'];
-                                $split_up = explode(',', str_replace(array('[', ']','"'), '', $availability['timeoff_shift']) );                        ?>
+                                $split_up = explode(',', str_replace(array('[', ']','"'), '', $availability['timeoff_shift']) );                     
+                        ?>
                         <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
-                            <tr style=" background-color: rgba(50, 205, 50, 0.3); color: black;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td><?php echo $availability['employeeid'];?></td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <td>
-                                <?php 
-                                for ($i = 0; $i < sizeof($split_up); $i++) {
-                                    $timed = strtotime($split_up[$i]);
-                                    $format = date('M jS, Y', $timed);
-                                    echo $format.', ';
-                                }
-                                
-                                ?>
-                            </td>                            
-                            <td><?php echo $availability['reason'];?></td>
-                            <td><a class="btn btn-danger btn-xs" style="background-color: #32CD32; border-color: #32CD32" readonly> Approved </a></td>
-                            </tr>
-                        <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
-                            <tr style="background-color: rgba(128, 0, 0, 0.3); color: black;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td><?php echo $availability['employeeid'];?></td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <td>
-                                <?php 
-                                for ($i = 0; $i < sizeof($split_up); $i++) {
-                                    $timed = strtotime($split_up[$i]);
-                                    $format = date('M jS, Y', $timed);
-                                    echo $format.', ';
-                                }
-                                
-                                ?>
-                            </td>                            
-                            <td><?php echo $availability['reason'];?></td>
-                            <td><a class="btn btn-danger btn-xs" style="background-color: #800000; border-color: #800000;" readonly> Declined </a></td>
-                            </tr>
-                        <?php } elseif ($availability['timeoff_type']=='Emergency Time Off') { ?>
-                            <tr style="background-color: none;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td>
-                                <?php echo $availability['employeeid'];?>
-                            </td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <?php echo form_open('request/update'); ?>
-                            <td>
-                                <?php 
-                                    $compare = array();
+                            <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td><?php echo $availability['employeeid'];?></td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <td>
+                                    <?php 
                                     for ($i = 0; $i < sizeof($split_up); $i++) {
                                         $timed = strtotime($split_up[$i]);
                                         $format = date('M jS, Y', $timed);
-
-                                        $datetime = new DateTime($split_up[$i]);
-                                        
-                                        $compare = $datetime->format('Y-m-d H:i:s');
-
-                                        // echo $format.', ';
+                                        echo $format.'<br>';
+                                    }
                                     
-                                ?>  
-                                <input type="hidden" class="form-control" id="timeoff_date" name="timeoff_date[]" value="<?php echo $compare; ?>" >
-                                <?php echo $compare; } ?>
-                            </td>                            
-                            <td><?php echo $availability['reason'];?></td>
-                            <td>
-                                    <input type="submit" class="btn btn-danger btn-xs"  style="background-color: #800000; border-color: #800000;" name="choice" value="Decline"></button>
-                                    <input type="submit" class="btn btn-success btn-xs" style="background-color: #32CD32; border-color: #32CD32" name="choice" value="Approve"></button>
-                                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
-                                    <input type="hidden" class="form-control" id="employeeid" name="employeeid" value="<?php echo $availability['employeeid']; ?>">
-                                <?php echo form_close(); ?>
-                            </td>
+                                    ?>
+                                </td>                            
+                                <td><?php echo $availability['reason'];?></td>
+                                <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
+                            </tr>
+                        <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
+                            <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td><?php echo $availability['employeeid'];?></td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <td>
+                                    <?php 
+                                    for ($i = 0; $i < sizeof($split_up); $i++) {
+                                        $timed = strtotime($split_up[$i]);
+                                        $format = date('M jS, Y', $timed);
+                                        echo $format.'<br>';
+                                    }
+                                    
+                                    ?>
+                                </td>                            
+                                <td><?php echo $availability['reason'];?></td>
+                                <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
+                            </tr>
+                        <?php } elseif ($availability['timeoff_type']=='Emergency Time Off') { ?>
+                            <tr style="background-color: none;">
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td>
+                                    <?php echo $availability['employeeid'];?>
+                                </td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <?php echo form_open('request/update'); ?>
+                                <td>
+                                    <?php 
+                                        $compare = array();
+                                        for ($i = 0; $i < sizeof($split_up); $i++) {
+                                            $timed = strtotime($split_up[$i]);
+                                            $format = date('M jS, Y', $timed);
+                                            $datetime = new DateTime($split_up[$i]);
+                                            $compare = $datetime->format('Y-m-d H:i:s');
+                                        
+                                    ?>  
+                                    <input type="hidden" class="form-control" id="timeoff_date" name="timeoff_date[]" value="<?php echo $compare; ?>" >
+                                    <?php echo $format.'<br>'; } ?>
+                                </td>                            
+                                <td><?php echo $availability['reason'];?></td>
+                                <td>
+                                        <input type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
+                                        <input type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
+                                        <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
+                                        <input type="hidden" class="form-control" id="employeeid" name="employeeid" value="<?php echo $availability['employeeid']; ?>">
+                                    <?php echo form_close(); ?>
+                                </td>
                             </tr>
                         <?php } } ?>
                     </tbody>
                     </table>
                 </div>
                 </div>
-
 
                 <div class="x_content">
                 <h3>Shift Change Requests</h3>
@@ -121,47 +116,94 @@
                         <th>Last Name</th>
                         <th>Employee ID</th>
                         <th>Date of submission</th>
-                        <th>Requested Date(s) of Time Off</th>
+                        <th>Current Schedule</th>
                         <th>Requested Dates(s) for New Shift Update</th>
                         <th>Status</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <?php foreach($avail as $availability) {?>
+                        <?php 
+                            foreach($avail as $availability) {
+                                $date_req = explode(',', str_replace(array('[', ']'), '', $availability['updated_start_req']) );  
+                        ?>
                         <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
-                            <tr style=" background-color: rgba(50, 205, 50, 0.3); color: black;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td><?php echo $availability['employeeid'];?></td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                            <td><b><?php echo $availability['updated_start_req'];?></td>
-                            <td><a class="btn btn-danger btn-xs" style="background-color: #32CD32; border-color: #32CD32" readonly> Approved </a></td>
+                            <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td><?php echo $availability['employeeid'];?></td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <td>Shift(s) Updated</td> 
+                                <td>
+                                    <?php 
+                                        for ($i = 0; $i < sizeof($date_req); $i++) {
+                                            echo $date_req[$i].'<br>';
+                                        }
+                                    ?>
+                                </td> 
+                                <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
                             </tr>
                         <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
-                            <tr style="background-color: rgba(128, 0, 0, 0.3); color: black;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td><?php echo $availability['employeeid'];?></td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                            <td><b><?php echo $availability['updated_start_req'];?></td>                         
-                            <td><a class="btn btn-danger btn-xs" style="background-color: #800000; border-color: #800000;" readonly> Declined </a></td>
+                            <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td><?php echo $availability['employeeid'];?></td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <td>
+                                    <?php 
+                                        $day = date('w'); 
+                                        $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+                                        foreach($screenerSche as $view) {
+                                            if($availability['employeeid'] == $view['employeeid']) {
+                                                if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                    echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                                }
+                                            }
+                                        }                              
+                                    ?>
+                                </td> 
+                                <td>
+                                    <?php 
+                                        for ($i = 0; $i < sizeof($date_req); $i++) {
+                                            echo $date_req[$i].'<br>';
+                                        }
+                                    ?>
+                                </td>                        
+                                <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
                             </tr>
                         <?php } elseif ($availability['timeoff_type']=='Request Shift Change') { ?>
                             <tr style="background-color: none;">
-                            <td><?php echo $availability['first_name'];?></td>
-                            <td><?php echo $availability['last_name'];?></td>
-                            <td><?php echo $availability['employeeid'];?></td>
-                            <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                            <td><b><?php echo $availability['updated_start_req'];?></td>                          
-                            <td>
-                                <?php echo form_open('request/update'); ?>
-                                <input type="submit" class="btn btn-danger btn-xs"  style="background-color: #800000; border-color: #800000;" name="choice" value="Decline"></button>
-                                <input type="submit" class="btn btn-success btn-xs" style="background-color: #32CD32; border-color: #32CD32" name="choice" value="Approve"></button>
-                                <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
-                            </td>
+                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['last_name'];?></td>
+                                <td><?php echo $availability['employeeid'];?></td>
+                                <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
+                                <td>
+                                    <?php 
+                                        $day = date('w'); 
+                                        $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+                                        foreach($screenerSche as $view) {
+                                            if($availability['employeeid'] == $view['employeeid']) {
+                                                if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                    echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                                }
+                                            }
+                                        }                              
+                                    ?>
+                                </td> 
+                                <td>
+                                    <?php 
+                                        for ($i = 0; $i < sizeof($date_req); $i++) {
+                                            echo $date_req[$i].'<br>';
+                                        }
+                                    ?>
+                                </td>                          
+                                <td>
+                                    <?php echo form_open('request/update'); ?>
+                                    <input type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
+                                    <input type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
+                                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
+                                </td>
                             </tr>
                         <?php } } ?>
                         <?php echo form_close(); ?>
@@ -184,7 +226,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                     <h2>Your Requests</h2>                          
-                        <button type="button" class="btn btn-primary pull-right" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request" style="color: white">New Request</a></button>
+                        <button type="button" class="btn btn-success pull-right" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request" style="color: white">New Request</a></button>
                     <div class="clearfix"></div>
 
                         <div class="x_content">
@@ -202,28 +244,58 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($viewReq as $availability) {?>
+                                    <?php 
+                                        foreach($viewReq as $availability) {
+                                            $split_up = explode(',', str_replace(array('[', ']','"'), '', $availability['timeoff_shift']) ); 
+                                    ?>
                                     <?php if(($availability['approved']==TRUE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
-                                        <tr style=" background-color: rgba(50, 205, 50, 0.3); color: black;">
+                                        <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td>                            
+                                            <td>
+                                                <?php 
+                                                for ($i = 0; $i < sizeof($split_up); $i++) {
+                                                    $timed = strtotime($split_up[$i]);
+                                                    $format = date('M jS, Y', $timed);
+                                                    echo $format.'<br>';
+                                                }
+                                                
+                                                ?>
+                                            </td>                                            
                                             <td><?php echo $availability['reason'];?></td>
-                                            <td><a class="btn btn-danger btn-xs" style="background-color: #32CD32; border-color: #32CD32" readonly> Approved </a></td>
+                                            <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
                                         </tr>
                                     <?php } elseif(($availability['approved']==FALSE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
-                                        <tr style="background-color: rgba(128, 0, 0, 0.3); color: black;">
+                                        <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td>                            
+                                            <td>
+                                                <?php 
+                                                for ($i = 0; $i < sizeof($split_up); $i++) {
+                                                    $timed = strtotime($split_up[$i]);
+                                                    $format = date('M jS, Y', $timed);
+                                                    echo $format.'<br>';
+                                                }
+                                                
+                                                ?>
+                                            </td>                                            
                                             <td><?php echo $availability['reason'];?></td>
-                                            <td><a class="btn btn-danger btn-xs" style="background-color: #800000; border-color: #800000;" readonly> Declined </a></td>
+                                            <td><a class="btn btn-danger btn-xs"  readonly> Declined </a></td>
                                         </tr>
                                     <?php } elseif ($availability['timeoff_type']=='Emergency Time Off') { ?>
                                         <tr>
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td>                            
+                                            <td>
+                                                <?php 
+                                                for ($i = 0; $i < sizeof($split_up); $i++) {
+                                                    $timed = strtotime($split_up[$i]);
+                                                    $format = date('M jS, Y', $timed);
+                                                    echo $format.'<br>';
+                                                }
+                                                
+                                                ?>
+                                            </td>                                           
                                             <td><?php echo $availability['reason'];?></td>
                                             <td> <b>Pending</b> </td>
                                         </tr>
@@ -242,35 +314,82 @@
                                     <tr>
                                         <th>Employee ID</th>
                                         <th>Date of submission</th>
-                                        <th>Requested Date(s) of Time Off</th>
+                                        <th>Current Schedule</th>
                                         <th>Requested Dates(s) for New Shift Update</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <?php foreach($viewReq as $availability) {?>
+                                    <?php 
+                                        foreach($viewReq as $availability) {
+                                            $date_req = explode(',', str_replace(array('[', ']'), '', $availability['updated_start_req']) );                  
+                                    ?>
                                     <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
-                                        <tr style=" background-color: rgba(50, 205, 50, 0.3); color: black;">
+                                        <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                                            <td><b><?php echo $availability['updated_start_req'];?></td> 
-                                            <td><a class="btn btn-danger btn-xs" style="background-color: #32CD32; border-color: #32CD32" readonly> Approved </a></td>
+                                            <td>Shift(s) Updated</td> 
+                                            <td>
+                                                <?php 
+                                                    for ($i = 0; $i < sizeof($date_req); $i++) {
+                                                        echo $date_req[$i].'<br>';
+                                                    }
+                                                ?>
+                                            </td>                                            
+                                            <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
                                         </tr>
                                     <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
-                                        <tr style="background-color: rgba(128, 0, 0, 0.3); color: black;">
+                                        <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                                            <td><b><?php echo $availability['updated_start_req'];?></td>                                             
-                                            <td><a class="btn btn-danger btn-xs" style="background-color: #800000; border-color: #800000;" readonly> Declined </a></td>
+                                            <td>
+                                                <?php 
+                                                    $day = date('w'); 
+                                                    $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                    $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+                                                    foreach($screenerSche as $view) {
+                                                        if($availability['employeeid'] == $view['employeeid']) {
+                                                            if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                                echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                                            }
+                                                        }
+                                                    }                              
+                                                ?>
+                                            </td> 
+                                            <td>
+                                                <?php 
+                                                    for ($i = 0; $i < sizeof($date_req); $i++) {
+                                                        echo $date_req[$i].'<br>';
+                                                    }
+                                                ?>
+                                            </td>                                            
+                                            <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
                                         </tr>
                                     <?php } elseif ($availability['timeoff_type']=='Request Shift Change') { ?>
                                         <tr>
                                             <td><?php echo $availability['employeeid'];?></td>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td><b><?php echo $availability['timeoff_shift'];?></td> 
-                                            <td><b><?php echo $availability['updated_start_req'];?></td>                                           
+                                            <td>
+                                                <?php 
+                                                    $day = date('w'); 
+                                                    $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                    $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+                                                    foreach($screenerSche as $view) {
+                                                        if($availability['employeeid'] == $view['employeeid']) {
+                                                            if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                                echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                                            }
+                                                        }
+                                                    }                              
+                                                ?>
+                                            </td> 
+                                            <td>
+                                                <?php 
+                                                    for ($i = 0; $i < sizeof($date_req); $i++) {
+                                                        echo $date_req[$i].'<br>';
+                                                    }
+                                                ?>
+                                            </td>                                            
                                             <td> <b>Pending</b> </td>
                                         </tr>
 

@@ -86,19 +86,17 @@
                                                                 <?php
                                                                     foreach($screenerSche as $view) {
                                                                         $day = date('w'); 
-                                                                        $week_2start = date('Y-m-d', strtotime('+'.(7-$day).' days'));
-                                                                        $week_2end = date('Y-m-d', strtotime('+'.(13-$day).' days'));
-
-                                                                        $time_check = date('Y-m-d', strtotime($view['start']));
+                                                                        $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
                                                                         $time_in = $view['start'];
-
-                                                                        if (($time_check >= $week_2start) || ($time_check <= $week_2end)) {
+                                                                        
+                                                                        if (($time_in >= $week_start) && ($time_in <= $week_end)) {
                                                                             echo "<tr>";
                                                                 ?>  
                                                                     <td><input type="checkbox" name="shift_date[]" value="<?php echo $time_in; ?>" ></td>
                                                                     <th class='th_center' scope="col">
                                                                         <?php 
-                                                                            echo date('l, M jS', strtotime($time_check));
+                                                                            echo date('l, M jS', strtotime($time_in));
                                                                         ?>
                                                                     </th>
                                                                 <?php echo "</tr>"; } } ?>
