@@ -19,8 +19,12 @@ class Screeners extends CI_Controller {
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"]; 
 
         $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-        $data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
+
+        $this->load->model('Screeners_model');
+        $data['screenersAll'] = $this->Screeners_model->listAll();
+
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
@@ -28,8 +32,12 @@ class Screeners extends CI_Controller {
         $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-        $data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];  
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];  
+
+        $this->load->model('Screeners_model');
+        $data['screenersAll'] = $this->Screeners_model->listAll();
+
       } else {
         redirect('main/index', 'refresh');
       }
@@ -41,7 +49,7 @@ class Screeners extends CI_Controller {
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
       //passing the data in list
-      $data['clientsAll'] = $this->Screeners_model->listAll();
+      
       $this->load->view('screeners/list', $data);
       $this->load->view('main/footer');
     }
@@ -54,27 +62,27 @@ class Screeners extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];      
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];      
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
       } else {
         $data["userRole"] = "SCREENER";
         $data["options"] = ["Logout"];
         $data["href"] = ["auth/logout"];
         $data["font"] = ["sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability"];
-        $data["link"] = ["main/index", "screeners/add"];
-        $data["icon"] = ["calendar","user"];
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["icon"] = ["calendar","user", "check-square-o"];
       }
         
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
@@ -140,6 +148,8 @@ class Screeners extends CI_Controller {
       $data['last_name'] = $this->ion_auth->user()->row()->last_name;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
+
+      $this->load->model('Availability_model');
     
       // Getting Dates
       $morn_times = $this->input->post('morn_times');
@@ -221,26 +231,51 @@ class Screeners extends CI_Controller {
       if ($this->form_validation->run() === FALSE){
         if ($morn_time === [] && $eve_time === [] && $night_time === []) {
           // If User selects nothing
-          $this->session->set_flashdata("err", "Pick 1 or more date(s) for your availability.");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        console.log('hello');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
-          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
-          $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         else {
-          $this->session->set_flashdata("err", "Something went wrong!");
+          echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('error');
+                    });
+                </script>";
           return redirect('screeners/add', 'refresh');
         }
       }
       else {
-        $this->session->set_flashdata("success", "Availability Submitted Successfully!");
+        echo "
+                <script type='text/javascript'>
+                    $(document).ready(function(e) {
+                        notifyUser('success');
+                    });
+                </script>";
         return redirect('screeners/add', 'refresh');
       }
 
@@ -255,17 +290,17 @@ class Screeners extends CI_Controller {
        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
-       $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
+       $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+       $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+       $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
      } elseif ($this->ion_auth->in_group("hostpial admin")) {
        $data["userRole"] = "HOSPITAL ADMIN";
        $data["options"] = ["Logout"];
        $data["href"] = ["auth/logout"];
        $data["font"] = ["refresh", "sign-out"]; 
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "buildings", "insights", "activity", "reminders"];
+       $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+       $data["link"] = ["main/index", "screeners", "locations", "request/view"];
        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
      } else {
        $data["userRole"] = "SCREENER";
@@ -273,9 +308,9 @@ class Screeners extends CI_Controller {
        $data["href"] = ["auth/logout"];
        $data["font"] = ["sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Add Availability"];
-       $data["link"] = ["main/index", "screeners/add"];
-       $data["icon"] = ["calendar","user"];
+       $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+       $data["link"] = ["main/index", "screeners/add", "request/view"];
+       $data["icon"] = ["calendar","user", "check-square-o"];
      }
 
      $this->load->model('Screeners_model');

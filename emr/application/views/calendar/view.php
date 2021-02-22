@@ -24,7 +24,7 @@
               <?php endif ?>
                 <div class="x_panel">
                   <div class="x_title">
-                    <h2>Calendar Events <small>Sessions</small></h2>
+                    <h2>Schedule</h2>
                     <ul class="nav navbar-right panel_toolbox">
                       <li class="dropdown" style="float: right;">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
@@ -319,8 +319,8 @@
                     </div>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
-                    <button type="button" class="btn btn-primary" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request" style="color: white">Request Time-Off</a></button>
+                    <button type="button" class="btn btn-default antoclose2" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;" data-dismiss="modal" id="closeButton">Close</button>
+                    <button type="button" class="btn btn-primary" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request" style="color: white">New Request</a></button>
                     <center id = "loader">
                       <div class="loaderAnimation"></div>
                     </center>
