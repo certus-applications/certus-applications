@@ -101,34 +101,53 @@
                 <div class="col-md-9 col-md-3">
                   <div class="x_panel">
                     <div class="x_title">
-                      <h2>Availability</h2><ul class="nav navbar-right panel_toolbox">
-                      <li class="dropdown" style="float: right;">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
-                        <ul class="dropdown-menu" role="menu">
-                          <li>
-                            <a>View tomorrow</a>
-                          </li>
-                          <li>
-                            <a>View Feb 09</a>
-                          </li>
-                          <li>
-                            <a>View Feb 10</a>
-                          </li>
-                          <li>
-                            <a>View Feb 11</a>
-                          </li>
-                          <li>
-                            <a>View Feb 12</a>
-                          </li>
-                          <li>
-                            <a>View Feb 13</a>
-                          </li>
-                          <li>
-                            <a>View Feb 14</a>
-                          </li>
-                        </ul>
-                      </li>
-                    </ul>
+                      <h2>Availability</h2>
+                      <ul class="nav navbar-right panel_toolbox">
+                        <!-- <li class="dropdown" style="float: right;">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li>
+                              <a onclick="updateCookie('month'); return false;">Make month view default</a>
+                            </li>
+                            <li>
+                              <a onclick="updateCookie('agendaWeek'); return false;">Make week view default</a>
+                            </li>
+                            <li>
+                              <a onclick="updateCookie('agendaDay'); return false;">Make day view default</a>
+                            </li>
+                            <li>
+                              <a onclick="updateCookie('listMonth'); return false;">Make list view default</a>
+                            </li>
+                          </ul>
+                        </li> -->
+
+                        <li class="dropdown" style="float: right;">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
+                          <ul class="dropdown-menu" role="menu">
+                            <li>
+                              <a>View tomorrow</a>
+                            </li>
+                            <!-- <li>
+                              <a>View Feb 09</a>
+                            </li>
+                            <li>
+                              <a>View Feb 10</a>
+                            </li>
+                            <li>
+                              <a>View Feb 11</a>
+                            </li>
+                            <li>
+                              <a>View Feb 12</a>
+                            </li>
+                            <li>
+                              <a>View Feb 13</a>
+                            </li>
+                            <li>
+                              <a>View Feb 14</a>
+                            </li> -->
+                          </ul>
+                        </li>
+                      </ul>
                       <div class="clearfix"></div>
                     </div>
                     <div class="x_content" id = "external-events">
@@ -140,26 +159,16 @@
                           </a>
                           <div id="morning" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="morningShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Arjan Randall</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Edward Figueroa</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Bobbi Pennington</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Ed Bateman</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "morning"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>
@@ -167,28 +176,18 @@
                           <a class="panel-heading collapsed" role="tab" id="eveningShift" data-toggle="collapse" data-parent="#accordion" href="#evening" aria-expanded="false" aria-controls="evening">
                             <h4 class="panel-title" style="color: #73879C">Evening</h4>
                           </a>
-                          <div id="evening" class="panel-collapse collapse" role="tabpanel" aria-labelledby="eveningShift">
+                          <div id="evening" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eveningShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Killian Bellamy</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Jess Poole</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Callam Eaton</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Timur Grey</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "evening"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>
@@ -196,28 +195,18 @@
                           <a class="panel-heading collapsed" role="tab" id="nightShift" data-toggle="collapse" data-parent="#accordion" href="#night" aria-expanded="false" aria-controls="night">
                             <h4 class="panel-title" style="color: #73879C">Night</h4>
                           </a>
-                          <div id="night" class="panel-collapse collapse" role="tabpanel" aria-labelledby="nightShift">
+                          <div id="night" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="nightShift">
                             <ul class="list-unstyled msg_list">
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C" >Shirley Cross</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Hareem Cairns</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Neave Howe</div>
-                                </a>
-                              </li>
-                              <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-                                <a>
-                                    <div class='fc-event-main' style="color: #73879C">Chaya Finney</div>
-                                </a>
-                              </li>
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "night"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
                             </ul>
                           </div>
                         </div>

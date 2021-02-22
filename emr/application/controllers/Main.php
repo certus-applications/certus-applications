@@ -12,6 +12,7 @@ class Main extends CI_Controller {
 
     public function index(){
       $this->load->model('Schedule_model');
+      $this->load->model('Availability_model');
 
       if ($this->ion_auth->is_admin()) {
         $data["userRole"] = "ADMIN";
@@ -67,12 +68,13 @@ class Main extends CI_Controller {
 
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
+      $availabilityData["availabilities"] = $this->Availability_model->getAvailability();
               
      //$data['eventsAll'] = $this->Events_model->listAll();
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
-      $this->load->view('calendar/view');
+      $this->load->view('calendar/view', $availabilityData);
       $this->load->view('main/footer');
     }
 

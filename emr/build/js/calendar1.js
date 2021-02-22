@@ -1,6 +1,8 @@
 var eventArr = [];
 var description = document.getElementById('descr2');
 
+var baseURL = window.location.origin
+
 function get_locations() {
     var locations = [
         "MOR", "COX", "Receiving", "840C", "INF", 
@@ -22,7 +24,7 @@ function get_locations() {
 function get_data() {
     $(document).ready(function() {
         $.ajax({
-            url: 'http://certus.local/main/index',
+            url: baseURL + '/main/index',
             type: 'POST',
             dataType: 'json',
             success: function(data) {
@@ -77,10 +79,42 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
         }
 
         $.ajax({
-            url: 'http://certus.local/screeners/editSchedule/',
+            url: baseURL + '/screeners/editSchedule/',
             type: 'POST',
             dataType: 'json',
             data: scheduleData,
+            success: function(data) {
+              new PNotify({
+                title: 'Success',
+                text: 'Event updated!',
+                type: 'success',
+                styling: 'bootstrap3',
+                delay: 2000
+              });
+            },
+            error: function(data) {
+                console.log('error');
+            }
+        });
+    });
+
+}
+
+function add_schedule_data(firstName, lastName, startTime, endTime, locationName) {
+    $(document).ready(function() {
+        var newScheduleData = {
+            first_name: firstName,
+            last_name: lastName,
+            start: startTime,
+            end: endTime,
+            location: locationName
+        }
+
+        $.ajax({
+            url: baseURL + 'screeners/addSchedule/',
+            type: 'POST',
+            dataType: 'json',
+            data: newScheduleData,
             success: function(data) {
               new PNotify({
                 title: 'Success',
@@ -192,7 +226,12 @@ function init_calendar(eventArr, accountType) {
             hoursEnd = (dateTimeEnd.getHours()+5).toString().padStart(2, '0');
             minutesEnd = dateTimeEnd.getMinutes().toString().padStart(2, '0')
 
-            endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd) 
+            endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd)
+
+            if (calEvent.scheduleid == null && dateTimeEnd == "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
+                hoursEnd = (dateTimeStart.getHours()+7).toString().padStart(2, '0');
+                endDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursEnd + ':' + minutesStart)
+            } 
 
             $('#fc_edit').click();
             $('#title2').val(calEvent.title);
@@ -209,6 +248,7 @@ function init_calendar(eventArr, accountType) {
                 event.preventDefault();
                 PNotify.removeAll()
 
+                calEvent.title = $('#title2').val();
                 calEvent.location = $('#location').val();
                 calEvent.startDateTime = $('#start').val();
                 calEvent.endDateTime = $('#end').val();
@@ -240,8 +280,15 @@ function init_calendar(eventArr, accountType) {
                     saveButton.style.display = "none";
                     closeButton.style.display = "none";
 
-
-                    set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                    // check if scheduleid is null, if its null send data to a new function else to set_sechdule)data function
+                    if (calEvent.scheduleid == null) {
+                        PNotify.removeAll()
+                        var first_name = calEvent.title.split(" ")[0];
+                        var last_name = calEvent.title.split(" ")[1];
+                        add_schedule_data(first_name, last_name, calEvent.startDateTime, calEvent.endDateTime, calEvent.location);
+                    } else {
+                        set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                    }
                     setTimeout(function () {
                         location.reload(true);
                     }, 2000);
@@ -257,9 +304,25 @@ function init_calendar(eventArr, accountType) {
         },
         editable: ((accountType == 'admin') ? true : false),
         eventDrop: function(event, delta, revertFunc) {
+            PNotify.removeAll()
             if (accountType == 'admin') {
-                set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
+                if (event.scheduleid == null) {
+                    var first_name = event.title.split(" ")[0];
+                    var last_name = event.title.split(" ")[1];
+                    // add_schedule_data(first_name, last_name, event.start.format(), event.end.format(), event.location);
+                } else {
+                    set_schedule_data(event.start.format(), event.end.format(), event.location, event.scheduleid)
+                }
             }
+        },
+        drop: function(info) {
+            new PNotify({
+                title: 'Note',
+                text: 'Location must be added for event to be saved!',
+                type: 'info',
+                styling: 'bootstrap3',
+                delay: 3000
+            });
         },
         events: eventArr,
         eventRender: function eventRender( event, element, view ) {
@@ -283,7 +346,29 @@ function init_calendar(eventArr, accountType) {
                 } else {
                     element.css('display', 'none');
                 }
-            });                 
+            });
+
+            // if (event.scheduleid == null) {
+                // $('#CalenderModalEdit').modal('show');
+
+            //     var first_name = event.title.split(" ")[0];
+            //     var last_name = event.title.split(" ")[1];
+            //     console.log(first_name);
+            //     console.log(last_name);
+
+            //     dateTimeStart = new Date(event.start);
+            //     yearStart = dateTimeStart.getFullYear().toString().padStart(4, '0');
+            //     monthStart = (dateTimeStart.getMonth()+1).toString().padStart(2, '0');
+            //     dayStart = dateTimeStart.getDate().toString().padStart(2, '0');
+            //     hoursStart = (dateTimeStart.getHours()+5).toString().padStart(2, '0');
+            //     hoursEnd = (dateTimeStart.getHours()+6).toString().padStart(2, '0');
+            //     minutesStart = dateTimeStart.getMinutes().toString().padStart(2, '0')
+
+            //     startDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursStart + ':' + minutesStart)
+            //     endDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursEnd + ':' + minutesStart)
+            //     console.log(startDateTime);
+            //     console.log(endDateTime);
+            // }                
         }
     });
 
@@ -330,5 +415,4 @@ function findCookie(cname) {
   }
   return "";
 }
-
 createCookie()

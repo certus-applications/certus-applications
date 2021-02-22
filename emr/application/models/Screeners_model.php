@@ -56,4 +56,9 @@
         $this->db->where('id', $id);
         $this->db->update('schedule', $scheduleData);
       }
+
+      public function addSchedule($scheduleData){
+        extract($scheduleData);
+        $this->db->insert('schedule', $scheduleData);
+      }
     }
