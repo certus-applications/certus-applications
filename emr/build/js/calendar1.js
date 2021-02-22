@@ -273,12 +273,39 @@ function init_calendar(eventArr, accountType) {
                 } else {
                     element.css('display', 'none');
                 }
-            });                
+            });
+
+
+            $("#nameFilter").click(function() {
+                var nameToSearch = $('#nameToSearch').val().toLowerCase();
+                if (event.title.toLowerCase().includes(nameToSearch)) {
+                    element.css('display', 'block');
+                } else {
+                    element.css('display', 'none');
+                }
+            });                 
         }
     });
 
     $('#buildingFilter').on('change',function(){
         $('#calendar').fullCalendar('rerenderEvents');
+    })
+
+    $('#nameFilter').on('change',function(){
+        $('#calendar').fullCalendar('rerenderEvents');
+    })
+
+    var input = document.getElementById("nameToSearch");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            new PNotify({
+                title: 'Note',
+                text: 'Must click "Go!" for filter to work!',
+                type: 'info',
+                styling: 'bootstrap3',
+                delay: 3000
+            });
+        }
     })
 }
 
