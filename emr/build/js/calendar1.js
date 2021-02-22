@@ -46,9 +46,25 @@ function get_data() {
                             color = '#9370DB'
                         } else if (eventArray.location === 'CAC') {
                             color = '#DA70D6'
-                        } else if (eventArray.location === 'OHS DC') {
+                        } else if (eventArray.location === 'OHS') {
                             color = '#20B2AA'
-                        }
+                        } else if (eventArray.location === 'Vaccine') {
+                            color = '#FF8C00'
+                        } else if (eventArray.location === '840C') {
+                            color = '#FF4500'
+                        } else if (eventArray.location === 'INF') {
+                            color = '#DC143C'
+                        } else if (eventArray.location === 'PAE') {
+                            color = '#C71585'
+                        } else if (eventArray.location === 'D1') {
+                            color = '#663399'
+                        } else if (eventArray.location === 'J-Wing') {
+                            color = '#000080'
+                        } else if (eventArray.location === 'Receiving') {
+                            color = '#800000'
+                        }  else if (eventArray.location === 'BRK') {
+                            color = '#32CD32'
+                        } 
 
                         eventArr.push({
                             title: fullName,
