@@ -28,12 +28,7 @@
 										Email<input class="form-control" type="email" name="email" placeholder="<?php echo $email?>" readonly>
 									</fieldset>
 								</div>
-								
-								<div class="col-sm-6">
-									<fieldset class="form-group">   
-										Employee Number<input class="form-control" type="text" name="employeeid" placeholder="<?php echo $employeeid?>" readonly>
-									</fieldset>
-								</div>
+
 							</tbody>
 						</div>
 
