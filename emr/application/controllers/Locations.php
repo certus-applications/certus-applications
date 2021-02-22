@@ -18,8 +18,8 @@ class Locations extends CI_Controller {
 			$data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
 			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
+			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
 		} elseif ($this->ion_auth->in_group("hostpial admin")) {
 			$data["userRole"] = "HOSPITAL ADMIN";
 			$data["options"] = ["Logout"];
@@ -27,8 +27,8 @@ class Locations extends CI_Controller {
 			$data["font"] = ["refresh", "sign-out"];
 
 			$data["sideMenu"] = ["Calendar", "Screeners", "Locatons", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"]; 
+			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"]; 
 		} else {
 			$data["userRole"] = "SCREENER";
 			$data["options"] = ["Logout"];
@@ -60,8 +60,8 @@ class Locations extends CI_Controller {
 			$data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
 			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
+			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
 		} elseif ($this->ion_auth->in_group("hostpial admin")) {
 			$data["userRole"] = "HOSPITAL ADMIN";
 			$data["options"] = ["Logout"];
@@ -69,8 +69,8 @@ class Locations extends CI_Controller {
 			$data["font"] = ["refresh", "sign-out"];
 
 			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "insights", "activity", "reminders"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];   
+			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
 		} else {
 			$data["userRole"] = "SCREENER";
 			$data["options"] = ["Logout"];
