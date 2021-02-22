@@ -113,8 +113,8 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of submission</th>
-                        <th>Current Schedule</th>
-                        <th>Requested Dates(s) for New Shift Update</th>
+                        <th>Current Availability</th>
+                        <th>Requested Availability</th>
                         <th>Status</th>
                         </tr>
                     </thead>
@@ -128,7 +128,30 @@
                                 <td><?php echo $availability['first_name'];?></td>
                                 <td><?php echo $availability['last_name'];?></td>
                                 <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
-                                <td>Shift(s) Updated</td> 
+                                <td>
+                                    <?php 
+                                        $day = date('w'); 
+                                        $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                        foreach($screenerAvail as $view) {
+                                            $time = date('Y-m-d', strtotime($view['start']));
+                                            
+                                            if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
+                                                if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                    }
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                    }
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Night'.' ';
+                                                    }
+                                                }
+                                            }
+                                        }                              
+                                    ?>
+                                </td> 
                                 <td>
                                     <?php 
                                         for ($i = 0; $i < sizeof($date_req); $i++) {
@@ -147,11 +170,21 @@
                                     <?php 
                                         $day = date('w'); 
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                        foreach($screenerSche as $view) {
+                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                        foreach($screenerAvail as $view) {
+                                            $time = date('Y-m-d', strtotime($view['start']));
+                                            
                                             if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
-                                                    echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Morn'.'<br>';
+                                                    }
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Eve'.'<br>';
+                                                    }
+                                                    if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                        echo date("l, M jS", strtotime($view['start'])).' - Night'.'<br>';
+                                                    }
                                                 }
                                             }
                                         }                              
@@ -172,18 +205,28 @@
                                 <td><?php echo $availability['last_name'];?></td>
                                 <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                                 <td>
-                                    <?php 
-                                        $day = date('w'); 
-                                        $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-                                        $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                        foreach($screenerSche as $view) {
-                                            if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
-                                                if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
-                                                    echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                <?php 
+                                    $day = date('w'); 
+                                    $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                    $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                    foreach($screenerAvail as $view) {
+                                        $time = date('Y-m-d', strtotime($view['start']));
+                                        
+                                        if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
+                                            if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                    echo date("l", strtotime($view['start'])).' - Morn'.'<br>';
+                                                }
+                                                if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                    echo date("l", strtotime($view['start'])).' - Eve'.'<br>';
+                                                }
+                                                if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                    echo date("l", strtotime($view['start'])).' - Night'.'<br>';
                                                 }
                                             }
-                                        }                              
-                                    ?>
+                                        }
+                                    }                              
+                                ?>
                                 </td> 
                                 <td>
                                     <?php 
@@ -303,8 +346,8 @@
                                     <thead>
                                     <tr>
                                         <th>Date of submission</th>
-                                        <th>Current Schedule</th>
-                                        <th>Requested Dates(s) for New Shift Update</th>
+                                        <th>Current Availability</th>
+                                        <th>Requested Availability</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>
@@ -316,7 +359,28 @@
                                     <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
                                         <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td>Shift(s) Updated</td> 
+                                            <?php 
+                                                $day = date('w'); 
+                                                $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                                foreach($screenerAvail as $view) {
+                                                    $time = date('Y-m-d', strtotime($view['start']));
+                                                    
+                                                    if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
+                                                        if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Morn'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Eve'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Night'.'<br>';
+                                                            }
+                                                        }
+                                                    }
+                                                }                              
+                                            ?>
                                             <td>
                                                 <?php 
                                                     for ($i = 0; $i < sizeof($date_req); $i++) {
@@ -329,20 +393,28 @@
                                     <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Request Shift Change')) { ?>
                                         <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
-                                            <td>
-                                                <?php 
-                                                    $day = date('w'); 
-                                                    $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-                                                    $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                                    foreach($screenerSche as $view) {
-                                                        if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
-                                                            if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
-                                                                echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                            <?php 
+                                                $day = date('w'); 
+                                                $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                                foreach($screenerAvail as $view) {
+                                                    $time = date('Y-m-d', strtotime($view['start']));
+                                                    
+                                                    if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
+                                                        if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Morn'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Eve'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                                echo date("l", strtotime($view['start'])).' - Night'.'<br>';
                                                             }
                                                         }
-                                                    }                              
-                                                ?>
-                                            </td> 
+                                                    }
+                                                }                              
+                                            ?>
                                             <td>
                                                 <?php 
                                                     for ($i = 0; $i < sizeof($date_req); $i++) {
@@ -356,18 +428,28 @@
                                         <tr>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
-                                                <?php 
-                                                    $day = date('w'); 
-                                                    $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-                                                    $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                                    foreach($screenerSche as $view) {
-                                                        if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
-                                                            if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
-                                                                echo date("M jS, Y", strtotime($view['start'])).'<br>';
+                                            <?php 
+                                                $day = date('w'); 
+                                                $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+                                                $week_end = date('Y-m-d H:i:s', strtotime('+'.(7-$day).' days'));
+                                                foreach($screenerAvail as $view) {
+                                                    $time = date('Y-m-d', strtotime($view['start']));
+                                                    
+                                                    if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
+                                                        if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+                                                                echo date("l, M jS", strtotime($view['start'])).' - Morn'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+                                                                echo date("l, M jS", strtotime($view['start'])).' - Eve'.'<br>';
+                                                            }
+                                                            if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+                                                                echo date("l, M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                             }
                                                         }
-                                                    }                              
-                                                ?>
+                                                    }
+                                                }                              
+                                            ?>
                                             </td> 
                                             <td>
                                                 <?php 
