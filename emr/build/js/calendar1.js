@@ -294,6 +294,19 @@ function init_calendar(eventArr, accountType) {
     $('#nameFilter').on('change',function(){
         $('#calendar').fullCalendar('rerenderEvents');
     })
+
+    var input = document.getElementById("nameToSearch");
+    input.addEventListener("keyup", function(event) {
+        if (event.keyCode === 13) {
+            new PNotify({
+                title: 'Note',
+                text: 'Must click "Go!" for filter to work!',
+                type: 'info',
+                styling: 'bootstrap3',
+                delay: 3000
+            });
+        }
+    })
 }
 
 function createCookie() {
