@@ -1,6 +1,8 @@
 var eventArr = [];
 var description = document.getElementById('descr2');
 
+var baseURL = window.location.origin
+
 function get_locations() {
     var locations = [
         "MOR", "COX", "Receiving", "840C", "INF", 
@@ -22,7 +24,7 @@ function get_locations() {
 function get_data() {
     $(document).ready(function() {
         $.ajax({
-            url: 'http://certus.local/main/index',
+            url: baseURL + '/main/index',
             type: 'POST',
             dataType: 'json',
             success: function(data) {
@@ -77,7 +79,7 @@ function set_schedule_data(startTime, endTime, locationName, scheduleid) {
         }
 
         $.ajax({
-            url: 'http://certus.local/screeners/editSchedule/',
+            url: baseURL + '/screeners/editSchedule/',
             type: 'POST',
             dataType: 'json',
             data: scheduleData,
@@ -109,7 +111,7 @@ function add_schedule_data(firstName, lastName, startTime, endTime, locationName
         }
 
         $.ajax({
-            url: 'http://certus.local/screeners/addSchedule/',
+            url: baseURL + 'screeners/addSchedule/',
             type: 'POST',
             dataType: 'json',
             data: newScheduleData,
@@ -413,5 +415,4 @@ function findCookie(cname) {
   }
   return "";
 }
-
 createCookie()
