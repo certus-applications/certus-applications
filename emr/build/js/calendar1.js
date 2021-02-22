@@ -267,14 +267,6 @@ function init_calendar(eventArr, accountType) {
                         styling: 'bootstrap3',
                         delay: 2000
                     });
-                } else if (timeDifference > 8) {
-                    new PNotify({
-                        title: 'Error!',
-                        text: 'A shift must be less than 8 hours.',
-                        type: 'error',
-                        styling: 'bootstrap3',
-                        delay: 2000
-                    });
                 } else {
                     var saveButton = document.getElementById("saveButton");
                     var closeButton = document.getElementById("closeButton");
