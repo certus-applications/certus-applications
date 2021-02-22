@@ -56,6 +56,7 @@ function get_data() {
                             end: eventArray.end,
                             location: eventArray.location,
                             scheduleid: eventArray.id,
+                            employeeid: eventArray.employeeid,
                             color: color
                         })
                     })
