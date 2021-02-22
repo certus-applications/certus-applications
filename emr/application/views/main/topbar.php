@@ -24,9 +24,9 @@
                 <li role="presentation" class="dropdown">
                   <a href="javascript:;" class="dropdown-toggle info-number" data-toggle="dropdown" aria-expanded="false">
                     <i class="fa fa-envelope-o"></i>
-                    <span class="badge" style="background: #B2D235 !important; border: 1px solid #B2D235 !important;">3</span>
+                    <span class="badge" style="background: #B2D235 !important; border: 1px solid #B2D235 !important;"></span>
                   </a>
-                  <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
+                  <!-- <ul id="menu1" class="dropdown-menu list-unstyled msg_list" role="menu">
                     <li>
                       <a>
                         <span>
@@ -70,7 +70,7 @@
                         </a>
                       </div>
                     </li>
-                  </ul>
+                  </ul> -->
                 </li>
               </ul>
             </nav>
