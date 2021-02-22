@@ -307,5 +307,19 @@ class Screeners extends CI_Controller {
       // }
     }
 
+    public function addSchedule(){
+      $newScheduleData = array(
+        'first_name' => $this->input->post('first_name'),
+        'last_name' => $this->input->post('last_name'),
+        'location' => $this->input->post('location'),
+        'start' => $this->input->post('start'),
+        'end' => $this->input->post('end')
+
+      );
+      $this->load->model('Screeners_model');
+      $this->Screeners_model->addSchedule($newScheduleData);
+      return redirect('main/index');
+    }
+
     
 }
