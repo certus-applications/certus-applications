@@ -111,7 +111,7 @@ function add_schedule_data(firstName, lastName, startTime, endTime, locationName
         }
 
         $.ajax({
-            url: baseURL + 'screeners/addSchedule/',
+            url: baseURL + '/screeners/addSchedule/',
             type: 'POST',
             dataType: 'json',
             data: newScheduleData,
