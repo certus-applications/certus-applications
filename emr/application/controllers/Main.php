@@ -19,9 +19,9 @@ class Main extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 
@@ -36,9 +36,9 @@ class Main extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
-        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];    
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];    
 
         $scheduleData['scheduleView'] = $this->Schedule_model->getSchedule();
 

@@ -18,8 +18,8 @@ class Screeners extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"]; 
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
@@ -27,8 +27,8 @@ class Screeners extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];  
       } else {
         redirect('main/index', 'refresh');
@@ -54,8 +54,8 @@ class Screeners extends CI_Controller {
         $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
         $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];      
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
@@ -63,8 +63,8 @@ class Screeners extends CI_Controller {
         $data["href"] = ["auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-        $data["link"] = ["main/index", "screeners", "billing", "request/view"];
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
       } else {
         $data["userRole"] = "SCREENER";
@@ -282,8 +282,8 @@ class Screeners extends CI_Controller {
        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "billing", "request/view"];
+       $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+       $data["link"] = ["main/index", "screeners", "locations", "request/view"];
        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
      } elseif ($this->ion_auth->in_group("hostpial admin")) {
        $data["userRole"] = "HOSPITAL ADMIN";
@@ -291,9 +291,9 @@ class Screeners extends CI_Controller {
        $data["href"] = ["auth/logout"];
        $data["font"] = ["refresh", "sign-out"]; 
 
-       $data["sideMenu"] = ["Calendar", "Screeners", "Buildings", "Requests"];
-       $data["link"] = ["main/index", "screeners", "billing", "request/view"];
-       $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
+       $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+       $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+       $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
      } else {
        $data["userRole"] = "SCREENER";
        $data["options"] = ["Logout"];
