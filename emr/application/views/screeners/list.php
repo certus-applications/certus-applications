@@ -8,7 +8,7 @@
             <div class="x_title">
               <h2>MGH <small>Screeners</small></h2>
               <ul class="nav navbar-right panel_toolbox">
-                <li><a href="screeners/add"><button  type="submit" class="btn btn-success">Add Availability</button></a></li>
+                <li><a href="auth/create_user"><button  type="submit" class="btn btn-success">Add Screeners</button></a></li>
               </ul>
               <div class="clearfix"></div>
             </div>
