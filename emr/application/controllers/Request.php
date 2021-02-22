@@ -45,8 +45,10 @@ class Request extends CI_Controller {
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
 
       $employeeid = $this->ion_auth->user()->row()->employeeid;
+      $firstName = $this->ion_auth->user()->row()->first_name;
+      $lastName = $this->ion_auth->user()->row()->last_name;
       $this->load->model('Schedule_model');
-      $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
+      $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($firstName, $lastName);
 
       // Week 1 and week 2 timespan
       $day = date('w'); 
@@ -63,7 +65,7 @@ class Request extends CI_Controller {
       $data['week_2start'] = $week_2start;
       $data['week_2end'] = $week_2end;
       $data['datesArr'] = $datesArr;
-      $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
+      // $data['screenerSche'] = $this->Schedule_model->getScheduleScreener($employeeid);
 
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);

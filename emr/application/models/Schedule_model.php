@@ -14,10 +14,11 @@ class Schedule_model extends CI_Model {
         return $returnData;
     }
 
-    public function getScheduleScreener($employeeid){
+    public function getScheduleScreener($firstName, $lastName){
         $this->db->select('*');
         $this->db->from('schedule');
-        $this->db->where('employeeid', $employeeid);
+        $this->db->where('first_name', $firstName);
+        $this->db->where('last_name', $lastName);
         $query=$this->db->get();
         return $query->result_array();
     }
