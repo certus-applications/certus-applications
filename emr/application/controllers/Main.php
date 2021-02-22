@@ -57,8 +57,11 @@ class Main extends CI_Controller {
         $data["link"] = ["main/index", "screeners/add", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];
 
-        $employeeid = $this->ion_auth->user()->row()->employeeid;
-        $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($employeeid);
+        // $employeeid = $this->ion_auth->user()->row()->employeeid;
+        // $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($employeeid);
+        $first_name = $this->ion_auth->user()->row()->first_name;
+        $last_name = $this->ion_auth->user()->row()->last_name;
+        $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreenerByName($first_name, $last_name);
 
         if ($this->input->is_ajax_request()) {
           echo json_encode($screenerScheduleData);
