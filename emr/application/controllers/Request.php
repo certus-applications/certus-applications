@@ -205,9 +205,12 @@ class Request extends CI_Controller {
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       
       $employeeid = $this->ion_auth->user()->row()->employeeid;
+
+      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       $this->load->model('Schedule_model');
       $data['screenerSche'] = $this->Schedule_model->getSchedule();
-      $data['viewReq'] = $this->Request_model->viewRequest($employeeid);
+      // $data['viewReq'] = $this->Request_model->viewRequest($employeeid);
+      $data['viewReq'] = $this->Request_model->getAvailability();
 
 
       $this->load->view('main/header');

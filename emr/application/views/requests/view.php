@@ -149,7 +149,7 @@
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                         $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
                                         foreach($screenerSche as $view) {
-                                            if($availability['employeeid'] == $view['employeeid']) {
+                                            if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                     echo date("M jS, Y", strtotime($view['start'])).'<br>';
                                                 }
@@ -168,7 +168,7 @@
                             </tr>
                         <?php } elseif ($availability['timeoff_type']=='Request Shift Change') { ?>
                             <tr style="background-color: none;">
-                                <td><?php echo $availability['first_name'];?></td>
+                                <td><?php echo $availability['first_name'];?></td>                                  
                                 <td><?php echo $availability['last_name'];?></td>
                                 <td><?php echo date("M jS, Y", strtotime($availability['timestamp'])); ?></td>
                                 <td>
@@ -177,7 +177,7 @@
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                         $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
                                         foreach($screenerSche as $view) {
-                                            if($availability['employeeid'] == $view['employeeid']) {
+                                            if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                     echo date("M jS, Y", strtotime($view['start'])).'<br>';
                                                 }
@@ -335,7 +335,7 @@
                                                     $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                                     $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
                                                     foreach($screenerSche as $view) {
-                                                        if($availability['employeeid'] == $view['employeeid']) {
+                                                        if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                             if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                                 echo date("M jS, Y", strtotime($view['start'])).'<br>';
                                                             }
@@ -361,7 +361,7 @@
                                                     $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                                     $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
                                                     foreach($screenerSche as $view) {
-                                                        if($availability['employeeid'] == $view['employeeid']) {
+                                                        if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                             if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                                 echo date("M jS, Y", strtotime($view['start'])).'<br>';
                                                             }
