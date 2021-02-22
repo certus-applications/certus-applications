@@ -21,6 +21,10 @@ class Screeners extends CI_Controller {
         $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
         $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
+
+        $this->load->model('Screeners_model');
+        $data['screenersAll'] = $this->Screeners_model->listAll();
+
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
         $data["options"] = ["Logout"];
@@ -30,6 +34,10 @@ class Screeners extends CI_Controller {
         $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
         $data["link"] = ["main/index", "screeners", "locations", "request/view"];
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];  
+
+        $this->load->model('Screeners_model');
+        $data['screenersAll'] = $this->Screeners_model->listAll();
+
       } else {
         redirect('main/index', 'refresh');
       }
@@ -41,7 +49,7 @@ class Screeners extends CI_Controller {
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
       //passing the data in list
-      $data['clientsAll'] = $this->Screeners_model->listAll();
+      
       $this->load->view('screeners/list', $data);
       $this->load->view('main/footer');
     }

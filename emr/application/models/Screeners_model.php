@@ -7,8 +7,9 @@
       }
 
       public function listAll(){
-      	$this->db->select('*');
-      	$this->db->from('clients');
+        $this->db->select('*');
+        $this->db->group_by('employeeid');
+      	$this->db->from('schedule');
       	$query=$this->db->get();
         $returnData = $query->result_array();
       	return $returnData;
