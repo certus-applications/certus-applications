@@ -6,9 +6,10 @@
               <div class="title_right">
                 <div class="col-md-3 col-sm-3  form-group pull-right top_search">
                   <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search by name...">
+                    <input type="text" class="form-control" placeholder="Search by name..." id="nameToSearch">
                     <span class="input-group-btn">
-                      <button class="btn btn-default" type="button">Go!</button>
+                      <button class="btn btn-default" type="button" id="nameFilter">Go!</button>
+                      <button class="btn btn-default" type="button" id="nameFilter">Clear!</button>
                     </span>
                   </div>
                 </div>

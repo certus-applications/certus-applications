@@ -273,11 +273,27 @@ function init_calendar(eventArr, accountType) {
                 } else {
                     element.css('display', 'none');
                 }
-            });                
+            });
+
+
+            $("#nameFilter").click(function() {
+                var nameToSearch = $('#nameToSearch').val().toLowerCase();
+                console.log(nameToSearch);
+                if (event.title.toLowerCase().includes(nameToSearch)) {
+                    // console.log(event.title);
+                    element.css('display', 'block');
+                } else {
+                    element.css('display', 'none');
+                }
+            });                 
         }
     });
 
     $('#buildingFilter').on('change',function(){
+        $('#calendar').fullCalendar('rerenderEvents');
+    })
+
+    $('#nameFilter').on('change',function(){
         $('#calendar').fullCalendar('rerenderEvents');
     })
 }
