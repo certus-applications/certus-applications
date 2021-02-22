@@ -278,9 +278,7 @@ function init_calendar(eventArr, accountType) {
 
             $("#nameFilter").click(function() {
                 var nameToSearch = $('#nameToSearch').val().toLowerCase();
-                console.log(nameToSearch);
                 if (event.title.toLowerCase().includes(nameToSearch)) {
-                    // console.log(event.title);
                     element.css('display', 'block');
                 } else {
                     element.css('display', 'none');

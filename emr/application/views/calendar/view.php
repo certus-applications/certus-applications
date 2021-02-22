@@ -9,7 +9,6 @@
                     <input type="text" class="form-control" placeholder="Search by name..." id="nameToSearch">
                     <span class="input-group-btn">
                       <button class="btn btn-default" type="button" id="nameFilter">Go!</button>
-                      <button class="btn btn-default" type="button" id="nameFilter">Clear!</button>
                     </span>
                   </div>
                 </div>
