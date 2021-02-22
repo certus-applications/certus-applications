@@ -35,8 +35,9 @@ class Schedule_model extends CI_Model {
     }
 
     
-    public function deleteSchedule($employeeid, $start_date){
-        $this->db->where('employeeid', $employeeid);
+    public function deleteSchedule($firstName, $lastName, $start_date){
+        $this->db->where('first_name', $firstName);
+        $this->db->where('last_name', $lastName);        
         $this->db->where('start', $start_date);
         $this->db->delete('schedule');
     }

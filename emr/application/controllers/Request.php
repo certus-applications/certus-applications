@@ -142,9 +142,14 @@ class Request extends CI_Controller {
           $my_dt = new DateTime($date[$i]);
           // $expires_at = $my_dt->modify(' +8 hour');
           $send_date = $my_dt->format('Y-m-d H:i:s');
-          $employeeid = $this->input->post('employeeid');
+          // $employeeid = $this->input->post('employeeid');
+
+          // Using first and last name to delete from schedule
+          $firstName = $this->input->post('firstname');
+          $lastName = $this->input->post('lastname');
+
           $this->load->model('Schedule_model');
-          $this->Schedule_model->deleteSchedule($employeeid, $send_date);
+          $this->Schedule_model->deleteSchedule($firstName, $lastName, $send_date);
         }      
         $this->Request_model->updateRequest($update_req);
         return redirect('request/view');

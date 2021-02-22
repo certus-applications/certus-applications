@@ -88,10 +88,13 @@
                                 </td>                            
                                 <td><?php echo $availability['reason'];?></td>
                                 <td>
-                                        <input type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
-                                        <input type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
+                                        <input id="status" type="submit" class="btn btn-danger btn-xs"  name="choice" value="Decline"></button>
+                                        <input id="status" type="submit" class="btn btn-success btn-xs" name="choice" value="Approve"></button>
                                         <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $availability['id']; ?>">
                                         <input type="hidden" class="form-control" id="employeeid" name="employeeid" value="<?php echo $availability['employeeid']; ?>">
+
+                                        <input type="hidden" class="form-control" id="firstname" name="firstname" value="<?php echo $availability['first_name']; ?>">
+                                        <input type="hidden" class="form-control" id="lastname" name="lastname" value="<?php echo $availability['last_name']; ?>">
                                     <?php echo form_close(); ?>
                                 </td>
                             </tr>
