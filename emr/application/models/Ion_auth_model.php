@@ -1802,15 +1802,15 @@ class Ion_auth_model extends CI_Model
 
 		$user = $this->user($id)->row();
 
-		$this->db->select('employeeid');
-        $this->db->from('users');
-		$this->db->where('employeeid', $data['employeeid']);
-      	$query = $this->db->get();
+		// $this->db->select('employeeid');
+  //       $this->db->from('users');
+		// $this->db->where('employeeid', $data['employeeid']);
+  //     	$query = $this->db->get();
 
-      	if ($query->num_rows() > 0) 
-      	{
-      		$this->set_error('duplicate_employeeid');
-      	}
+  //     	if ($query->num_rows() > 0) 
+  //     	{
+  //     		$this->set_error('duplicate_employeeid');
+  //     	}
 
 		$this->db->trans_begin();
 

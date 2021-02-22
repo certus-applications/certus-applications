@@ -606,7 +606,7 @@ class Auth extends CI_Controller
 		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'trim|required');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'trim|required');
-		$this->form_validation->set_rules('employeeid', $this->lang->line('edit_user_validation_employeeid_label'), 'trim|required');
+		// $this->form_validation->set_rules('employeeid', $this->lang->line('edit_user_validation_employeeid_label'), 'trim|required');
 		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'trim');
 
 		if (isset($_POST) && !empty($_POST))
@@ -638,10 +638,10 @@ class Auth extends CI_Controller
 					$data['password'] = $this->input->post('password');
 				}
 
-				if ($this->input->post('employeeid'))
-				{
-					$data['employeeid'] = $this->input->post('employeeid');
-				}
+				// if ($this->input->post('employeeid'))
+				// {
+				// 	$data['employeeid'] = $this->input->post('employeeid');
+				// }
 
 				// Only allow updating groups if user is admin
 				if ($this->ion_auth->is_admin())
@@ -708,12 +708,12 @@ class Auth extends CI_Controller
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('company', $user->company),
 		];
-		$this->data['employeeid'] = [
-			'name'  => 'employeeid',
-			'id'    => 'employeeid',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('employeeid', $user->employeeid),
-		];
+		// $this->data['employeeid'] = [
+		// 	'name'  => 'employeeid',
+		// 	'id'    => 'employeeid',
+		// 	'type'  => 'text',
+		// 	'value' => $this->form_validation->set_value('employeeid', $user->employeeid),
+		// ];
 		$this->data['password'] = [
 			'name' => 'password',
 			'id'   => 'password',
