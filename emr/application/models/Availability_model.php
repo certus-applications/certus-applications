@@ -8,6 +8,7 @@ class Availability_model extends CI_Model {
     public function getAvailability(){
         $this->db->select('*');
         $this->db->from('availability');
+        $this->db->order_by('start','ASC');
         $query=$this->db->get();
         $returnData = $query->result_array();
         
