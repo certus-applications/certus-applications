@@ -115,7 +115,7 @@
                                                 <div class="col-xs-6">
                                                     <ul class="nav navbar-right panel_toolbox">
                                                         <li>
-                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="main/index" style="color: white">Back</a></button>
+                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request/view" style="color: white">Back</a></button>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -172,7 +172,7 @@
                                                 <div class="col-xs-6">
                                                     <ul class="nav navbar-right panel_toolbox">
                                                         <li>
-                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="main/index" style="color: white">Back</a></button>
+                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="request/view" style="color: white">Back</a></button>
                                                         </li>
                                                     </ul>
                                                 </div>
