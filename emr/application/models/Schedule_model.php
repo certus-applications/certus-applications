@@ -19,6 +19,7 @@ class Schedule_model extends CI_Model {
         $this->db->from('schedule');
         $this->db->where('first_name', $firstName);
         $this->db->where('last_name', $lastName);
+        $this->db->order_by('start','ASC');
         $query=$this->db->get();
         return $query->result_array();
     }

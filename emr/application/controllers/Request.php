@@ -74,8 +74,8 @@ class Request extends CI_Controller {
       $this->load->view('main/footer');
     }
 
-    // Screeners Add
-    public function add() {
+    // Screeners Add Time Off
+    public function addTimeOff() {
       // User info to send to database
       $data['first_name'] = $this->ion_auth->user()->row()->first_name;
       $data['last_name'] = $this->ion_auth->user()->row()->last_name;
@@ -84,18 +84,9 @@ class Request extends CI_Controller {
       $type = $this->input->post('timeoff_type');
       $text = $this->input->post('other-text');
       $timeoff_type1 = $this->input->post('timeoffType1');
-      $timeoff_type2 = $this->input->post('timeoffType2');
-      $new_dates = $this->input->post('dates');
       $shifts = $this->input->post('shift_date');
       
       
-      if ($new_dates != null) {
-        $date = json_encode($new_dates);
-        $timeoff_type = $timeoff_type2;
-      } else {
-        $date = NULL;
-        $timeoff_type = $timeoff_type1;
-      }
 
       if ($shifts != null) {
         $shift = json_encode($shifts);
@@ -109,10 +100,44 @@ class Request extends CI_Controller {
         'last_name' => $data['last_name'],
         'timestamp' => date('Y-m-d H:i:s'),
         'employeeid' => $data['employeeid'],
-        'timeoff_type' => $timeoff_type,
+        'timeoff_type' => $timeoff_type1,
         'updated_start_req' => $date,
         'timeoff_shift' => $shift,
         'reason' => $type.' '.$text
+      );
+
+
+      $this->Request_model->addRequest($request);
+
+      return redirect('request', 'refresh');
+    }
+
+    // Screeners Add Shift Req
+    public function addShiftReq() {
+      // User info to send to database
+      $data['first_name'] = $this->ion_auth->user()->row()->first_name;
+      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+      $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;  
+
+      $new_dates = $this->input->post('dates');
+      $timeoff_type2 = $this->input->post('timeoffType2');
+      
+      
+      if ($new_dates != null) {
+        $date = json_encode($new_dates);
+      } else {
+        $date = [];
+      }
+
+
+
+      $request = array(
+        'first_name' => $data['first_name'],
+        'last_name' => $data['last_name'],
+        'employeeid' => $data['employeeid'],
+        'timestamp' => date('Y-m-d H:i:s'),
+        'timeoff_type' => $timeoff_type2,
+        'updated_start_req' => $date
       );
 
 
