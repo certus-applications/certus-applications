@@ -42,9 +42,8 @@
                                         for ($i = 0; $i < sizeof($split_up); $i++) {
                                             $timed = strtotime($split_up[$i]);
                                             $format = date('l - M jS', $timed);
-                                            $comma_sep[] = $format;
+                                            echo $format.'<br>';
                                         }
-                                        echo implode(", ", $comma_sep);
                                     ?>
                                 </td>                            
                                 <td><?php echo $availability['reason'];?></td>
@@ -61,9 +60,8 @@
                                         for ($i = 0; $i < sizeof($split_up); $i++) {
                                             $timed = strtotime($split_up[$i]);
                                             $format = date('l - M jS', $timed);
-                                            $comma_sep[] = $format;
+                                            echo $format.'<br>';
                                         }
-                                        echo implode(", ", $comma_sep);
                                     ?>
                                 </td>                            
                                 <td><?php echo $availability['reason'];?></td>
@@ -83,13 +81,13 @@
                                         for ($i = 0; $i < sizeof($split_up); $i++) {
                                             $timed = strtotime($split_up[$i]);
                                             $format = date('l - M jS', $timed);
-                                            $comma[] = $format;
+
 
                                             $datetime = new DateTime($split_up[$i]);
                                             $compare = $datetime->format('Y-m-d H:i:s');
                                     ?>  
                                     <input type="hidden" class="form-control" id="timeoff_date" name="timeoff_date[]" value="<?php echo $compare; ?>" >
-                                    <?php } echo implode(", ", $comma); ?>
+                                    <?php echo $format.'<br>'; } ?>
                                 </td>                            
                                 <td><?php echo $availability['reason'];?></td>
                                 <td>
@@ -136,34 +134,30 @@
                                         $day = date('w'); 
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                         $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                        $format = array();
                                         foreach($screenerAvail as $view) {
                                             $time = date('Y-m-d', strtotime($view['start']));
                                             
                                             if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                     }
                                                 }
                                             }
                                         }    
-                                        echo implode(", ", $format);                          
                                     ?>
                                 </td> 
                                 <td>
                                     <?php 
-                                        $req = array();
                                         for ($i = 0; $i < sizeof($date_req); $i++) {
-                                            $req [] = $date_req[$i];
+                                            echo $date_req[$i].'<br>';
                                         }
-                                        echo implode(", ", $req);
                                     ?>
                                 </td> 
                                 <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
@@ -178,34 +172,30 @@
                                         $day = date('w'); 
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                         $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                        $format = array();
                                         foreach($screenerAvail as $view) {
                                             $time = date('Y-m-d', strtotime($view['start']));
                                             
                                             if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                     }
                                                 }
                                             }
                                         }    
-                                        echo implode(", ", $format);                           
                                     ?>
                                 </td> 
                                 <td>
                                     <?php 
-                                        $req = array();
                                         for ($i = 0; $i < sizeof($date_req); $i++) {
-                                            $req [] = $date_req[$i];
+                                            echo $date_req[$i].'<br>';
                                         }
-                                        echo implode(", ", $req);
                                     ?>
                                 </td>                        
                                 <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
@@ -220,34 +210,30 @@
                                         $day = date('w'); 
                                         $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                         $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                        $format = array();
                                         foreach($screenerAvail as $view) {
                                             $time = date('Y-m-d', strtotime($view['start']));
                                             
                                             if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                 if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                     }
                                                     if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                        $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                        echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                     }
                                                 }
                                             }
-                                        }    
-                                        echo implode(", ", $format);                           
+                                        }                             
                                     ?>
                                 </td> 
                                 <td>
                                     <?php 
-                                        $req = array();
                                         for ($i = 0; $i < sizeof($date_req); $i++) {
-                                            $req [] = $date_req[$i];
+                                            echo $date_req[$i].'<br>';
                                         }
-                                        echo implode(", ", $req);
                                     ?>
                                 </td>                          
                                 <td>
@@ -307,13 +293,11 @@
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
                                                 <?php 
-                                                    $comma_sep = array();
                                                     for ($i = 0; $i < sizeof($split_up); $i++) {
                                                         $timed = strtotime($split_up[$i]);
                                                         $format = date('l - M jS', $timed);
-                                                        $comma_sep[] = $format;
+                                                        echo $format.'<br>';
                                                     }
-                                                    echo implode(", ", $comma_sep);
                                                 ?>
                                             </td>                                            
                                             <td><?php echo $availability['reason'];?></td>
@@ -324,13 +308,11 @@
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
                                                 <?php 
-                                                    $comma_sep = array();
                                                     for ($i = 0; $i < sizeof($split_up); $i++) {
                                                         $timed = strtotime($split_up[$i]);
                                                         $format = date('l - M jS', $timed);
-                                                        $comma_sep[] = $format;
+                                                        echo $format.'<br>';
                                                     }
-                                                    echo implode(", ", $comma_sep);
                                                 ?>
                                             </td>                                            
                                             <td><?php echo $availability['reason'];?></td>
@@ -341,13 +323,11 @@
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
                                                 <?php 
-                                                    $comma_sep = array();
                                                     for ($i = 0; $i < sizeof($split_up); $i++) {
                                                         $timed = strtotime($split_up[$i]);
                                                         $format = date('l - M jS', $timed);
-                                                        $comma_sep[] = $format;
+                                                        echo $format.'<br>';
                                                     }
-                                                    echo implode(", ", $comma_sep);
                                                 ?>
                                             </td>                                           
                                             <td><?php echo $availability['reason'];?></td>
@@ -385,25 +365,23 @@
                                                 $day = date('w'); 
                                                 $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                                 $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                                $format = array();
                                                 foreach($screenerAvail as $view) {
                                                     $time = date('Y-m-d', strtotime($view['start']));
                                                     
                                                     if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                         if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                             }
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                             }
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                             }
                                                         }
                                                     }
                                                 }    
-                                                echo implode(", ", $format);                               
                                             ?>
                                             </td>
                                             <td>
@@ -423,25 +401,23 @@
                                                     $day = date('w'); 
                                                     $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                                     $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                                    $format = array();
                                                     foreach($screenerAvail as $view) {
                                                         $time = date('Y-m-d', strtotime($view['start']));
                                                         
                                                         if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                             if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                                 if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                                    $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                                    echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                                 }
                                                                 if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                                    $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                                    echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                                 }
                                                                 if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                                    $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                                    echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                                 }
                                                             }
                                                         }
                                                     }    
-                                                    echo implode(", ", $format);                               
                                                 ?>
                                             </td>
                                             <td>
@@ -461,25 +437,23 @@
                                                 $day = date('w'); 
                                                 $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
                                                 $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-                                                $format = array();
                                                 foreach($screenerAvail as $view) {
                                                     $time = date('Y-m-d', strtotime($view['start']));
                                                     
                                                     if(($availability['first_name'] == $view['first_name']) && ($availability['last_name'] == $view['last_name'])) {
                                                         if (($view['start'] >= $week_start) && ($view['start'] <= $week_end)) {
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Morn'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Morn'.'<br>';
                                                             }
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($view['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Eve'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Eve'.'<br>';
                                                             }
                                                             if(($view['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-                                                                $format[] = date("l M jS", strtotime($view['start'])).' - Night'.' ';
+                                                                echo date("l M jS", strtotime($view['start'])).' - Night'.'<br>';
                                                             }
                                                         }
                                                     }
                                                 }    
-                                                echo implode(", ", $format);                              
                                             ?>
                                             </td> 
                                             <td>
