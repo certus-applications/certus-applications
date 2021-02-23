@@ -25,7 +25,7 @@
                                 <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="timeoff-tab">
                                     <div id="timeoff">
                                         <div class="col-xs-6">
-                                            <?php echo form_open('request/add'); ?>
+                                            <?php echo form_open('request/addTimeOff'); ?>
                                             <input type="hidden" class="form-control" name="timeoffType1" value="Emergency Time Off">
                                             <fieldset>
                                                 <div class="form-group">
@@ -107,66 +107,91 @@
                                             </div>
                                             
                                         </div>
+
+                                        <div class="x_content">
+                                                <div class="x_title">
+                                                    <div class="clearfix"></div>
+                                                </div>  
+                                                <div class="col-xs-6">
+                                                    <ul class="nav navbar-right panel_toolbox">
+                                                        <li>
+                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="main/index" style="color: white">Back</a></button>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-xs-6">
+                                                    <ul class="nav navbar-left panel_toolbox">      
+                                                        <li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
+                                                    </ul>
+                                                </div>
+                                        </div> 
+
+                                        <?php echo form_close(); ?> 
+                                        
+                                        
                                     </div>
                                 </div>
 
                                 <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="shift-tab">
                                     <div id="shift">
-                                            <?php echo form_open('request/add'); ?>
-                                                <input type="hidden" class="form-control" name="timeoffType2" value="Request Shift Change">
-                                                <div class="x_content">
-                                                    <h3> Which day do you want to reschedule for? </h3>
-                                                    <table class="table table-hover table-striped table-bordered">
-                                                        <thead class="thead-dark">
-                                                            <tr>
-                                                                <th class='th_center' scope="col">
-                                                                    Days of the week.
-                                                                </th>
-                                                                <th class='th_center' scope="col">Morning <br>(5:00am - 12:00pm)</th>
-                                                                <th class='th_center' scope="col">Evening <br>(1:00pm - 9:00pm)</th>
-                                                                <th class='th_center' scope="col">Night <br>(11:00pm - 4:00am)</th>
-                                                            </tr>
-                                                            
-                                                            <?php for($i = 0;  $i < 7; $i++) { echo "<tr>"; ?>
-                                                                <th class='th_center' scope="col">
-                                                                    <?php 
-                                                                        $dates = date('l', strtotime($datesArr[$i]));
-                                                                        echo $dates; 
-                                                                    ?>
-                                                                </th>
-                                                                <!-- Make value: Day of the week + type of shift (morn, eve, night) Ex. sunday_morn -->
-                                                                <td id="morn"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - morn'; ?>"></td>
-                                                                <td id="eve"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - eve'; ?>"></td>
-                                                                <td id="night"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - night'; ?>"></td>
-                                                            <?php echo "</tr>"; } ?>
-                                                        </thead>
-                                                    </table>                             
+                                        <?php echo form_open('request/addShiftReq'); ?>
+                                            <input type="hidden" class="form-control" name="timeoffType2" value="Request Shift Change">
+                                            <div class="x_content">
+                                                <h3> Which day do you want to reschedule for? </h3>
+                                                <table class="table table-hover table-striped table-bordered">
+                                                    <thead class="thead-dark">
+                                                        <tr>
+                                                            <th class='th_center' scope="col">
+                                                                Days of the week.
+                                                            </th>
+                                                            <th class='th_center' scope="col">Morning <br>(5:00am - 12:00pm)</th>
+                                                            <th class='th_center' scope="col">Evening <br>(1:00pm - 9:00pm)</th>
+                                                            <th class='th_center' scope="col">Night <br>(11:00pm - 4:00am)</th>
+                                                        </tr>
+                                                        
+                                                        <?php for($i = 0;  $i < 7; $i++) { echo "<tr>"; ?>
+                                                            <th class='th_center' scope="col">
+                                                                <?php 
+                                                                    $dates = date('l', strtotime($datesArr[$i]));
+                                                                    echo $dates; 
+                                                                ?>
+                                                            </th>
+                                                            <!-- Make value: Day of the week + type of shift (morn, eve, night) Ex. sunday_morn -->
+                                                            <td id="morn"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - morn'; ?>"></td>
+                                                            <td id="eve"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - eve'; ?>"></td>
+                                                            <td id="night"><input type="checkbox" name="dates[]" value="<?php echo $dates.' - night'; ?>"></td>
+                                                        <?php echo "</tr>"; } ?>
+                                                    </thead>
+                                                </table>                             
+                                            </div>
+
+                                            <div class="x_content">
+                                                <div class="x_title">
+                                                    <div class="clearfix"></div>
+                                                </div>  
+                                                <div class="col-xs-6">
+                                                    <ul class="nav navbar-right panel_toolbox">
+                                                        <li>
+                                                            <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="main/index" style="color: white">Back</a></button>
+                                                        </li>
+                                                    </ul>
                                                 </div>
+                                                <div class="col-xs-6">
+                                                    <ul class="nav navbar-left panel_toolbox">      
+                                                        <li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
+                                                    </ul>
+                                                </div>
+                                            </div>      
+                                        <?php echo form_close(); ?>    
                                     </div>
                                 </div>
+
+                                    
+                            
+                                
                             </div>
                         </div>
                         
-                                                        
-                        <div class="x_content">
-                            <div class="x_title">
-                                <div class="clearfix"></div>
-                            </div>  
-                            <div class="col-xs-6">
-                                <ul class="nav navbar-right panel_toolbox">
-                                    <li>
-                                        <button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="main/index" style="color: white">Back</a></button>
-                                    </li>
-                                </ul>
-                            </div>
-                            <div class="col-xs-6">
-                                <ul class="nav navbar-left panel_toolbox">      
-                                    <li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
-                                </ul>
-                            </div>      
-                            <?php echo form_close(); ?>    
-                        </div>
-
                     <script type="text/javascript">
                         var tomorrow = new Date();
                         tomorrow.setDate(new Date().getDate()+1);
