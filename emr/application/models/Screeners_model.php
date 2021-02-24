@@ -7,12 +7,9 @@
       }
 
       public function listAll(){
-        $this->db->select('*');
-        $this->db->group_by('employeeid');
-      	$this->db->from('schedule');
-      	$query=$this->db->get();
-        $returnData = $query->result_array();
-      	return $returnData;
+        $sql="SELECT user_id, first_name, last_name FROM users AS USER INNER JOIN users_groups AS user_group ON USER.id = user_group.user_id WHERE user_group.group_id = 4";    
+        $query = $this->db->query($sql);
+        return $query->result_array();
       }
 
       public function viewClient($id){

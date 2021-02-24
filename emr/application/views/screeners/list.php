@@ -22,13 +22,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                    <?php 
-                      foreach($screenersAll as $screeners){   
-                    ?>
+                    <?php foreach($screenersAll as $screeners){?>
                       <tr>
                         <td><?php echo $screeners['first_name'];?></td>
                         <td><?php echo $screeners['last_name'];?></td>
-                        <td><a href="auth" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit </a><td>
+                        <td><a href="auth/edit_user/<?php echo $screeners['user_id'];?>" class="btn btn-info btn-xs"><i class="fa fa-pencil"></i> Edit</a></td>
                       </tr>
                     <?php } ?>
                 </tbody>
