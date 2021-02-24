@@ -123,28 +123,28 @@
 
                         <li class="dropdown" style="float: right;">
                           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-filter"></i></a>
-                          <ul class="dropdown-menu" role="menu">
-                            <li>
-                              <a>View tomorrow</a>
+                          <ul class="dropdown-menu" role="menu" id="dayofweek">
+                            <li id="Monday">
+                              <a>View Monday</a>
                             </li>
-                            <!-- <li>
-                              <a>View Feb 09</a>
+                            <li id="Tuesday">
+                              <a>View Tuesday</a>
                             </li>
-                            <li>
-                              <a>View Feb 10</a>
+                            <li id="Wednesday">
+                              <a>View Wednesday</a>
                             </li>
-                            <li>
-                              <a>View Feb 11</a>
+                            <li id="Thursday">
+                              <a>View Thursday</a>
                             </li>
-                            <li>
-                              <a>View Feb 12</a>
+                            <li id="Friday">
+                              <a>View Friday</a>
                             </li>
-                            <li>
-                              <a>View Feb 13</a>
+                            <li id="Saturday">
+                              <a>View Saturday</a>
                             </li>
-                            <li>
-                              <a>View Feb 14</a>
-                            </li> -->
+                            <li id="Sunday">
+                              <a>View Sunday</a>
+                            </li>
                           </ul>
                         </li>
                       </ul>
@@ -158,13 +158,19 @@
                             <h4 class="panel-title" style="color: #73879C">Morning</h4>
                           </a>
                           <div id="morning" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="morningShift">
-                            <ul class="list-unstyled msg_list">
+                            <ul class="list-unstyled msg_list" id="availability_morning">
                               <?php foreach($availabilities as $availability){?>
                                 <?php if($availability['shift_type'] == "morning"){?>
                                   <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                   <a>                              
                                       <div class='fc-event-main' style="color: #73879C" > 
                                         <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                      <div style="display: none;">
+                                        <?php
+                                          $dayofweek = date('l', strtotime($availability['start']));
+                                          echo $dayofweek;
+                                        ?>
                                       </div>
                                   </a>
                                 <?php } ?>
@@ -177,13 +183,19 @@
                             <h4 class="panel-title" style="color: #73879C">Evening</h4>
                           </a>
                           <div id="evening" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="eveningShift">
-                            <ul class="list-unstyled msg_list">
+                            <ul class="list-unstyled msg_list" id="availability_evening">
                               <?php foreach($availabilities as $availability){?>
                                 <?php if($availability['shift_type'] == "evening"){?>
                                   <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                   <a>                              
                                       <div class='fc-event-main' style="color: #73879C" > 
                                         <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                      <div style="display: none;">
+                                        <?php
+                                          $dayofweek = date('l', strtotime($availability['start']));
+                                          echo $dayofweek;
+                                        ?>
                                       </div>
                                   </a>
                                 <?php } ?>
@@ -196,13 +208,19 @@
                             <h4 class="panel-title" style="color: #73879C">Night</h4>
                           </a>
                           <div id="night" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="nightShift">
-                            <ul class="list-unstyled msg_list">
+                            <ul class="list-unstyled msg_list" id="availability_night">
                               <?php foreach($availabilities as $availability){?>
                                 <?php if($availability['shift_type'] == "night"){?>
                                   <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
                                   <a>                              
                                       <div class='fc-event-main' style="color: #73879C" > 
                                         <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                      <div style="display: none;">
+                                        <?php
+                                          $dayofweek = date('l', strtotime($availability['start']));
+                                          echo $dayofweek;
+                                        ?>
                                       </div>
                                   </a>
                                 <?php } ?>

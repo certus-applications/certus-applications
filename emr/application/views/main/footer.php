@@ -84,6 +84,9 @@
     
     <!-- Locations Scripts -->
     <script src="../build/js/locations.js"></script>
+    
+    <!-- Availability Widget Scripts -->
+    <script src="../build/js/availability.js"></script>
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
