@@ -851,7 +851,7 @@ class Ion_auth_model extends CI_Model
 		// Do not pass $identity as user is not known yet so there is no need
 		$password = $this->hash_password($password);
 
-		$employeeid = $this->hash_employeeid($employeeid);
+		// $employeeid = $this->hash_employeeid($employeeid);
 
 		if ($password === FALSE)
 		{

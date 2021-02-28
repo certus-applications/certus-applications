@@ -16,16 +16,6 @@
       </p>
 
       <p>
-            <?php echo lang('edit_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
-
-      <!-- <p>
-            // <?php echo lang('edit_user_employeeid_label', 'employeeid');?> <br />
-            // <?php echo form_input($employeeid);?>
-      </p> -->
-
-      <p>
             <?php echo lang('edit_user_password_label', 'password');?> <br />
             <?php echo form_input($password);?>
       </p>

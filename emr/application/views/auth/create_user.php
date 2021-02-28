@@ -27,18 +27,34 @@
       ?>
 
       <p>
-            <?php echo lang('create_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
-
-      <p>
             <?php echo lang('create_user_email_label', 'email');?> <br />
             <?php echo form_input($email);?>
       </p>
 
       <p>
             <?php echo lang('create_user_employeeid_label', 'employeeid');?> <br />
-            <?php echo form_input($employeeid);?>
+            <?php
+            $result = '';
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            $array = str_split($characters);
+            $charactersLength = strlen($characters);
+
+            for ($i = 0; $i < 6; $i++ ) {
+              // $result += $characters.charAt(Math.floor(Math.random() * $charactersLength));
+              $result .= $array[array_rand($array)];
+            }
+
+            $generateEmployeeid = $result;  
+            $data = [
+              'id' => 'employeeid',
+              'value' => $generateEmployeeid,
+              'type' => 'text',
+              'name' => 'employeeid',
+              'readonly' => 'readonly'
+            ];
+            echo form_input($data);
+            ?>
+            <!-- <?php echo form_input($employeeid);?> -->
       </p>
 
       <p>
@@ -50,6 +66,18 @@
             <?php echo lang('create_user_password_confirm_label', 'password_confirm');?> <br />
             <?php echo form_input($password_confirm);?>
       </p>
+
+      <?php if ($this->ion_auth->is_admin()): ?>
+
+          <h3><?php echo lang('edit_user_groups_heading');?></h3>
+          <?php foreach ($groups as $group):?>
+              <label class="checkbox">
+              <input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>" <?php echo ($group['id'] == 4) ? 'checked="checked"' : null; ?>>
+              <?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
+              </label>
+          <?php endforeach?>
+
+      <?php endif ?>
 
 
       <p>

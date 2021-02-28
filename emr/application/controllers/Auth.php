@@ -465,6 +465,7 @@ class Auth extends CI_Controller
 	 */
 	public function create_user()
 	{
+		$groups = $this->ion_auth->groups()->result_array();
 		$this->data['title'] = $this->lang->line('create_user_heading');
 
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
@@ -475,6 +476,7 @@ class Auth extends CI_Controller
 		$tables = $this->config->item('tables', 'ion_auth');
 		$identity_column = $this->config->item('identity', 'ion_auth');
 		$this->data['identity_column'] = $identity_column;
+		$this->data['groups'] = $groups;
 
 		// validate form input
 		$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'trim|required');
@@ -489,7 +491,7 @@ class Auth extends CI_Controller
 			$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
 		}
 		$this->form_validation->set_rules('employeeid', $this->lang->line('create_user_validation_employeeid_label'), 'trim|required');
-		$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
+		// $this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
 		$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
 		$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
 
@@ -500,13 +502,28 @@ class Auth extends CI_Controller
 			$password = $this->input->post('password');
 			$employeeid = $this->input->post('employeeid');
 
+			if ($this->ion_auth->is_admin())
+			{
+				// Update the groups user belongs to
+				$groups = array();
+				$groupData = $this->input->post('groups');
+				if (isset($groupData) && !empty($groupData))
+				{
+					foreach ($groupData as $grp)
+					{
+						$groups[] = $grp;
+					}
+
+				}
+			}
+
 			$additional_data = [
 				'first_name' => $this->input->post('first_name'),
 				'last_name' => $this->input->post('last_name'),
-				'company' => $this->input->post('company'),
+				// 'company' => $this->input->post('company'),
 			];
 		}
-		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $employeeid, $additional_data))
+		if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $employeeid, $additional_data, $groups))
 		{
 			// check to see if we are creating the user
 			// redirect them back to the admin page
@@ -543,12 +560,12 @@ class Auth extends CI_Controller
 				'type' => 'text',
 				'value' => $this->form_validation->set_value('email'),
 			];
-			$this->data['company'] = [
-				'name' => 'company',
-				'id' => 'company',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('company'),
-			];
+			// $this->data['company'] = [
+			// 	'name' => 'company',
+			// 	'id' => 'company',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('company'),
+			// ];
 			$this->data['employeeid'] = [
 				'name' => 'employeeid',
 				'id' => 'employeeid',
@@ -607,7 +624,7 @@ class Auth extends CI_Controller
 		$this->form_validation->set_rules('first_name', $this->lang->line('edit_user_validation_fname_label'), 'trim|required');
 		$this->form_validation->set_rules('last_name', $this->lang->line('edit_user_validation_lname_label'), 'trim|required');
 		// $this->form_validation->set_rules('employeeid', $this->lang->line('edit_user_validation_employeeid_label'), 'trim|required');
-		$this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'trim');
+		// $this->form_validation->set_rules('company', $this->lang->line('edit_user_validation_company_label'), 'trim');
 
 		if (isset($_POST) && !empty($_POST))
 		{
@@ -629,7 +646,7 @@ class Auth extends CI_Controller
 				$data = [
 					'first_name' => $this->input->post('first_name'),
 					'last_name' => $this->input->post('last_name'),
-					'company' => $this->input->post('company'),
+					// 'company' => $this->input->post('company'),
 				];
 
 				// update the password if it was posted
@@ -702,12 +719,12 @@ class Auth extends CI_Controller
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('last_name', $user->last_name),
 		];
-		$this->data['company'] = [
-			'name'  => 'company',
-			'id'    => 'company',
-			'type'  => 'text',
-			'value' => $this->form_validation->set_value('company', $user->company),
-		];
+		// $this->data['company'] = [
+		// 	'name'  => 'company',
+		// 	'id'    => 'company',
+		// 	'type'  => 'text',
+		// 	'value' => $this->form_validation->set_value('company', $user->company),
+		// ];
 		// $this->data['employeeid'] = [
 		// 	'name'  => 'employeeid',
 		// 	'id'    => 'employeeid',
