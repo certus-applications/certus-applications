@@ -33,8 +33,8 @@ class Main extends CI_Controller {
           
       } elseif ($this->ion_auth->in_group("hostpial admin")) {
         $data["userRole"] = "HOSPITAL ADMIN";
-        $data["options"] = ["Logout"];
-        $data["href"] = ["auth/logout"];
+        $data["options"] = ["Logout", "Change Password"];
+        $data["href"] = ["auth/logout", "auth/change_password"];
         $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
@@ -49,9 +49,9 @@ class Main extends CI_Controller {
         } 
       } else {
         $data["userRole"] = "SCREENER";
-        $data["options"] = ["Logout"];
-        $data["href"] = ["auth/logout"];
-        $data["font"] = ["sign-out"];
+        $data["options"] = ["Change Password", "Logout"];
+        $data["href"] = ["auth/change_password", "auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
         $data["link"] = ["main/index", "screeners/add", "request/view"];
