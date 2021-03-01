@@ -36,6 +36,7 @@ $lang['index_fname_th']          = 'First Name';
 $lang['index_lname_th']          = 'Last Name';
 $lang['index_email_th']          = 'Email';
 $lang['index_employeeid_th']     = 'Emoloyee ID';
+$lang['index_screenerid_th']     = 'Screener ID';
 $lang['index_groups_th']         = 'Groups';
 $lang['index_status_th']         = 'Status';
 $lang['index_action_th']         = 'Action';
