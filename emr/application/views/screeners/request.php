@@ -26,7 +26,7 @@
                                     <div id="timeoff">
                                         <div class="col-xs-6">
                                             <?php echo form_open('request/addTimeOff'); ?>
-                                            <input type="hidden" class="form-control" name="timeoffType1" value="Emergency Time Off">
+                                            <input type="hidden" class="form-control" name="timeoffType1" value="Emergency Time-Off">
                                             <fieldset>
                                                 <div class="form-group">
 

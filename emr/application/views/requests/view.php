@@ -12,7 +12,7 @@
 
                 
                 <div class="x_content">
-                <h3>Emergency Time Off Requests</h3>
+                <h3>Emergency Time-Off Requests</h3>
                 <div class="col-xs-12 table-responsive">
                     <table class="display table table-striped table-bordered">
                     <thead>
@@ -31,7 +31,7 @@
                             foreach($avail as $availability) {
                                 $split_up = explode(',', str_replace(array('[', ']','"'), '', $availability['timeoff_shift']) );                     
                         ?>
-                        <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
+                        <?php if($availability['approved']==TRUE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time-Off')) { ?>
                             <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
                                 <td><?php echo $availability['first_name'];?></td>
                                 <td><?php echo $availability['last_name'];?></td>
@@ -49,7 +49,7 @@
                                 <td><?php echo $availability['reason'];?></td>
                                 <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
                             </tr>
-                        <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
+                        <?php } elseif($availability['approved']==FALSE && $availability['approved']!=NULL && ($availability['timeoff_type']=='Emergency Time-Off')) { ?>
                             <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
                                 <td><?php echo $availability['first_name'];?></td>
                                 <td><?php echo $availability['last_name'];?></td>
@@ -67,7 +67,7 @@
                                 <td><?php echo $availability['reason'];?></td>
                                 <td><a class="btn btn-danger btn-xs" readonly> Declined </a></td>
                             </tr>
-                        <?php } elseif ($availability['timeoff_type']=='Emergency Time Off') { ?>
+                        <?php } elseif ($availability['timeoff_type']=='Emergency Time-Off') { ?>
                             <tr style="background-color: none;">
                                 <td><?php echo $availability['first_name'];?></td>
                                 <td><?php echo $availability['last_name'];?></td>
@@ -271,7 +271,7 @@
                     <div class="clearfix"></div>
 
                         <div class="x_content">
-                            <h3>Emergency Time Off Requests</h3>
+                            <h3>Emergency Time-Off Requests</h3>
 
                             <div class="col-xs-12 table-responsive">
                                 <table class="display table table-striped table-bordered">
@@ -288,7 +288,7 @@
                                         foreach($viewReq as $availability) {
                                             $split_up = explode(',', str_replace(array('[', ']','"'), '', $availability['timeoff_shift']) ); 
                                     ?>
-                                    <?php if(($availability['approved']==TRUE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
+                                    <?php if(($availability['approved']==TRUE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time-Off')) { ?>
                                         <tr style=" background-color: rgba(177, 210, 53, 0.3); color: black;">
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
@@ -303,7 +303,7 @@
                                             <td><?php echo $availability['reason'];?></td>
                                             <td><a class="btn btn-success btn-xs" readonly> Approved </a></td>
                                         </tr>
-                                    <?php } elseif(($availability['approved']==FALSE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time Off')) { ?>
+                                    <?php } elseif(($availability['approved']==FALSE) && ($availability['approved']!=NULL) && ($availability['timeoff_type']=='Emergency Time-Off')) { ?>
                                         <tr style="background-color: rgba(216, 83, 79, 0.3); color: black;">
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
@@ -318,7 +318,7 @@
                                             <td><?php echo $availability['reason'];?></td>
                                             <td><a class="btn btn-danger btn-xs"  readonly> Declined </a></td>
                                         </tr>
-                                    <?php } elseif ($availability['timeoff_type']=='Emergency Time Off') { ?>
+                                    <?php } elseif ($availability['timeoff_type']=='Emergency Time-Off') { ?>
                                         <tr>
                                             <td><?php echo date('M jS, Y', strtotime($availability['timestamp'])); ?></td>
                                             <td>
