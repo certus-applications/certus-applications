@@ -4,12 +4,13 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">						
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Screener Information</h2>
+						<h2>Availability <small>For <?php echo date('l, M jS', strtotime($week_2start)); ?> - <?php echo date('l, M jS', strtotime($week_2end)); ?></small></h2>
 						<div class="clearfix"></div>
 					</div>
 
 					<?php echo form_open('screeners/added_time'); ?>
-						<div class="x_content">
+
+						<!-- <div class="x_content">
 							<tbody>
 							 	<div class="col-sm-6">
 									<fieldset class="form-group">
@@ -30,26 +31,23 @@
 								</div>
 
 							</tbody>
-						</div>
+						</div> -->
 
 						<div class="x_content">
-							<div class="col-sm"><h2>Select Your Weekly Availability</h2></div>
-							
-							<div class="col-xs-12 table-responsive">
+							<div class="col-xs-1"></div>
+							<div class="col-xs-10 table-responsive">
 								<table class="table table-hover table-striped table-bordered">
 									<thead class="thead-dark">
 										<tr>
-											<th class='th_center' scope="col">
-												Week Of: <?php echo $week_2start; ?> - <?php echo $week_2end; ?>
-											</th>
-											<th class='th_center' scope="col">Morning <br>(5:00am - 12:00pm)</th>
-											<th class='th_center' scope="col">Evening <br>(1:00pm - 9:00pm)</th>
-											<th class='th_center' scope="col">Night <br>(11:00pm - 4:00am)</th>
+											<th class='th_center' scope="col" style="width: 25%;">Days</th>
+											<th class='th_center' scope="col" style="width: 25%;">Morning <i class="fa fa-info-circle morn_times"><span class="morn_hours">5am - 1pm</span></i></th>
+											<th class='th_center' scope="col" style="width: 25%;">Evening <i class="fa fa-info-circle eve_times"><span class="eve_hours">1pm - 9pm</span></i></th>
+											<th class='th_center' scope="col" style="width: 25%;">Night <i class="fa fa-info-circle night_times"><span class="night_hours">9pm - 5am</span></i></th>
 										</tr>
 										
 										<?php for($i = 7;  $i < 14; $i++) { echo "<tr>"; ?>
 											<th scope="col">
-												<?php echo date('l', strtotime($datesArr[$i]))." - ". $datesArr[$i]; ?>
+												<?php echo date('l', strtotime($datesArr[$i])); ?>
 											</th>
 											<td id="morn"><input type="checkbox" name="morn_times[]" value=<?php echo json_encode($mornTimeArr[$i]); ?>></td>
 											<td id="eve"><input type="checkbox" name="eve_times[]" value=<?php echo json_encode($eveTimeArr[$i]); ?>></td>
@@ -58,6 +56,8 @@
 									</thead>
 								</table>
 							</div>
+							<div class="col-xs-1"></div>
+
 						</div>
 							
 						<div class="x_content">
@@ -82,6 +82,63 @@
 			</div>
 		</div>
 	</div>
+
+<style>
+	.morn_times .morn_hours {
+		visibility: hidden;
+		width: 120px;
+		background-color: #544D71;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+	}
+
+	.morn_times:hover .morn_hours {
+		visibility: visible;
+	}
+
+	.eve_times .eve_hours {
+		visibility: hidden;
+		width: 120px;
+		background-color: #544D71;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+	}
+
+	.eve_times:hover .eve_hours {
+		visibility: visible;
+	}
+
+	.night_times .night_hours {
+		visibility: hidden;
+		width: 120px;
+		background-color: #544D71;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 5px 0;
+
+		/* Position the tooltip */
+		position: absolute;
+		z-index: 1;
+	}
+
+	.night_times:hover .night_hours {
+		visibility: visible;
+	}
+
+</style>
 
 <script type="text/javascript">
 	function notifyUser(message) {
@@ -111,6 +168,4 @@
 		});
 		}
   	}
-
-
 </script>
