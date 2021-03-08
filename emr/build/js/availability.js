@@ -3,11 +3,20 @@ availability_evening()
 availability_night()
 
 document.getElementById("filterby").innerHTML = "Filtered by " + get_today();
+document.getElementById(get_today()).innerHTML = '<a id="day">View ' + get_today() + ' <i class="fa fa-check" ></i> </a>'
 
 $("#dayofweek li").click(function() {
     var filteredDay
     filteredDay = this.id;
+
+    var element = document.getElementsByClassName('fa fa-check')[0];
+
+    if (element !== undefined) {
+        element.className = ' ';
+    }
+
     document.getElementById("filterby").innerHTML = "Filtered by " + filteredDay;
+    document.getElementById(filteredDay).innerHTML = '<a id="day">View ' + filteredDay + ' <i class="fa fa-check" ></i> </a>'
 });
 
 function get_today() {
