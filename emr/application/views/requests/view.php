@@ -20,8 +20,8 @@
                         <th>First Name</th>
                         <th>Last Name</th>
                         <th>Date of submission</th>
-                        <th>Date of time-off</th>
-                        <th>Reason for time-off</th>
+                        <th>Date of Time Off</th>
+                        <th>Reason for Time Off</th>
                         <th>Status</th>
                         </tr>
                     </thead>
@@ -278,8 +278,8 @@
                                     <thead>
                                     <tr>
                                         <th>Date of submission</th>
-                                        <th>Date of time-off</th>
-                                        <th>Reason for time-off</th>
+                                        <th>Date of Time Off</th>
+                                        <th>Reason for Time Off</th>
                                         <th>Status</th>
                                     </tr>
                                     </thead>

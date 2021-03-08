@@ -13,7 +13,7 @@
                         
                         <div class="col-xs-12" role="tabpanel" data-example-id="togglable-tabs">
                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
-                                <li role="presentation" class="active"><a href="#tab_content1" id="timeoff-tab" role="tab" data-toggle="tab" aria-expanded="true">Time-Off</a>
+                                <li role="presentation" class="active"><a href="#tab_content1" id="timeoff-tab" role="tab" data-toggle="tab" aria-expanded="true">Time Off</a>
                                 </li>
                                 <li role="presentation" class=""><a href="#tab_content2" role="tab" id="shift-tab" data-toggle="tab" aria-expanded="false">Shift-Update</a>
                                 </li>
