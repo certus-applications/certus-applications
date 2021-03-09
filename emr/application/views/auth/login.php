@@ -15,6 +15,10 @@
   <link rel="stylesheet" type="text/css" href="../vendor/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" type="text/css" href="../css/util_login.css">
   <link rel="stylesheet" type="text/css" href="../css/main_login.css">
+
+  <link href="../vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+  <link href="../vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+  <link href="../vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 </head>
 <body>
   
@@ -23,6 +27,7 @@
       <div class="wrap-login100 p-t-30 p-b-50">
         <span class="login100-form-title p-b-41">
           <?php echo lang('login_heading') ?>
+          <div id="infoMessage"><?php echo $message;?></div>
         </span>
         <!-- CREATING LOGIN FORM  -->
           <?php echo form_open("auth/login", 'class="login100-form validate-form p-b-33 p-t-5"');?>
@@ -65,6 +70,10 @@
   <script src="../vendor/daterangepicker/daterangepicker.js"></script>
   <script src="../vendor/countdowntime/countdowntime.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
+  <script src="../build/js/login.js"></script>
 
 </body>
 </html>

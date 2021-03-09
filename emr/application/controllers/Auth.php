@@ -159,17 +159,23 @@ class Auth extends CI_Controller
 				'name' => 'old',
 				'id' => 'old',
 				'type' => 'password',
+				'class' => 'input100',
+				'placeholder' => 'Old password',
 			];
 			$this->data['new_password'] = [
 				'name' => 'new',
 				'id' => 'new',
 				'type' => 'password',
+				'class' => 'input100',
+				'placeholder' => 'New password (min 8 characters)',
 				'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
 			];
 			$this->data['new_password_confirm'] = [
 				'name' => 'new_confirm',
 				'id' => 'new_confirm',
 				'type' => 'password',
+				'class' => 'input100',
+				'placeholder' => 'Confirm password',
 				'pattern' => '^.{' . $this->data['min_password_length'] . '}.*$',
 			];
 			$this->data['user_id'] = [
@@ -192,6 +198,10 @@ class Auth extends CI_Controller
 			{
 				//if the password was successfully changed
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
+				// redirect('auth/change_password');
+				$cookie_name = "change_password";
+				$cookie_value = "true";
+				setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
 				$this->logout();
 			}
 			else
