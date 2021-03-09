@@ -149,6 +149,7 @@
                         </li>
                       </ul>
                       <div class="clearfix"></div>
+                      <div id="filterby"></div>
                     </div>
                     <div class="x_content" id = "external-events">
                       <!-- start accordion -->
