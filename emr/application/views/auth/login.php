@@ -15,6 +15,10 @@
   <link rel="stylesheet" type="text/css" href="../vendor/daterangepicker/daterangepicker.css">
   <link rel="stylesheet" type="text/css" href="../css/util_login.css">
   <link rel="stylesheet" type="text/css" href="../css/main_login.css">
+
+  <link href="../vendors/pnotify/dist/pnotify.css" rel="stylesheet">
+  <link href="../vendors/pnotify/dist/pnotify.buttons.css" rel="stylesheet">
+  <link href="../vendors/pnotify/dist/pnotify.nonblock.css" rel="stylesheet">
 </head>
 <body>
   
@@ -66,6 +70,10 @@
   <script src="../vendor/daterangepicker/daterangepicker.js"></script>
   <script src="../vendor/countdowntime/countdowntime.js"></script>
   <script src="../js/main.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.buttons.js"></script>
+  <script src="../vendors/pnotify/dist/pnotify.nonblock.js"></script>
+  <script src="../build/js/login.js"></script>
 
 </body>
 </html>
