@@ -15,6 +15,19 @@ class Availability_model extends CI_Model {
         return $returnData;
     }
 
+    public function screenerAvail($firstname, $lastname){
+        $this->db->select('*');
+        $this->db->from('availability');
+        $this->db->where('first_name', $firstname);
+        $this->db->where('last_name', $lastname);
+        $this->db->order_by('start','ASC');
+        $query=$this->db->get();
+        $returnData = $query->result_array();
+        
+        return $returnData;
+    }
+
+
     public function add_morning($morn) {
         extract($morn);
         $this->db->insert('availability', $morn);

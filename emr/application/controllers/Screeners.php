@@ -132,11 +132,17 @@ class Screeners extends CI_Controller {
       $data['eveTimeArr'] = $eveTimeArr;
       $data['nightTimeArr'] = $nightTimeArr;
 
+      $firstname = $this->ion_auth->user()->row()->first_name;
+      $lastname = $this->ion_auth->user()->row()->last_name;
+
       // Uneditable information
-      $data['first_name'] = $this->ion_auth->user()->row()->first_name;
-      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+      $data['first_name'] = $firstname;
+      $data['last_name'] = $lastname;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
+
+      $this->load->model('Availability_model');
+      $data['avail'] = $this->Availability_model->screenerAvail($firstname, $lastname);
 
       $this->load->view('screeners/add', $data);
       $this->load->view('main/footer');
@@ -356,5 +362,53 @@ class Screeners extends CI_Controller {
       return redirect('main/index');
     }
 
+    public function viewProfile() {
+      $this->load->model('Availability_model');
+      if ($this->ion_auth->is_admin()) {
+        $data["userRole"] = "ADMIN";
+        $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
+        $data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
+        $data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];  
+        
+        $data['avail'] = $this->Request_model->getAvailability();
+      } elseif ($this->ion_auth->in_group("hostpial admin")) {
+        $data["userRole"] = "HOSPITAL ADMIN";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
+        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
+        $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
+
+        $data['avail'] = $this->Request_model->getAvailability();
+      } else {
+        $data["userRole"] = "SCREENER";
+        $data["options"] = ["Logout"];
+        $data["href"] = ["auth/logout"];
+        $data["font"] = ["sign-out"];
+
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["icon"] = ["calendar","user", "check-square-o"];;
+      }
+
+      $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
+      $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
+      
+
+
+
+      $this->load->view('main/header');
+      $this->load->view('main/sidebar', $data);
+      $this->load->view('main/topbar', $data);
+      $this->load->view('screeners/profile');
+      $this->load->view('main/footer');
+    
+    }
     
 }
