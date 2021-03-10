@@ -32,9 +32,9 @@ class Request extends CI_Controller {
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
       } else {
         $data["userRole"] = "SCREENER";
-        $data["options"] = ["Logout"];
-        $data["href"] = ["auth/logout"];
-        $data["font"] = ["sign-out"];
+        $data["options"] = ["Change Password", "Logout"];
+        $data["href"] = ["auth/change_password", "auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
         $data["link"] = ["main/index", "screeners/add", "request/view"];
@@ -217,13 +217,13 @@ class Request extends CI_Controller {
         $data['avail'] = $this->Request_model->getAvailability();
       } else {
         $data["userRole"] = "SCREENER";
-        $data["options"] = ["Logout"];
-        $data["href"] = ["auth/logout"];
-        $data["font"] = ["sign-out"];
+        $data["options"] = ["Change Password", "Logout"];
+        $data["href"] = ["auth/change_password", "auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
         $data["link"] = ["main/index", "screeners/add", "request/view"];
-        $data["icon"] = ["calendar","user", "check-square-o"];;
+        $data["icon"] = ["calendar","user", "check-square-o"];
       }
 
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
