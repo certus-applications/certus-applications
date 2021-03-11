@@ -174,8 +174,8 @@
 	margin: 30px 0 20px 0;
 	font-weight: bold; 
 	border-radius: 50%; 
-	width: 250px; 
-	height: 250px; 
+	width: 192px; 
+	height: 192px; 
 	font-size: 46px;
 	align-items: center;
 	justify-content: center;
