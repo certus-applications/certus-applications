@@ -76,9 +76,9 @@ class Screeners extends CI_Controller {
         $data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
       } else {
         $data["userRole"] = "SCREENER";
-        $data["options"] = ["Logout"];
-        $data["href"] = ["auth/logout"];
-        $data["font"] = ["sign-out"];
+        $data["options"] = ["Change Password", "Logout"];
+        $data["href"] = ["auth/change_password", "auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
         $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
         $data["link"] = ["main/index", "screeners/add", "request/view"];
@@ -303,14 +303,14 @@ class Screeners extends CI_Controller {
        $data["link"] = ["main/index", "screeners", "locations", "request/view"];
        $data["icon"] = ["calendar","user", "building", "exclamation-triangle", "bookmark-o", "check-square-o"];
      } else {
-       $data["userRole"] = "SCREENER";
-       $data["options"] = ["Logout"];
-       $data["href"] = ["auth/logout"];
-       $data["font"] = ["sign-out"];
+        $data["userRole"] = "SCREENER";
+        $data["options"] = ["Change Password", "Logout"];
+        $data["href"] = ["auth/change_password", "auth/logout"];
+        $data["font"] = ["refresh", "sign-out"];
 
-       $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-       $data["link"] = ["main/index", "screeners/add", "request/view"];
-       $data["icon"] = ["calendar","user", "check-square-o"];
+        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
+        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["icon"] = ["calendar","user", "check-square-o"];
      }
 
      $this->load->model('Screeners_model');

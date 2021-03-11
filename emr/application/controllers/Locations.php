@@ -30,14 +30,7 @@ class Locations extends CI_Controller {
 			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
 			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"]; 
 		} else {
-			$data["userRole"] = "SCREENER";
-			$data["options"] = ["Logout"];
-			$data["href"] = ["auth/logout"];
-			$data["font"] = ["sign-out"];
-
-			$data["sideMenu"] = ["Calendar", "Availability", "Request"];
-			$data["link"] = ["main/index", "screeners/add", "screeners/request"];
-			$data["icon"] = ["calendar","user", "exclamation-triangle"];
+			redirect('main/index', 'refresh');
 		}
 
 		$this->load->model('Locations_model');
@@ -72,14 +65,7 @@ class Locations extends CI_Controller {
 			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
 			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
 		} else {
-			$data["userRole"] = "SCREENER";
-			$data["options"] = ["Logout"];
-			$data["href"] = ["auth/logout"];
-			$data["font"] = ["sign-out"];
-
-			$data["sideMenu"] = ["Calendar", "Availability", "Request"];
-			$data["link"] = ["main/index", "screeners/add", "screeners/request"];
-			$data["icon"] = ["calendar","user", "exclamation-triangle"];
+			redirect('main/index', 'refresh');
 		}
       
 		$this->load->model('Locations_model');
