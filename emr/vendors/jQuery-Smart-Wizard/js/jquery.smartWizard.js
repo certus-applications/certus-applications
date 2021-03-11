@@ -1,4 +1,5 @@
 /*
+/*
  * SmartWizard 3.3.1 plugin
  * jQuery Wizard control Plugin
  * by Dipu
@@ -21,9 +22,9 @@ function SmartWizard(target, options) {
     this.elmStepContainer = $('<div></div>').addClass("stepContainer");
     this.loader = $('<div>Loading</div>').addClass("loader");
     this.buttons = {
-        next : $('<a>'+options.labelNext+'</a>').attr("href","#").addClass("buttonNext"),
-        previous : $('<a>'+options.labelPrevious+'</a>').attr("href","#").addClass("buttonPrevious"),
-        finish  : $('<a>'+options.labelFinish+'</a>').attr("href","#").addClass("buttonFinish")
+        next : $('<button>'+options.labelNext+'</button>').attr("href","#").attr("id","buttonNext").addClass("buttonNext"),
+        previous : $('<button>'+options.labelPrevious+'</button>').attr("href","#").attr("id","buttonPrevious").addClass("buttonPrevious"),
+        // finish  : $('<a>'+options.labelFinish+'</a>').attr("href","#").addClass("buttonFinish")
     };
 
     /*
@@ -53,17 +54,49 @@ function SmartWizard(target, options) {
         elmActionBar.append($this.loader);
         $this.target.append($this.elmStepContainer);
         elmActionBar.append($this.buttons.finish)
-                    .append($this.buttons.next)
-                    .append($this.buttons.previous);
+                    .append($this.buttons.previous)
+                    .append($this.buttons.next);
         $this.target.append(elmActionBar);
         this.contentWidth = $this.elmStepContainer.width();
 
         $($this.buttons.next).click(function() {
-            $this.goForward();
+            var email = $('#email').val();
+            if (email !== "" && email.indexOf('@') !== -1) {
+                $this.goForward();
+                // $( ".actionBar" ).append( "<button>Previous</button>" ).attr("href","#").attr("id","buttonPrevious").addClass("buttonPrevious");
+                // document.getElementById("buttonNext").innerHTML = "Finish"
+            }
+
+            if (email == "") {
+                new PNotify({
+                    title: 'Error!',
+                    text: 'You must enter your email!',
+                    type: 'error',
+                    styling: 'bootstrap3',
+                    delay: 2000
+                });
+            }
+
+            if (email.indexOf('@') == -1 && email !== "") {
+                new PNotify({
+                    title: 'Error!',
+                    text: 'Not valid email!',
+                    type: 'error',
+                    styling: 'bootstrap3',
+                    delay: 2000
+                });
+            }
             return false;
         });
         $($this.buttons.previous).click(function() {
             $this.goBackward();
+            document.getElementById("buttonNext").innerHTML = "Next"
+
+            var step2 = document.getElementById("step2")
+            console.log(step2);
+            $(step2).addClass("disabled")
+            $($this.buttons.next).addClass("buttonNext");
+            $($this.buttons.next).removeClass("buttonFinish");
             return false;
         });
         $($this.buttons.finish).click(function() {
@@ -272,7 +305,9 @@ function SmartWizard(target, options) {
                 }
             }
             if (($this.steps.length-1) <= $this.curStepIdx){
-                $($this.buttons.next).addClass("buttonDisabled");
+                // $($this.buttons.next).addClass("buttonDisabled");
+                document.getElementById("buttonNext").innerHTML = "Finish"
+                $($this.buttons.next).addClass("buttonFinish");
                 if ($this.options.hideButtonsOnDisabled) {
                     $($this.buttons.next).hide();
                 }

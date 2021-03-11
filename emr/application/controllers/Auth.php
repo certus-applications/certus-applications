@@ -60,6 +60,30 @@ class Auth extends CI_Controller
 	}
 
 	/**
+	 * Redirect if needed, otherwise display the user list
+	 */
+	public function shifts()
+	{
+		$this->data['title'] = $this->lang->line('index_heading');
+		
+		// set the flash data error message if there is one
+		$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+		//list the users
+		$this->data['users'] = $this->ion_auth->users()->result();
+		
+		//USAGE NOTE - you can do more complicated queries like this
+		//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+		
+		foreach ($this->data['users'] as $k => $user)
+		{
+			$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+		}
+
+		$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'checkin', $this->data);
+	}
+
+	/**
 	 * Log the user in
 	 */
 	public function login()
