@@ -80,8 +80,8 @@ class Screeners extends CI_Controller {
         $data["href"] = ["auth/change_password", "auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["sideMenu"] = ["Calendar", "My Profile", "My Requests"];
+        $data["link"] = ["", "", ""];
         $data["icon"] = ["calendar","user", "check-square-o"];
       }
         
@@ -237,52 +237,22 @@ class Screeners extends CI_Controller {
       if ($this->form_validation->run() === FALSE){
         if ($morn_time === [] && $eve_time === [] && $night_time === []) {
           // If User selects nothing
-          echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        console.log('hello');
-                    });
-                </script>";
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
-          echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        notifyUser('success');
-                    });
-                </script>";
-          return redirect('screeners/add', 'refresh');
+          return redirect('main/index', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
-          echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        notifyUser('success');
-                    });
-                </script>";
-          return redirect('screeners/add', 'refresh');
+          return redirect('main/index', 'refresh');
         } 
         else {
-          echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        notifyUser('error');
-                    });
-                </script>";
           return redirect('screeners/add', 'refresh');
         }
       }
       else {
-        echo "
-                <script type='text/javascript'>
-                    $(document).ready(function(e) {
-                        notifyUser('success');
-                    });
-                </script>";
-        return redirect('screeners/add', 'refresh');
+        return redirect('main/index', 'refresh');
       }
 
       

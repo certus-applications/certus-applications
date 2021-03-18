@@ -53,8 +53,8 @@ class Main extends CI_Controller {
         $data["href"] = ["auth/change_password", "auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["sideMenu"] = ["Calendar", "My Profile", "My Requests"];
+        $data["link"] = ["main/index", "profile", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];
 
         // $employeeid = $this->ion_auth->user()->row()->employeeid;
@@ -77,7 +77,33 @@ class Main extends CI_Controller {
       $this->load->view('main/header');
       $this->load->view('main/sidebar', $data);
       $this->load->view('main/topbar', $data);
-      $this->load->view('calendar/view', $availabilityData);
+
+      // Login check for submitted availability
+
+      if($this->ion_auth->in_group("screener")) {
+        $avail = $this->Availability_model->screenerAvail($first_name, $last_name);
+        if (!empty($avail)) {
+          foreach($avail as $availability) {
+            $day = date('w');
+            $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
+            $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+            $time_in = $availability['start'];
+
+            if (($time_in >= $week_start) && ($time_in <= $week_end)) {
+              $this->load->view('calendar/view', $availabilityData);
+              break;
+            } else {
+              return redirect('screeners/add', 'refresh');
+              break;
+            }
+          }
+        } else {
+          return redirect('screeners/add', 'refresh');
+        }
+      } else {
+        $this->load->view('calendar/view', $availabilityData);
+      }
+
       $this->load->view('main/footer');
     }
 
