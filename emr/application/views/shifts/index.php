@@ -115,9 +115,8 @@
 		                        <div id="step-2">
 		                            <form class="form-horizontal form-label-left">
 		                                <div class="form-group row">
-		                                	<div class="col-md-5 col-sm-3"></div>
-		                                    <div class="col-md-6 col-sm-12">
-                                                <div class="d-flex justify-content-center">
+		                                    <div class="col-md-12 col-sm-12">
+                                                <div class="text-center">
                                                     <input type="checkbox" name="shift" value="checkin"> Check-In
                                                     <input type="checkbox" name="shift" value="checkin"> Check-Out
                                                 </div>
@@ -129,10 +128,9 @@
 		                        <div id="step-3">
 		                            <form class="form-horizontal form-label-left">
 		                                <div class="form-group row">
-		                                	<div class="col-md-6 col-sm-5"></div>
-		                                    <div class="col-md-5 col-sm-6">
-		                                    	<div style="font-size: 35px;">&#9989;</div>
-		                                    </div>
+                                                <div class="text-center">
+                                                    <div style="font-size: 45px;">&#9989;</div>
+                                                </div>
 		                                </div>
 		                            </form>
 		                        </div>
