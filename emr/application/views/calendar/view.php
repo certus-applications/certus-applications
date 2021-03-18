@@ -18,7 +18,7 @@
             <div class="clearfix"></div>
             <div class="row">
               <?php if ($this->ion_auth->is_admin()): ?>
-              <div class="col-md-9 col-sm-3">
+              <div class="col-md-9 col-sm-6 col-xs-12">
               <?php else: ?>
                 <div class="col-md-12 col-sm-3">
               <?php endif ?>
@@ -98,7 +98,7 @@
                 </div>
               </div>
               <?php if ($this->ion_auth->is_admin()): ?>
-                <div class="col-md-9 col-md-3">
+                <div class="col-md-3 col-sm-6 col-xs-12">
                   <div class="x_panel">
                     <div class="x_title">
                       <h2>Availability</h2>
