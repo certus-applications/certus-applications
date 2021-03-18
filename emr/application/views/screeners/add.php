@@ -4,7 +4,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">						
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Availability <small>For <?php echo date('l, M jS', strtotime($week_2start)); ?> - <?php echo date('l, M jS', strtotime($week_2end)); ?></small></h2>
+						<h2>Availability <small>Please enter in your availability before accessing the rest of the software</small></h2>
 						<div class="clearfix"></div>
 					</div>
 
@@ -64,15 +64,8 @@
 							<div class="x_title">
 								<div class="clearfix"></div>
 							</div>	
-							<div class="col-xs-6">
-								<ul class="nav navbar-right panel_toolbox">
-									<li>
-										<button type="button" class="btn btn-danger" style="padding: 5px 18px 5px 18px; margin: 5px 0 5px 5px;"><a href="screeners" style="color: white">Back</a></button>
-									</li>
-								</ul>
-							</div>
-							<div class="col-xs-6">
-								<ul class="nav navbar-left panel_toolbox">      
+							<div class="center col-xs-12">
+								<ul class="nav justify-content-center panel_toolbox">      
 									<li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
 								</ul>
 							</div>			
@@ -84,6 +77,11 @@
 	</div>
 
 <style>
+
+	.center {
+		display: flex;
+		justify-content: center;
+	}
 	.morn_times .morn_hours {
 		visibility: hidden;
 		width: 120px;
