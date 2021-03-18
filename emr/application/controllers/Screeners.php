@@ -132,11 +132,17 @@ class Screeners extends CI_Controller {
       $data['eveTimeArr'] = $eveTimeArr;
       $data['nightTimeArr'] = $nightTimeArr;
 
+      $firstname = $this->ion_auth->user()->row()->first_name;
+      $lastname = $this->ion_auth->user()->row()->last_name;
+
       // Uneditable information
-      $data['first_name'] = $this->ion_auth->user()->row()->first_name;
-      $data['last_name'] = $this->ion_auth->user()->row()->last_name;
+      $data['first_name'] = $firstname;
+      $data['last_name'] = $lastname;
       $data['employeeid'] = $this->ion_auth->user()->row()->employeeid;
       $data['email'] = $this->ion_auth->user()->row()->email;
+
+      $this->load->model('Availability_model');
+      $data['avail'] = $this->Availability_model->screenerAvail($firstname, $lastname);
 
       $this->load->view('screeners/add', $data);
       $this->load->view('main/footer');
@@ -355,6 +361,5 @@ class Screeners extends CI_Controller {
       $this->Screeners_model->addSchedule($newScheduleData);
       return redirect('main/index');
     }
-
     
 }
