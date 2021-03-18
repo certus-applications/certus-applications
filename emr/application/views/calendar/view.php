@@ -244,7 +244,7 @@
 
     <!-- Admin: edit calendar entry -->
     <?php if($this->ion_auth->in_group("hostpial admin") || $this->ion_auth->is_admin()): ?>
-      <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div id="CalenderModalEdit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
         <div class="modal-dialog">
           <div class="modal-content">
 

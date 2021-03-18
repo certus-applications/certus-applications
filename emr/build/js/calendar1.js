@@ -2,6 +2,7 @@ var eventArr = [];
 var description = document.getElementById('descr2');
 
 var baseURL = window.location.origin
+var counter = 1
 
 function get_locations() {
     var locations = [
@@ -252,10 +253,10 @@ function init_calendar(eventArr, accountType) {
 
             var view = $('#calendar').fullCalendar('getView');
 
-            if (view.name == "month") {
-                dayStartForMonth = parseInt(dayStart, 10)+1;
-                console.log(startDateTime);
-                console.log()
+            if (calEvent.scheduleid == null && view.name == "month") {
+                console.log(dayStart);
+                dayStartForMonth = parseFloat(dayStart)+1;
+                console.log(dayStartForMonth);
                 startDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T09' + ':' + minutesStart)
                 endDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T11' + ':' + minutesStart)                
             }
@@ -282,6 +283,7 @@ function init_calendar(eventArr, accountType) {
 
                 startDateTime = new Date(calEvent.startDateTime);
                 endDateTime = new Date(calEvent.endDateTime);
+                counter = counter + 1
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
@@ -304,9 +306,13 @@ function init_calendar(eventArr, accountType) {
                         PNotify.removeAll()
                         var first_name = calEvent.title.split(" ")[0];
                         var last_name = calEvent.title.split(" ")[1];
-                        add_schedule_data(first_name, last_name, calEvent.startDateTime, calEvent.endDateTime, calEvent.location);
+                        if (counter == 1) {
+                            add_schedule_data(first_name, last_name, calEvent.startDateTime, calEvent.endDateTime, calEvent.location);
+                        }
                     } else {
-                        set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                        if (counter == 1) {
+                            set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                        }
                     }
                     setTimeout(function () {
                         location.reload(true);
@@ -314,6 +320,14 @@ function init_calendar(eventArr, accountType) {
                     // $('.antoclose2').click();
                     loader.style.display = "block";                    
                 }
+            });
+
+            $(".antoclose2").on("click", function() {
+                counter = 0
+            });
+
+            $(".close").on("click", function() {
+                counter = 0
             });
 
             //  var descr = $('#descr2').val();
