@@ -77,34 +77,31 @@
 		                    <!-- Smart Wizard -->
 		                    <div id="wizard" class="form_wizard wizard_horizontal">
 		                        <ul class="wizard_steps">
-		                            <li>
-		                                <a href="#step-1">
-		                                    <span class="step_no">1</span>
-		                                    <span class="step_descr">
-		                                        Step 1<br />
-		                                        <small>Email</small>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                            <li>
-		                                <a href="#step-2" id="step2">
-		                                    <span class="step_no">2</span>
-		                                    <span class="step_descr">
-		                                        Step 2<br />
-		                                        <small>Select option</small>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                            <li>
-		                                <a href="#step-3" id="step3">
-		                                    <span class="step_no">3</span>
-		                                    <span class="step_descr">
-		                                        Done<br />
-		                                        <small>Select option</small>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                        </ul>
+                                    <li>
+                                        <a href="#step-1">
+                                            <span class="step_no">1</span>
+                                            <span class="step_descr"> Step 1<br />
+                                                <small>Email</small>
+                                            </span>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#step-2">
+                                            <span class="step_no">2</span>
+                                            <span class="step_descr"> Step 2<br />
+                                                <small></small>
+                                            </span>
+                                      </a>
+                                    </li>
+                                    <li>
+                                      <a href="#step-3">
+                                            <span class="step_no">3</span>
+                                            <span class="step_descr"> Step 3<br />
+                                                <small>Complete</small>
+                                            </span>
+                                      </a>
+                                    </li>
+                                </ul>
 		                        <div id="step-1">
 		                            <form class="form-horizontal form-label-left">
 		                                <div class="form-group row">
