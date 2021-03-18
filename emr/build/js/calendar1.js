@@ -231,7 +231,7 @@ function init_calendar(eventArr, accountType) {
             yearStart = dateTimeStart.getFullYear().toString().padStart(4, '0');
             monthStart = (dateTimeStart.getMonth()+1).toString().padStart(2, '0');
             dayStart = dateTimeStart.getDate().toString().padStart(2, '0');
-            hoursStart = (dateTimeStart.getHours()+5).toString().padStart(2, '0');
+            hoursStart = (dateTimeStart.getHours()+4).toString().padStart(2, '0');
             minutesStart = dateTimeStart.getMinutes().toString().padStart(2, '0')
 
             startDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursStart + ':' + minutesStart)
@@ -240,15 +240,25 @@ function init_calendar(eventArr, accountType) {
             yearEnd = dateTimeEnd.getFullYear().toString().padStart(4, '0');
             monthEnd = (dateTimeEnd.getMonth()+1).toString().padStart(2, '0');
             dayEnd = dateTimeEnd.getDate().toString().padStart(2, '0');
-            hoursEnd = (dateTimeEnd.getHours()+5).toString().padStart(2, '0');
+            hoursEnd = (dateTimeEnd.getHours()+4).toString().padStart(2, '0');
             minutesEnd = dateTimeEnd.getMinutes().toString().padStart(2, '0')
 
             endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd)
 
-            if (calEvent.scheduleid == null && dateTimeEnd == "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
-                hoursEnd = (dateTimeStart.getHours()+7).toString().padStart(2, '0');
+            if (calEvent.scheduleid == null || dateTimeEnd == "Wed Dec 31 1969 19:00:00 GMT-0400 (Eastern Standard Time)") {
+                hoursEnd = (dateTimeStart.getHours()+6).toString().padStart(2, '0');
                 endDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursEnd + ':' + minutesStart)
-            } 
+            }
+
+            var view = $('#calendar').fullCalendar('getView');
+
+            if (view.name == "month") {
+                dayStartForMonth = parseInt(dayStart, 10)+1;
+                console.log(startDateTime);
+                console.log()
+                startDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T09' + ':' + minutesStart)
+                endDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T11' + ':' + minutesStart)                
+            }
 
             $('#fc_edit').click();
             $('#title2').val(calEvent.title);
