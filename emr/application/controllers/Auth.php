@@ -657,6 +657,7 @@ class Auth extends CI_Controller
 					'first_name' => $this->input->post('first_name'),
 					'last_name' => $this->input->post('last_name'),
 					// 'company' => $this->input->post('company'),
+					'email' => $this->input->post('email'),
 				];
 
 				// update the password if it was posted
@@ -741,6 +742,12 @@ class Auth extends CI_Controller
 		// 	'type'  => 'text',
 		// 	'value' => $this->form_validation->set_value('employeeid', $user->employeeid),
 		// ];
+		$this->data['email'] = [
+			'name'  => 'email',
+			'id'    => 'email',
+			'type'  => 'text',
+			'value' => $this->form_validation->set_value('email', $user->email),
+		];
 		$this->data['password'] = [
 			'name' => 'password',
 			'id'   => 'password',

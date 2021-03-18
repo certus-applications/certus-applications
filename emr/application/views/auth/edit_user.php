@@ -25,6 +25,11 @@
             <?php echo form_input($password_confirm);?>
       </p>
 
+      <p>
+            <?php echo lang('edit_user_email_label', 'email');?><br />
+            <?php echo form_input($email); ?>
+      </p>
+
       <?php if ($this->ion_auth->is_admin()): ?>
 
           <h3><?php echo lang('edit_user_groups_heading');?></h3>
