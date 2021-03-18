@@ -36,8 +36,8 @@ class Request extends CI_Controller {
         $data["href"] = ["auth/change_password", "auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["sideMenu"] = ["Calendar", "My Profile", "My Requests"];
+        $data["link"] = ["main/index", "profile", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];
       }
 
@@ -221,8 +221,8 @@ class Request extends CI_Controller {
         $data["href"] = ["auth/change_password", "auth/logout"];
         $data["font"] = ["refresh", "sign-out"];
 
-        $data["sideMenu"] = ["Calendar", "Availability", "My Requests"];
-        $data["link"] = ["main/index", "screeners/add", "request/view"];
+        $data["sideMenu"] = ["Calendar", "My Profile", "My Requests"];
+        $data["link"] = ["main/index", "profile", "request/view"];
         $data["icon"] = ["calendar","user", "check-square-o"];
       }
 
