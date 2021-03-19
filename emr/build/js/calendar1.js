@@ -230,6 +230,7 @@ function init_calendar(eventArr, accountType) {
         eventClick: function(calEvent, jsEvent, view) {       
             startDateTime = (moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss'));
             endDateTime = (moment(calEvent.end).format('YYYY-MM-DDTHH:mm:ss'));
+            counter = 0;
 
             if (calEvent.end == null) {
                 endDateTime = (moment(calEvent.start).add(2, 'hours').format('YYYY-MM-DDTHH:mm:ss'));
@@ -265,7 +266,7 @@ function init_calendar(eventArr, accountType) {
 
                 startDateTime = new Date(calEvent.startDateTime);
                 endDateTime = new Date(calEvent.endDateTime);
-                counter = counter + 1
+                
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
@@ -277,7 +278,16 @@ function init_calendar(eventArr, accountType) {
                         styling: 'bootstrap3',
                         delay: 2000
                     });
+                } if (calEvent.location == 'undefined') {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'Location must be specified before submitting.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });
                 } else {
+                    counter = counter + 1
                     var saveButton = document.getElementById("saveButton");
                     var closeButton = document.getElementById("closeButton");
                     saveButton.style.display = "none";
