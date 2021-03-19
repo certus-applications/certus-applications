@@ -81,6 +81,8 @@ class Main extends CI_Controller {
       // Login check for submitted availability
 
       if($this->ion_auth->in_group("screener")) {
+        $first_name = $this->ion_auth->user()->row()->first_name;
+        $last_name = $this->ion_auth->user()->row()->last_name;
         $avail = $this->Availability_model->screenerAvail($first_name, $last_name);
         if (!empty($avail)) {
           foreach($avail as $availability) {

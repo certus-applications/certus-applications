@@ -2,6 +2,7 @@ var eventArr = [];
 var description = document.getElementById('descr2');
 
 var baseURL = window.location.origin
+var counter = 1
 
 function get_locations() {
     var locations = [
@@ -226,29 +227,22 @@ function init_calendar(eventArr, accountType) {
                 return false;
             });
         },
-        eventClick: function(calEvent, jsEvent, view) {
-            dateTimeStart = new Date(calEvent.start);
-            yearStart = dateTimeStart.getFullYear().toString().padStart(4, '0');
-            monthStart = (dateTimeStart.getMonth()+1).toString().padStart(2, '0');
-            dayStart = dateTimeStart.getDate().toString().padStart(2, '0');
-            hoursStart = (dateTimeStart.getHours()+5).toString().padStart(2, '0');
-            minutesStart = dateTimeStart.getMinutes().toString().padStart(2, '0')
+        eventClick: function(calEvent, jsEvent, view) {       
+            startDateTime = (moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss'));
+            endDateTime = (moment(calEvent.end).format('YYYY-MM-DDTHH:mm:ss'));
+            counter = 0;
 
-            startDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursStart + ':' + minutesStart)
+            if (calEvent.end == null) {
+                endDateTime = (moment(calEvent.start).add(2, 'hours').format('YYYY-MM-DDTHH:mm:ss'));
+            }
 
-            dateTimeEnd = new Date(calEvent.end);
-            yearEnd = dateTimeEnd.getFullYear().toString().padStart(4, '0');
-            monthEnd = (dateTimeEnd.getMonth()+1).toString().padStart(2, '0');
-            dayEnd = dateTimeEnd.getDate().toString().padStart(2, '0');
-            hoursEnd = (dateTimeEnd.getHours()+5).toString().padStart(2, '0');
-            minutesEnd = dateTimeEnd.getMinutes().toString().padStart(2, '0')
-
-            endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd)
-
-            if (calEvent.scheduleid == null && dateTimeEnd == "Wed Dec 31 1969 19:00:00 GMT-0500 (Eastern Standard Time)") {
-                hoursEnd = (dateTimeStart.getHours()+7).toString().padStart(2, '0');
-                endDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursEnd + ':' + minutesStart)
-            } 
+            var view = $('#calendar').fullCalendar('getView');
+            
+            if (calEvent.scheduleid == null && view.name == "month") {
+                startDateTime = (moment(calEvent.start).add(9, 'hours').format('YYYY-MM-DDTHH:mm:ss'));
+                endDateTime = (moment(calEvent.start).add(11, 'hours').format('YYYY-MM-DDTHH:mm:ss')); 
+                
+            }
 
             $('#fc_edit').click();
             $('#title2').val(calEvent.title);
@@ -272,6 +266,7 @@ function init_calendar(eventArr, accountType) {
 
                 startDateTime = new Date(calEvent.startDateTime);
                 endDateTime = new Date(calEvent.endDateTime);
+                
 
                 calendar.fullCalendar('updateEvent', calEvent);
                 var timeDifference = Math.abs(endDateTime - startDateTime) / 36e5;
@@ -283,7 +278,16 @@ function init_calendar(eventArr, accountType) {
                         styling: 'bootstrap3',
                         delay: 2000
                     });
+                } if (calEvent.location == 'undefined') {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'Location must be specified before submitting.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });
                 } else {
+                    counter = counter + 1
                     var saveButton = document.getElementById("saveButton");
                     var closeButton = document.getElementById("closeButton");
                     saveButton.style.display = "none";
@@ -294,9 +298,13 @@ function init_calendar(eventArr, accountType) {
                         PNotify.removeAll()
                         var first_name = calEvent.title.split(" ")[0];
                         var last_name = calEvent.title.split(" ")[1];
-                        add_schedule_data(first_name, last_name, calEvent.startDateTime, calEvent.endDateTime, calEvent.location);
+                        if (counter == 1) {
+                            add_schedule_data(first_name, last_name, calEvent.startDateTime, calEvent.endDateTime, calEvent.location);
+                        }
                     } else {
-                        set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                        if (counter == 1) {
+                            set_schedule_data(calEvent.startDateTime, calEvent.endDateTime, calEvent.location, calEvent.scheduleid)
+                        }
                     }
                     setTimeout(function () {
                         location.reload(true);
@@ -304,6 +312,14 @@ function init_calendar(eventArr, accountType) {
                     // $('.antoclose2').click();
                     loader.style.display = "block";                    
                 }
+            });
+
+            $(".antoclose2").on("click", function() {
+                counter = 0
+            });
+
+            $(".close").on("click", function() {
+                counter = 0
             });
 
             //  var descr = $('#descr2').val();

@@ -23,18 +23,6 @@ class Schedule_model extends CI_Model {
         $query=$this->db->get();
         return $query->result_array();
     }
-
-
-
-    public function getScheduleScreenerByName($first_name, $last_name){
-        $this->db->select('*');
-        $this->db->from('schedule');
-        $this->db->where('first_name', $first_name);
-        $this->db->where('last_name', $last_name);
-        $query=$this->db->get();
-        return $query->result_array();
-    }
-
     
     public function deleteSchedule($firstName, $lastName, $start_date){
         $this->db->where('first_name', $firstName);
