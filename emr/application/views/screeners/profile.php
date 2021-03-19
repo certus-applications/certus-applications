@@ -41,12 +41,11 @@
 						</div>
 							<ul class="screener_avail_list list-unstyled msg_list">
 								<?php 
-									$day = date('w'); 
-									$week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-									$week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
+									$current_date = date('Y-m-d H:i:s');
+									$week_end = date('Y-m-d H:i:s', strtotime('+3 day'));
 									foreach($scheduleViewScreener as $shift){
 										$time = date('Y-m-d', strtotime($shift['start']));
-										if (($shift['start'] >= $week_start) && ($shift['start'] <= $week_end)) {
+										if (($shift['start'] >= $current_date) && ($shift['start'] <= $week_end)) {
 								?>
 
 									<li class='screener_avail fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">  
