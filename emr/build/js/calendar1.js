@@ -227,38 +227,20 @@ function init_calendar(eventArr, accountType) {
                 return false;
             });
         },
-        eventClick: function(calEvent, jsEvent, view) {
-            dateTimeStart = new Date(calEvent.start);
-            yearStart = dateTimeStart.getFullYear().toString().padStart(4, '0');
-            monthStart = (dateTimeStart.getMonth()+1).toString().padStart(2, '0');
-            dayStart = dateTimeStart.getDate().toString().padStart(2, '0');
-            hoursStart = (dateTimeStart.getHours()+4).toString().padStart(2, '0');
-            minutesStart = dateTimeStart.getMinutes().toString().padStart(2, '0')
+        eventClick: function(calEvent, jsEvent, view) {       
+            startDateTime = (moment(calEvent.start).format('YYYY-MM-DDTHH:mm:ss'));
+            endDateTime = (moment(calEvent.end).format('YYYY-MM-DDTHH:mm:ss'));
 
-            startDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursStart + ':' + minutesStart)
-
-            dateTimeEnd = new Date(calEvent.end);
-            yearEnd = dateTimeEnd.getFullYear().toString().padStart(4, '0');
-            monthEnd = (dateTimeEnd.getMonth()+1).toString().padStart(2, '0');
-            dayEnd = dateTimeEnd.getDate().toString().padStart(2, '0');
-            hoursEnd = (dateTimeEnd.getHours()+4).toString().padStart(2, '0');
-            minutesEnd = dateTimeEnd.getMinutes().toString().padStart(2, '0')
-
-            endDateTime = (yearEnd + '-' + monthEnd + '-' + dayEnd + 'T' + hoursEnd + ':' + minutesEnd)
-
-            if (calEvent.scheduleid == null || dateTimeEnd == "Wed Dec 31 1969 19:00:00 GMT-0400 (Eastern Standard Time)") {
-                hoursEnd = (dateTimeStart.getHours()+6).toString().padStart(2, '0');
-                endDateTime = (yearStart + '-' + monthStart + '-' + dayStart + 'T' + hoursEnd + ':' + minutesStart)
+            if (calEvent.end == null) {
+                endDateTime = (moment(calEvent.start).add(2, 'hours').format('YYYY-MM-DDTHH:mm:ss'));
             }
 
             var view = $('#calendar').fullCalendar('getView');
-
+            
             if (calEvent.scheduleid == null && view.name == "month") {
-                console.log(dayStart);
-                dayStartForMonth = parseFloat(dayStart)+1;
-                console.log(dayStartForMonth);
-                startDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T09' + ':' + minutesStart)
-                endDateTime = (yearStart + '-' + monthStart + '-' + dayStartForMonth + 'T11' + ':' + minutesStart)                
+                startDateTime = (moment(calEvent.start).add(9, 'hours').format('YYYY-MM-DDTHH:mm:ss'));
+                endDateTime = (moment(calEvent.start).add(11, 'hours').format('YYYY-MM-DDTHH:mm:ss')); 
+                
             }
 
             $('#fc_edit').click();
