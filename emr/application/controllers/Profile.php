@@ -48,9 +48,9 @@ class Profile extends CI_Controller {
 		$data["screenerID"] = $this->ion_auth->user()->row()->employeeid;
 
 		$this->load->model('Schedule_model');
-		$data['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreenerByName($first_name, $last_name);
+		$data['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($first_name, $last_name);
 		$this->load->model('Availability_model');
-      	$data['screenerAvail'] = $this->Availability_model->getAvailability();
+      	$data['screenerAvail'] = $this->Availability_model->screenerAvail($first_name, $last_name);
 
 		$this->load->view('main/header');
 		$this->load->view('main/sidebar', $data);
