@@ -61,7 +61,7 @@ class Main extends CI_Controller {
         // $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($employeeid);
         $first_name = $this->ion_auth->user()->row()->first_name;
         $last_name = $this->ion_auth->user()->row()->last_name;
-        $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreenerByName($first_name, $last_name);
+        $screenerScheduleData['scheduleViewScreener'] = $this->Schedule_model->getScheduleScreener($first_name, $last_name);
 
         if ($this->input->is_ajax_request()) {
           echo json_encode($screenerScheduleData);
@@ -84,24 +84,13 @@ class Main extends CI_Controller {
         $first_name = $this->ion_auth->user()->row()->first_name;
         $last_name = $this->ion_auth->user()->row()->last_name;
         $avail = $this->Availability_model->screenerAvail($first_name, $last_name);
+        
         if (!empty($avail)) {
-          foreach($avail as $availability) {
-            $day = date('w');
-            $week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-            $week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-            $time_in = $availability['start'];
-
-            if (($time_in >= $week_start) && ($time_in <= $week_end)) {
-              $this->load->view('calendar/view', $availabilityData);
-              break;
-            } else {
-              return redirect('screeners/add', 'refresh');
-              break;
-            }
-          }
+          $this->load->view('calendar/view', $availabilityData);
         } else {
           return redirect('screeners/add', 'refresh');
         }
+
       } else {
         $this->load->view('calendar/view', $availabilityData);
       }
