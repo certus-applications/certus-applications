@@ -39,43 +39,32 @@
 							<h3>Upcoming Shifts</h3>
 							<div class="clearfix"></div>
 						</div>
-						<div class="scroll panel-collapse collapse in" role="tabpanel" >
-							<ul class="list-unstyled msg_list" id="availability_night">
+							<ul class="screener_avail_list list-unstyled msg_list">
 								<?php 
-									$day = date('w'); 
-									$week_start = date('Y-m-d H:i:s', strtotime('-'.$day.' days'));
-									$week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
-									foreach($scheduleViewScreener as $availability){
-										$time = date('Y-m-d', strtotime($availability['start']));
+									$current_date = date('Y-m-d H:i:s');
+									$week_end = date('Y-m-d H:i:s', strtotime('+3 day'));
+									foreach($scheduleViewScreener as $shift){
+										$time = date('Y-m-d', strtotime($shift['start']));
+										if (($shift['start'] >= $current_date) && ($shift['start'] <= $week_end)) {
 								?>
 
-									<li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-									<a>                              
-										<div class='fc-event-main' style="color: #73879C" > 
-											<?php 
-												if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-													echo date('l', strtotime($availability['start'])).' - Morning, Location: '.$availability['location'];
-												}
-												if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-													echo date('l', strtotime($availability['start'])).' - Evening, Location: '.$availability['location'];;
-												}
-												if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-													echo date('l', strtotime($availability['start'])).' - Night, Location: '.$availability['location'];;
-												}
-												
-											?>
-										</div>
-										<div style="display: none;">
-										<?php
-											$dayofweek = date('l', strtotime($availability['start']));
-											echo $dayofweek;
+									<li class='screener_avail fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">  
+										<div class='fc-event-main' style="color: #73879C" >                          
+										<?php 
+											if(($shift['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($shift['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+												echo date('l', strtotime($shift['start'])).' - Morning, Location: '.$shift['location'];
+											}
+											if(($shift['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($shift['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+												echo date('l', strtotime($shift['start'])).' - Evening, Location: '.$shift['location'];
+											}
+											if(($shift['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+												echo date('l', strtotime($shift['start'])).' - Night, Location: '.$shift['location'];
+											}
 										?>
 										</div>
-									</a>
-
-								<?php } ?>
+									</li>
+								<?php } } ?>
 							</ul>
-						</div>
 					</div>
 				</div>
 			</div>
@@ -132,7 +121,7 @@
 											<fieldset class="input-group"> 
 												Password<input class="form-control" type="password" name="password" placeholder="********" readonly>
 												<div class="input-group-append">
-													<button type="button" class="change_pass btn btn-primary"><a href="auth/change_password" style="color: white">Change Password</a></button>
+													<button type="button" class="change_pass btn btn-success"><a href="auth/change_password" style="color: white">Change Password</a></button>
 												</div>
 											</fieldset>
 										</div>
@@ -184,33 +173,25 @@
 												$week_end = date('Y-m-d H:i:s', strtotime('+'.(13-$day).' days'));
 												foreach($screenerAvail as $availability){
 													$time = date('Y-m-d', strtotime($availability['start']));
+													if (($availability['start'] >= $week_start) && ($availability['start'] <= $week_end)) {
 											?>
 
 												<li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
-												<a>                              
 													<div class='fc-event-main' style="color: #73879C" > 
-														<?php 
-															if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
-																echo date('l', strtotime($availability['start'])).' - Morning';
-															}
-															if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
-																echo date('l', strtotime($availability['start'])).' - Evening';
-															}
-															if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
-																echo date('l', strtotime($availability['start'])).' - Night';
-															}
-															
-														?>
-													</div>
-													<div style="display: none;">
-													<?php
-														$dayofweek = date('l', strtotime($availability['start']));
-														echo $dayofweek;
+													<?php 
+														if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'05:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'13:00:00')))) {
+															echo date('l', strtotime($availability['start'])).' - Morning';
+														}
+														if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'13:00:00'))) && ($availability['start'] < date('Y-m-d H:i:s', strtotime($time.'21:00:00')))) {
+															echo date('l', strtotime($availability['start'])).' - Evening';
+														}
+														if(($availability['start'] >= date('Y-m-d H:i:s', strtotime($time.'23:00:00')))) {
+															echo date('l', strtotime($availability['start'])).' - Night';
+														}
 													?>
 													</div>
-												</a>
-
-											<?php } ?>
+												</li>
+											<?php } } ?>
 										</ul>
 									</div>
 								<!-- end user projects -->
@@ -233,6 +214,15 @@
     .nav.nav-tabs{
         padding-top: 100px;
     }
+} */
+
+.screener_avail_list{
+  max-height:93px;
+  overflow:auto;
+}
+
+/* .screener_avail{
+  line-height:25px;
 } */
 
 .center {
@@ -269,7 +259,7 @@
 
 .scroll {
 	overflow: scroll;
-	height: 75%;
+	height: 15%;
 }
 
 .tab li {
