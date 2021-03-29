@@ -117,8 +117,8 @@
 		                                <div class="form-group row">
 		                                    <div class="col-md-12 col-sm-12">
                                                 <div class="text-center">
-                                                    <input type="checkbox" name="shift" value="checkin"> Check-In
-                                                    <input type="checkbox" name="shift" value="checkin"> Check-Out
+                                                    <input id="shiftCheckboxIn" type="checkbox" name="shift" value="checkin"> Check-In
+                                                    <input id="shiftCheckboxOut" type="checkbox" name="shift" value="checkout"> Check-Out
                                                 </div>
 		                                    </div>
 		                                </div>
