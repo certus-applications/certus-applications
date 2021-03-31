@@ -1,6 +1,19 @@
 <!-- page content -->
 <div class="right_col" role="main">
 		<div class="row">
+				<script>
+					$(document).ready(function() {
+					<?php if($this->session->flashdata('error')){ ?>
+						new PNotify({
+							title: 'Error',
+							text: 'An error occurred!',
+							type: 'error',
+							styling: 'bootstrap3',
+							delay: 2500
+						});
+					<?php } ?>
+					});
+				</script>
 			<div class="col-md-12 col-sm-12 col-xs-12">						
 				<div class="x_panel">
 					<div class="x_title">
@@ -77,7 +90,6 @@
 	</div>
 
 <style>
-
 	.center {
 		display: flex;
 		justify-content: center;
@@ -137,33 +149,3 @@
 	}
 
 </style>
-
-<script type="text/javascript">
-	function notifyUser(message) {
-		if(message == "error_nothing") {
-		new PNotify({
-			title: 'Error!',
-			text: "Please select at least one date before submitting.",
-			type: 'error',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		} else if(message == "error") {
-		new PNotify({
-			title: 'Error!',
-			text: "An error has occurred, please try submitting again.",
-			type: 'error',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		} else if(message == "success") {
-			new PNotify({
-			title: 'Success!',
-			text: "Your availability has been submitted in successfully!",
-			type: 'success',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		}
-  	}
-</script>

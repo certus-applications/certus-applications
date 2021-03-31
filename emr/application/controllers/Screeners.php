@@ -193,7 +193,7 @@ class Screeners extends CI_Controller {
           'end' => $end_date,
           'shift_type' => 'morning'
         );
-          $this->Availability_model->add_morning($morn);
+          $this->Availability_model->addAvail($morn);
       }
 
       for($i=0; $i < sizeof($eve_time); $i++){
@@ -209,7 +209,7 @@ class Screeners extends CI_Controller {
           'end' => $end_date,
           'shift_type' => 'evening'
         );
-        $this->Availability_model->add_morning($eve);
+        $this->Availability_model->addAvail($eve);
       }
 
       for($i=0; $i < sizeof($night_time); $i++){
@@ -225,7 +225,7 @@ class Screeners extends CI_Controller {
           'end' => $end_date,
           'shift_type' => 'night'
         );
-        $this->Availability_model->add_morning($night);
+        $this->Availability_model->addAvail($night);
       }
         
 
@@ -235,23 +235,28 @@ class Screeners extends CI_Controller {
 
 
       if ($this->form_validation->run() === FALSE){
+        // If User selects nothing
         if ($morn_time === [] && $eve_time === [] && $night_time === []) {
-          // If User selects nothing
+          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
+          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
           return redirect('main/index', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
+          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
           return redirect('main/index', 'refresh');
         } 
         else {
+          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
           return redirect('screeners/add', 'refresh');
         }
       }
       else {
+        $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
         return redirect('main/index', 'refresh');
       }
 
