@@ -237,21 +237,29 @@ class Screeners extends CI_Controller {
       if ($this->form_validation->run() === FALSE){
         // If User selects nothing
         if ($morn_time === [] && $eve_time === [] && $night_time === []) {
-          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
+          $cookie_name = "error_status";
+          $cookie_value = "001";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
           return redirect('screeners/add', 'refresh');
         } 
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
-          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
+          $cookie_name = "error_status";
+          $cookie_value = "002";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
           return redirect('main/index', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
-          $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
+          $cookie_name = "error_status";
+          $cookie_value = "003";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
           return redirect('main/index', 'refresh');
         } 
         else {
-          $this->session->set_flashdata('error', "ERROR_MESSAGE_HERE");
+          $cookie_name = "error_status";
+          $cookie_value = "004";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
           return redirect('screeners/add', 'refresh');
         }
       }
