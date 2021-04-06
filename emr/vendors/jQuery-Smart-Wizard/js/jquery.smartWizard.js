@@ -103,14 +103,15 @@ function SmartWizard(target, options) {
                     delay: 2000
                 });
             }
+
+            var step2 = $('input[name="shift"]:checked').val();
+            console.log("tuna" + step2);
+            console.log("email" + email);
             return false;
         });
         $($this.buttons.previous).click(function() {
             $this.goBackward();
             document.getElementById("buttonNext").innerHTML = "Next"
-
-            var step2 = document.getElementById("step2")
-            console.log(step2);
             $(step2).addClass("disabled")
             $($this.buttons.next).addClass("buttonNext");
             $($this.buttons.next).removeClass("buttonFinish");
