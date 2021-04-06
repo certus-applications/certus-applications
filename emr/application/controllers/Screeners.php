@@ -264,7 +264,9 @@ class Screeners extends CI_Controller {
         }
       }
       else {
-        $this->session->set_flashdata('success', "SUCCESS_MESSAGE_HERE");
+        $cookie_name = "error_status";
+        $cookie_value = "false";
+        setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
         return redirect('main/index', 'refresh');
       }
 
