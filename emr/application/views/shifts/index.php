@@ -107,7 +107,7 @@
 		                                <div class="form-group row">
 		                                	<div class="col-md-3 col-sm-3"></div>
 		                                    <div class="col-md-6 col-sm-6">
-		                                        <input type="text" id="email" required="required" class="form-control" placeholder="Email" />
+		                                        <input type="text" id="email" required="required" class="form-control" placeholder="MGH Email" />
 		                                    </div>
 		                                </div>
 		                            </form>

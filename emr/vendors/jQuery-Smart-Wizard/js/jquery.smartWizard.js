@@ -78,7 +78,7 @@ function SmartWizard(target, options) {
         $($this.buttons.next).click(function() {
             var email = $('#email').val();
             createCookie(email);
-            if (email !== "" && email.indexOf('@') !== -1) {
+            if (email !== "" && email.indexOf('@tehn') !== -1) {
                 $this.goForward();
                 // $( ".actionBar" ).append( "<button>Previous</button>" ).attr("href","#").attr("id","buttonPrevious").addClass("buttonPrevious");
                 // document.getElementById("buttonNext").innerHTML = "Finish"
@@ -94,10 +94,10 @@ function SmartWizard(target, options) {
                 });
             }
 
-            if (email.indexOf('@') == -1 && email !== "") {
+            if (email.indexOf('@tehn') == -1 && email !== "") {
                 new PNotify({
                     title: 'Error!',
-                    text: 'Not valid email!',
+                    text: 'Use your MGH emal!',
                     type: 'error',
                     styling: 'bootstrap3',
                     delay: 2000
