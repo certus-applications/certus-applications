@@ -3,12 +3,37 @@ var error_status = findCookie("error_status")
 if (error_status == "001") {
 	new PNotify({
 		title: 'Error',
-        text: 'Password changed!',
+        text: 'Please select at least one date!',
+        type: 'error',
+        styling: 'bootstrap3',
+        delay: 2500
+	});
+}
+
+if (error_status == "002") {
+  new PNotify({
+		title: 'Error',
+        text: 'An error occurred, please try again.',
+        type: 'error',
+        styling: 'bootstrap3',
+        delay: 2500
+	});
+}
+
+if (error_status == "none") {
+	new PNotify({
+		title: 'Success',
+        text: 'Availability submitted!',
         type: 'success',
         styling: 'bootstrap3',
         delay: 2500
 	});
 }
+
+
+$("#submit-avail").click(function() {
+	updateCookie("false")
+});
 
 function findCookie(cname) {
   var name = cname + "=";
@@ -26,6 +51,7 @@ function findCookie(cname) {
   return "";
 }
 
-function updateCookie(changePassword) {
-	document.cookie = "change_password="+changePassword;
+function updateCookie(submitAvail) {
+  console.log(submitAvail);
+	document.cookie = "error_status="+submitAvail;
 }

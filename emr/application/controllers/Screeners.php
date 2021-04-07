@@ -55,7 +55,6 @@ class Screeners extends CI_Controller {
     }
 
     public function add(){
-
       if ($this->ion_auth->is_admin()) {
         $data["userRole"] = "ADMIN";
         $data["options"] = ["Sync Data", "Create User", "Edit Users", "Change Password", "Logout"];
@@ -245,29 +244,29 @@ class Screeners extends CI_Controller {
         // If User only selects one date
         elseif (($morn_time === [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time === [])){
           $cookie_name = "error_status";
-          $cookie_value = "002";
-          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
+          $cookie_value = "none";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "/main" , $domain = "" , $secure = false , $httponly = false );
           return redirect('main/index', 'refresh');
         } 
         // If User only selects two dates
         elseif (($morn_time != [] && $eve_time != [] && $night_time === []) || ($morn_time != [] && $eve_time === [] && $night_time != []) || ($morn_time === [] && $eve_time != [] && $night_time != [])){
           $cookie_name = "error_status";
-          $cookie_value = "003";
-          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
+          $cookie_value = "none";
+          setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "/main" , $domain = "" , $secure = false , $httponly = false );
           return redirect('main/index', 'refresh');
         } 
         else {
           $cookie_name = "error_status";
-          $cookie_value = "004";
+          $cookie_value = "002";
           setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
           return redirect('screeners/add', 'refresh');
         }
       }
       else {
         $cookie_name = "error_status";
-        $cookie_value = "false";
-        setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "" , $domain = "" , $secure = false , $httponly = false );
-        return redirect('main/index', 'refresh');
+        $cookie_value = "none";
+        setcookie ( $cookie_name , $cookie_value , $expires = 0 , $path = "/main" , $domain = "" , $secure = false , $httponly = false );
+        return redirect('main/index', 'refresh'); 
       }
 
       
