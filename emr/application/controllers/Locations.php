@@ -17,18 +17,18 @@ class Locations extends CI_Controller {
 			$data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
 			$data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
+			$data["sideMenu"] = ["Calendar", "Screeners", "Check-in/Check-out", "Locations", "Requests"];
+			$data["link"] = ["main/index", "screeners", "checkin", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "list", "building", "exclamation-triangle"];
 		} elseif ($this->ion_auth->in_group("hostpial admin")) {
 			$data["userRole"] = "HOSPITAL ADMIN";
 			$data["options"] = ["Logout"];
 			$data["href"] = ["auth/logout"];
 			$data["font"] = ["refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Locatons", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"]; 
+			$data["sideMenu"] = ["Calendar", "Screeners", "Check-in/Check-out", "Locations", "Requests"];
+			$data["link"] = ["main/index", "screeners", "checkin", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "list", "building", "exclamation-triangle"]; 
 		} else {
 			redirect('main/index', 'refresh');
 		}
@@ -52,18 +52,18 @@ class Locations extends CI_Controller {
 			$data["href"] = ["data", "auth/create_user", "auth", "auth/change_password", "auth/logout"];
 			$data["font"] = ["database","user-plus", "edit", "refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];
+			$data["sideMenu"] = ["Calendar", "Screeners", "Check-in/Check-out", "Locations", "Requests"];
+			$data["link"] = ["main/index", "screeners", "checkin", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "list", "building", "exclamation-triangle"];
 		} elseif ($this->ion_auth->in_group("hostpial admin")) {
 			$data["userRole"] = "HOSPITAL ADMIN";
 			$data["options"] = ["Logout"];
 			$data["href"] = ["auth/logout"];
 			$data["font"] = ["refresh", "sign-out"];
 
-			$data["sideMenu"] = ["Calendar", "Screeners", "Locations", "Requests"];
-			$data["link"] = ["main/index", "screeners", "locations", "request/view"];
-			$data["icon"] = ["calendar","user", "building", "exclamation-triangle"];   
+			$data["sideMenu"] = ["Calendar", "Screeners", "Check-in/Check-out", "Locations", "Requests"];
+			$data["link"] = ["main/index", "screeners", "checkin", "locations", "request/view"];
+			$data["icon"] = ["calendar","user", "list", "building", "exclamation-triangle"];  
 		} else {
 			redirect('main/index', 'refresh');
 		}
