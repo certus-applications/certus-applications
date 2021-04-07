@@ -278,14 +278,6 @@ function init_calendar(eventArr, accountType) {
                         styling: 'bootstrap3',
                         delay: 2000
                     });
-                } if (calEvent.location == 'undefined') {
-                    new PNotify({
-                        title: 'Error!',
-                        text: 'Location must be specified before submitting.',
-                        type: 'error',
-                        styling: 'bootstrap3',
-                        delay: 2000
-                    });
                 } else {
                     counter = counter + 1
                     var saveButton = document.getElementById("saveButton");
@@ -311,6 +303,15 @@ function init_calendar(eventArr, accountType) {
                     }, 2000);
                     // $('.antoclose2').click();
                     loader.style.display = "block";                    
+                }
+                if (calEvent.location == 'undefined') {
+                    new PNotify({
+                        title: 'Error!',
+                        text: 'Location must be specified before submitting.',
+                        type: 'error',
+                        styling: 'bootstrap3',
+                        delay: 2000
+                    });
                 }
             });
 
