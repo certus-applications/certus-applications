@@ -250,6 +250,9 @@ function init_calendar(eventArr, accountType) {
             $('#end').val(endDateTime);
             $('#id').val(calEvent.scheduleid);
 
+            var deleteSchedule = document.getElementById('deleteSchedule');
+            deleteSchedule.dataset.target = "#deleteSchedule"+calEvent.scheduleid;
+
             var node = document.getElementById('location');
             node.innerHTML = '<option value = ' + calEvent.location + '>' + calEvent.location + '</option>' + get_locations();
 
@@ -282,8 +285,10 @@ function init_calendar(eventArr, accountType) {
                     counter = counter + 1
                     var saveButton = document.getElementById("saveButton");
                     var closeButton = document.getElementById("closeButton");
+                    var deleteSchedule = document.getElementById("deleteSchedule");
                     saveButton.style.display = "none";
                     closeButton.style.display = "none";
+                    deleteSchedule.style.display = "none";
 
                     // check if scheduleid is null, if its null send data to a new function else to set_sechdule)data function
                     if (calEvent.scheduleid == null) {

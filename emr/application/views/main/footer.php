@@ -87,6 +87,9 @@
     
     <!-- Availability Widget Scripts -->
     <script src="../build/js/availability.js"></script>
+    
+    <!-- Calendar schedule Scripts -->
+    <script src="../build/js/schedule.js"></script>
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>

@@ -353,6 +353,7 @@
                   <div class="modal-footer">
                     <button type="button" class="btn btn-default antoclose2" data-dismiss="modal" id="closeButton">Close</button>
                     <button type="submit" class="btn btn-primary antosubmit2" id="saveButton">Save changes</button>
+                    <a id = "deleteSchedule" data-toggle="modal" class="btn btn-danger" data-dismiss="modal"><i class="fa fa-trash-o"></i> Delete </a>
                     <center id = "loader">
                       <div class="loaderAnimation"></div>
                     </center>
@@ -432,6 +433,28 @@
     </div>
 
     <div id="setCookie" data-toggle="modal" data-target="#setCookieSuccess"></div>
+
+    <?php foreach($scheduleView as $entry){?>
+      <div class="modal fade tuna" id="deleteSchedule<?php echo $entry['id'];  ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+              <h4 class="modal-title" id="exampleModalLabel">Delete Entry</h4>
+            </div>
+            <div class="modal-body">
+              Are you sure you want to delete this entry for <?php echo $entry['first_name'].' '.$entry['last_name'].' on '.date("F j, Y",strtotime($entry['start'])).' from '.date("g:i a",strtotime($entry['start'])). ' to '.date("g:i a",strtotime($entry['end']));?>?
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-danger confirmDelete">Confrim</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php } ?>
 
   </body>
 

@@ -72,6 +72,7 @@ class Main extends CI_Controller {
       $data["userFirstName"] = $this->ion_auth->user()->row()->first_name;
       $data["userLastName"] = $this->ion_auth->user()->row()->last_name;
       $availabilityData["availabilities"] = $this->Availability_model->getAvailability();
+      $availabilityData['scheduleView'] = $this->Schedule_model->getSchedule();
               
      //$data['eventsAll'] = $this->Events_model->listAll();
       $this->load->view('main/header');
