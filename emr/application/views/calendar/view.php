@@ -1,18 +1,5 @@
         <!-- Calendar content -->
         <div class="right_col" role="main">
-          <script>
-            $(document).ready(function() {
-            <?php if($this->session->flashdata('success')){ ?>
-              new PNotify({
-                title: 'Success',
-                text: 'Availability added successfully!',
-                type: 'success',
-                styling: 'bootstrap3',
-                delay: 2500
-              });
-            <?php } ?>
-            });
-          </script>
           <div class="">
 
             <?php if ($this->ion_auth->is_admin()): ?>

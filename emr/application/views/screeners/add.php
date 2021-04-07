@@ -1,19 +1,6 @@
 <!-- page content -->
 <div class="right_col" role="main">
 		<div class="row">
-				<script>
-					$(document).ready(function() {
-					<?php if($this->session->flashdata('error')){ ?>
-						new PNotify({
-							title: 'Error',
-							text: 'An error occurred!',
-							type: 'error',
-							styling: 'bootstrap3',
-							delay: 2500
-						});
-					<?php } ?>
-					});
-				</script>
 			<div class="col-md-12 col-sm-12 col-xs-12">						
 				<div class="x_panel">
 					<div class="x_title">
@@ -79,7 +66,7 @@
 							</div>	
 							<div class="center col-xs-12">
 								<ul class="nav justify-content-center panel_toolbox">      
-									<li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
+									<li><button type="submit" id="submit-avail" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
 								</ul>
 							</div>			
 						</div>
@@ -88,7 +75,6 @@
 			</div>
 		</div>
 	</div>
-
 <style>
 	.center {
 		display: flex;
