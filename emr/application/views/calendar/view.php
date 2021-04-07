@@ -98,6 +98,7 @@
                 </div>
               </div>
               <?php if ($this->ion_auth->is_admin()): ?>
+                <!-- Availability Widget -->
                 <div class="col-md-9 col-md-3">
                   <div class="x_panel">
                     <div class="x_title">
@@ -207,6 +208,75 @@
                         <div class="panel">
                           <a class="panel-heading collapsed" role="tab" id="nightShift" data-toggle="collapse" data-parent="#accordion" href="#night" aria-expanded="false" aria-controls="night">
                             <h4 class="panel-title" style="color: #73879C">Night</h4>
+                          </a>
+                          <div id="night" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="nightShift">
+                            <ul class="list-unstyled msg_list" id="availability_night">
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "night"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                      <div style="display: none;">
+                                        <?php
+                                          $dayofweek = date('l', strtotime($availability['start']));
+                                          echo $dayofweek;
+                                        ?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
+                            </ul>
+                          </div>
+                        </div>
+                      </div>
+                      <!-- end of accordion -->
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- Check-In/Out Widget -->
+                <div class="col-md-9 col-md-3">
+                  <div class="x_panel">
+                    <div class="x_title">
+                      <h2>Check-In/Check-Out</h2>
+ 
+                      <div class="clearfix"></div>
+                      <div id="filterby"></div>
+                    </div>
+                    <div class="x_content" id = "external-events">
+                      <!-- start accordion -->
+                      <div class="accordion" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel">
+                          <a class="panel-heading" role="tab" id="morningShift" data-toggle="collapse" data-parent="#accordion" href="#morning" aria-expanded="true" aria-controls="morning">
+                            <h4 class="panel-title" style="color: #73879C">Checked In</h4>
+                          </a>
+                          <div id="morning" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="morningShift">
+                            <ul class="list-unstyled msg_list" id="availability_morning">
+                              <?php foreach($availabilities as $availability){?>
+                                <?php if($availability['shift_type'] == "morning"){?>
+                                  <li class='fc-event' style="border: 1px solid #73879C cursor: -webkit-grab; cursor: grab;">
+                                  <a>                              
+                                      <div class='fc-event-main' style="color: #73879C" > 
+                                        <?php echo $availability['first_name'];?> <?php echo $availability['last_name'];?>
+                                      </div>
+                                      <div style="display: none;">
+                                        <?php
+                                          $dayofweek = date('l', strtotime($availability['start']));
+                                          echo $dayofweek;
+                                        ?>
+                                      </div>
+                                  </a>
+                                <?php } ?>
+                              <?php } ?>
+                            </ul>
+                          </div>
+                        </div>
+
+                        <div class="panel">
+                          <a class="panel-heading collapsed" role="tab" id="nightShift" data-toggle="collapse" data-parent="#accordion" href="#night" aria-expanded="false" aria-controls="night">
+                            <h4 class="panel-title" style="color: #73879C">Checked Out</h4>
                           </a>
                           <div id="night" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="nightShift">
                             <ul class="list-unstyled msg_list" id="availability_night">
