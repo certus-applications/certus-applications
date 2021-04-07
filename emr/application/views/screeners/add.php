@@ -66,7 +66,7 @@
 							</div>	
 							<div class="center col-xs-12">
 								<ul class="nav justify-content-center panel_toolbox">      
-									<li><button type="submit" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
+									<li><button type="submit" id="submit-avail" class="btn btn-success" style="padding: 5px 11px 5px 11px; margin: 5px 5px 5px 0;">Submit</button></li>
 								</ul>
 							</div>			
 						</div>
@@ -75,9 +75,7 @@
 			</div>
 		</div>
 	</div>
-
 <style>
-
 	.center {
 		display: flex;
 		justify-content: center;
@@ -137,33 +135,3 @@
 	}
 
 </style>
-
-<script type="text/javascript">
-	function notifyUser(message) {
-		if(message == "error_nothing") {
-		new PNotify({
-			title: 'Error!',
-			text: "Please select at least one date before submitting.",
-			type: 'error',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		} else if(message == "error") {
-		new PNotify({
-			title: 'Error!',
-			text: "An error has occurred, please try submitting again.",
-			type: 'error',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		} else if(message == "success") {
-			new PNotify({
-			title: 'Success!',
-			text: "Your availability has been submitted in successfully!",
-			type: 'success',
-			styling: 'bootstrap3',
-			delay: 2000
-		});
-		}
-  	}
-</script>
