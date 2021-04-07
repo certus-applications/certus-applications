@@ -90,5 +90,9 @@
 
     <!-- Analytic Scripts -->
     <script src="../build/js/analytics.js"></script>
+
+    <!-- Notification Scripts -->
+    <script src="../build/js/notifications.js"></script>
+
   </body>
 </html>
