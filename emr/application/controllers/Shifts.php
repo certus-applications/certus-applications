@@ -42,12 +42,24 @@ class Shifts extends CI_Controller {
 	public function add() {
 		$shiftData = array(
 			'screener_id' => $this->input->post('screenerid'),
-			'shift_status' => $this->input->post('shift_status'),
-			'check_timestamp' => date('Y-m-d H:i:s')
+			'check_in' => $this->input->post('check_in'),
+			'check_in_timestamp' => date('Y-m-d H:i:s')
 		);
 
 		$this->load->model('Shifts_model');
 		$this->Shifts_model->add($shiftData);
 		return redirect('shifts/index');
+	}
+
+	public function getScheduleData(){
+		$this->load->model('Screeners_model');
+		$data = $this->Screeners_model->getSchedule();
+		echo json_encode($data);
+	}
+
+	public function getData() {
+		$this->load->model('Shifts_model');
+        $data = $this->Shifts_model->getAll();
+		echo json_encode($data);
 	}
 }

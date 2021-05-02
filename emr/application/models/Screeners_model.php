@@ -58,4 +58,12 @@
         extract($scheduleData);
         $this->db->insert('schedule', $scheduleData);
       }
+
+      public function getSchedule(){
+        $this->db->select('*');
+        $this->db->from('schedule');
+        $query = $this->db->get();
+        $returnData = $query->result_array();
+        return $returnData;
+      }
     }

@@ -81,8 +81,37 @@ function SmartWizard(target, options) {
 
             var screenerid = $('#screenerid').val();
             createCookie(screenerid);
+
             if (screenerid !== "" && screenerid.length == 6 ) {
-                $this.goForward();
+
+                $.ajax({
+                    url: 'http://certus.local/shifts/getScheduleData/',
+                    type: 'POST',
+                    dataType: 'text',
+                    data: {},
+                    success: function(data) {
+                        var obj = JSON.parse(data);
+                        for(var i=0; i < obj.length; i++) {
+                            if(obj[i].employeeid === screenerid) {
+                                $this.goForward();
+                            }
+                            else if(obj[i].employeeid != screenerid) {
+                                new PNotify({
+                                    title: 'Error!',
+                                    text: 'The screener id you have entered does not exist.',
+                                    type: 'error',
+                                    styling: 'bootstrap3',
+                                    delay: 2000
+                                });
+                            }
+                        }
+                    },
+                    error: function(data) {
+                        console.log('error');
+                    }
+                });
+
+                
                 // $(".actionBar").append("<button>Previous</button>").attr("href", "#").attr("id", "buttonPrevious").addClass("buttonPrevious");
                 // document.getElementById("buttonNext").innerHTML = "Finish"
             }
@@ -112,23 +141,29 @@ function SmartWizard(target, options) {
             console.log("screenerid" + screenerid);
 
             if (step2 != undefined && screenerid != undefined) {
-                var shiftData = {
-                    screenerid: screenerid,
-                    shift_status: step2
+                if (step2 == 'checkin') {
+                    var check_in = 1;
+                } else {
+                    check_in = 'false';
                 }
 
-                $.ajax({
-                    url: 'http://certus.local/shifts/add/',
-                    type: 'POST',
-                    dataType: 'text',
-                    data: shiftData,
-                    success: function(data) {
-                        console.log('submit success');
-                    },
-                    error: function(data) {
-                        console.log('error');
-                    }
-                });
+                var shiftData = {
+                    screenerid: screenerid,
+                    check_in: check_in
+                }
+
+                // $.ajax({
+                //     url: 'http://certus.local/shifts/add/',
+                //     type: 'POST',
+                //     dataType: 'text',
+                //     data: shiftData,
+                //     success: function(data) {
+                //         console.log(check_in);
+                //     },
+                //     error: function(data) {
+                //         console.log('error');
+                //     }
+                // });
             }
 
             return false;
