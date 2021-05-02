@@ -36,8 +36,18 @@ class Shifts extends CI_Controller {
 			$data["icon"] = ["calendar","user", "exclamation-triangle"];
 		}
 
-		$this->load->model('Locations_model');
-
 		$this->load->view('shifts/index', $data);
     }
+
+	public function add() {
+		$shiftData = array(
+			'screener_id' => $this->input->post('screenerid'),
+			'shift_status' => $this->input->post('shift_status'),
+			'check_timestamp' => date('Y-m-d H:i:s')
+		);
+
+		$this->load->model('Shifts_model');
+		$this->Shifts_model->add($shiftData);
+		return redirect('shifts/index');
+	}
 }

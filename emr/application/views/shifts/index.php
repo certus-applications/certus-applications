@@ -107,7 +107,8 @@
 		                                <div class="form-group row">
 		                                	<div class="col-md-3 col-sm-3"></div>
 		                                    <div class="col-md-6 col-sm-6">
-		                                        <input type="text" id="email" required="required" class="form-control" placeholder="MGH Email" />
+		                                        <!-- <input type="text" id="email" required="required" class="form-control" placeholder="MGH Email" /> -->
+                                                <input type="text" id="screenerid" required="required" class="form-control" placeholder="MGH ScreenerID" />
 		                                    </div>
 		                                </div>
 		                            </form>
@@ -249,9 +250,6 @@
 
     <!-- Calendar Scripts -->
     <!-- <script src="../build/js/calendar1.js"></script> -->
-
-    <!-- Locations Scripts -->
-    <script src="../build/js/locations.js"></script>
 
     <!-- Availability Widget Scripts -->
     <!-- <script src="../build/js/availability.js"></script> -->

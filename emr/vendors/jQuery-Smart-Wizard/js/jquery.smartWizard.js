@@ -76,28 +76,31 @@ function SmartWizard(target, options) {
         });
 
         $($this.buttons.next).click(function() {
-            var email = $('#email').val();
-            createCookie(email);
-            if (email !== "" && email.indexOf('@tehn') !== -1) {
+
+            // Ajax call here to check whether ID is in db or do it in other JS file?
+
+            var screenerid = $('#screenerid').val();
+            createCookie(screenerid);
+            if (screenerid !== "" && screenerid.length == 6 ) {
                 $this.goForward();
-                // $( ".actionBar" ).append( "<button>Previous</button>" ).attr("href","#").attr("id","buttonPrevious").addClass("buttonPrevious");
+                // $(".actionBar").append("<button>Previous</button>").attr("href", "#").attr("id", "buttonPrevious").addClass("buttonPrevious");
                 // document.getElementById("buttonNext").innerHTML = "Finish"
             }
 
-            if (email == "") {
+            if (screenerid == "") {
                 new PNotify({
                     title: 'Error!',
-                    text: 'You must enter your email!',
+                    text: 'You must enter your Screener ID!',
                     type: 'error',
                     styling: 'bootstrap3',
                     delay: 2000
                 });
             }
 
-            if (email.indexOf('@tehn') == -1 && email !== "") {
+            if (screenerid.length != 6) {
                 new PNotify({
                     title: 'Error!',
-                    text: 'Use your MGH emal!',
+                    text: 'Your Screener ID has to be 6 digits long!',
                     type: 'error',
                     styling: 'bootstrap3',
                     delay: 2000
@@ -105,8 +108,29 @@ function SmartWizard(target, options) {
             }
 
             var step2 = $('input[name="shift"]:checked').val();
-            console.log("tuna" + step2);
-            console.log("email" + email);
+            console.log(step2);
+            console.log("screenerid" + screenerid);
+
+            if (step2 != undefined && screenerid != undefined) {
+                var shiftData = {
+                    screenerid: screenerid,
+                    shift_status: step2
+                }
+
+                $.ajax({
+                    url: 'http://certus.local/shifts/add/',
+                    type: 'POST',
+                    dataType: 'text',
+                    data: shiftData,
+                    success: function(data) {
+                        console.log('submit success');
+                    },
+                    error: function(data) {
+                        console.log('error');
+                    }
+                });
+            }
+
             return false;
         });
         $($this.buttons.previous).click(function() {
@@ -128,6 +152,7 @@ function SmartWizard(target, options) {
                     var frm = $this.target.parents('form');
                     if(frm && frm.length){
                         frm.submit();
+                        console.log('hello');
                     }
                 }
             }
@@ -323,7 +348,7 @@ function SmartWizard(target, options) {
                 }
             }
             if (($this.steps.length-1) <= $this.curStepIdx){
-                // $($this.buttons.next).addClass("buttonDisabled");
+                $($this.buttons.next).addClass("buttonDisabled");
                 document.getElementById("buttonNext").innerHTML = "Finish"
                 $($this.buttons.next).addClass("buttonFinish");
                 if ($this.options.hideButtonsOnDisabled) {
