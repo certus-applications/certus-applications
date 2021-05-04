@@ -80,10 +80,11 @@ function SmartWizard(target, options) {
             // Ajax call here to check whether ID is in db or do it in other JS file?
 
             var screenerid = $('#screenerid').val();
+            var screenerid_false = '';
             createCookie(screenerid);
 
             if (screenerid !== "" && screenerid.length == 6 ) {
-
+                var scheduledDate = [];
                 $.ajax({
                     url: 'http://certus.local/shifts/getScheduleData/',
                     type: 'POST',
@@ -91,20 +92,17 @@ function SmartWizard(target, options) {
                     data: {},
                     success: function(data) {
                         var obj = JSON.parse(data);
-                        for(var i=0; i < obj.length; i++) {
-                            if(obj[i].employeeid === screenerid) {
+
+                        $.each(obj, function(key, value) {
+                            console.log(value);
+                            if(value.employeeid === screenerid) {
+                                console.log('match');
                                 $this.goForward();
+                                return false;
                             }
-                            else if(obj[i].employeeid != screenerid) {
-                                new PNotify({
-                                    title: 'Error!',
-                                    text: 'The screener id you have entered does not exist.',
-                                    type: 'error',
-                                    styling: 'bootstrap3',
-                                    delay: 2000
-                                });
-                            }
-                        }
+
+                        });
+
                     },
                     error: function(data) {
                         console.log('error');
@@ -126,7 +124,7 @@ function SmartWizard(target, options) {
                 });
             }
 
-            if (screenerid.length != 6) {
+            else if (screenerid.length != 6) {
                 new PNotify({
                     title: 'Error!',
                     text: 'Your Screener ID has to be 6 digits long!',
@@ -136,35 +134,44 @@ function SmartWizard(target, options) {
                 });
             }
 
+            else if (screenerid_false == 'false') {
+                new PNotify({
+                    title: 'Error!',
+                    text: 'The screener id you have entered does not exist.',
+                    type: 'error',
+                    styling: 'bootstrap3',
+                    delay: 2000
+                });
+            }
+
             var step2 = $('input[name="shift"]:checked').val();
+            var currentDate = moment(new Date()).format("YYYY-MM-DD");
             console.log(step2);
             console.log("screenerid" + screenerid);
-
             if (step2 != undefined && screenerid != undefined) {
                 if (step2 == 'checkin') {
                     var check_in = 1;
-                } else {
-                    check_in = 'false';
+                    var shiftData = {
+                        screenerid: screenerid,
+                        check_in: check_in
+                    }
                 }
-
-                var shiftData = {
-                    screenerid: screenerid,
-                    check_in: check_in
-                }
-
-                // $.ajax({
-                //     url: 'http://certus.local/shifts/add/',
-                //     type: 'POST',
-                //     dataType: 'text',
-                //     data: shiftData,
-                //     success: function(data) {
-                //         console.log(check_in);
-                //     },
-                //     error: function(data) {
-                //         console.log('error');
-                //     }
-                // });
+                $.ajax({
+                    url: 'http://certus.local/shifts/add/',
+                    type: 'POST',
+                    dataType: 'text',
+                    data: shiftData,
+                    success: function(data) {
+                        console.log('success');
+                    },
+                    error: function(data) {
+                        console.log('error');
+                    }
+                });                           
             }
+
+
+            
 
             return false;
         });
