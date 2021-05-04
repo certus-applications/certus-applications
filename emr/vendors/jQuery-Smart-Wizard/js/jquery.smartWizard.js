@@ -81,10 +81,11 @@ function SmartWizard(target, options) {
 
             var screenerid = $('#screenerid').val();
             var screenerid_false = '';
+            var scheduledDate = [];
+            currentDate = moment(new Date()).format('YYYY-MM-DD');
             createCookie(screenerid);
 
             if (screenerid !== "" && screenerid.length == 6 ) {
-                var scheduledDate = [];
                 $.ajax({
                     url: 'http://certus.local/shifts/getScheduleData/',
                     type: 'POST',
@@ -94,8 +95,10 @@ function SmartWizard(target, options) {
                         var obj = JSON.parse(data);
 
                         $.each(obj, function(key, value) {
-                            console.log(value);
-                            if(value.employeeid === screenerid) {
+                            console.log('current date: ' + currentDate);
+                            var formatStart = moment(value.start).format('YYYY-MM-DD')
+                            console.log(formatStart);
+                            if(value.employeeid === screenerid && currentDate === formatStart) {
                                 console.log('match');
                                 $this.goForward();
                                 return false;
@@ -113,7 +116,7 @@ function SmartWizard(target, options) {
                 // $(".actionBar").append("<button>Previous</button>").attr("href", "#").attr("id", "buttonPrevious").addClass("buttonPrevious");
                 // document.getElementById("buttonNext").innerHTML = "Finish"
             }
-
+            console.log(scheduledDate);
             if (screenerid == "") {
                 new PNotify({
                     title: 'Error!',
@@ -128,16 +131,6 @@ function SmartWizard(target, options) {
                 new PNotify({
                     title: 'Error!',
                     text: 'Your Screener ID has to be 6 digits long!',
-                    type: 'error',
-                    styling: 'bootstrap3',
-                    delay: 2000
-                });
-            }
-
-            else if (screenerid_false == 'false') {
-                new PNotify({
-                    title: 'Error!',
-                    text: 'The screener id you have entered does not exist.',
                     type: 'error',
                     styling: 'bootstrap3',
                     delay: 2000
@@ -169,9 +162,6 @@ function SmartWizard(target, options) {
                     }
                 });                           
             }
-
-
-            
 
             return false;
         });
