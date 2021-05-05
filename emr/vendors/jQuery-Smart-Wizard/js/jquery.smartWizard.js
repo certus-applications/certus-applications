@@ -94,17 +94,35 @@ function SmartWizard(target, options) {
                     success: function(data) {
                         var obj = JSON.parse(data);
 
-                        $.each(obj, function(key, value) {
-                            console.log('current date: ' + currentDate);
-                            var formatStart = moment(value.start).format('YYYY-MM-DD')
-                            console.log(formatStart);
-                            if(value.employeeid === screenerid && currentDate === formatStart) {
-                                console.log('match');
+                        //Create array for checkin dates or ID of row being updated
+
+                        for(var i in obj) {
+                            var formatStart = moment(obj[i].start).format('YYYY-MM-DD');
+                            var formatEnd = moment(obj[i].end).format('YYYY-MM-DD');
+                            if(obj[i].employeeid === screenerid && currentDate === formatStart) {
+                                scheduledDate.push({end_date: formatStart});
                                 $this.goForward();
                                 return false;
                             }
+                        }
 
-                        });
+                        // $.each(obj, function(key, value) {
+                        //     // console.log('current date: ' + currentDate);
+                        //     var formatStart = moment(value.start).format('YYYY-MM-DD');
+                            
+                        //     // console.log(formatStart);
+                        //     if(value.employeeid === screenerid && currentDate === formatStart) {
+                        //         scheduledDate = ({
+                        //             start=
+                        //         });
+                        //         // console.log('match');
+                        //         $this.goForward();
+                        //         return false;
+                        //     }
+
+                        //     // return scheduledDate;
+
+                        // });
 
                     },
                     error: function(data) {
@@ -116,7 +134,6 @@ function SmartWizard(target, options) {
                 // $(".actionBar").append("<button>Previous</button>").attr("href", "#").attr("id", "buttonPrevious").addClass("buttonPrevious");
                 // document.getElementById("buttonNext").innerHTML = "Finish"
             }
-            console.log(scheduledDate);
             if (screenerid == "") {
                 new PNotify({
                     title: 'Error!',
@@ -139,28 +156,69 @@ function SmartWizard(target, options) {
 
             var step2 = $('input[name="shift"]:checked').val();
             var currentDate = moment(new Date()).format("YYYY-MM-DD");
-            console.log(step2);
+            // console.log(step2);
             console.log("screenerid" + screenerid);
             if (step2 != undefined && screenerid != undefined) {
+                //Checking in
                 if (step2 == 'checkin') {
                     var check_in = 1;
                     var shiftData = {
                         screenerid: screenerid,
                         check_in: check_in
                     }
-                }
-                $.ajax({
-                    url: 'http://certus.local/shifts/add/',
-                    type: 'POST',
-                    dataType: 'text',
-                    data: shiftData,
-                    success: function(data) {
-                        console.log('success');
-                    },
-                    error: function(data) {
-                        console.log('error');
-                    }
-                });                           
+                    $.ajax({
+                        url: 'http://certus.local/shifts/add/',
+                        type: 'POST',
+                        dataType: 'text',
+                        data: shiftData,
+                        success: function(data) {
+                            console.log('success');
+                        },
+                        error: function(data) {
+                            console.log('error');
+                        }
+                    });    
+                }    
+                
+                //Checking out
+                if (step2 == 'checkout') {
+                    var check_out = 1;
+                    var check_in = 1;
+                    // console.log(scheduledDate);
+                    currentDateTime = moment(new Date()).format('YYYY-MM-DD HH:mm:ss.ssssss');
+                    
+                    setTimeout(function() {
+                        for(var start in scheduledDate) {
+                            if(scheduledDate[start].end_date === currentDate) {
+                                console.log('match');
+
+                                var update_shift = {
+                                    screener_id: screenerid,
+                                    check_in: check_in,
+                                    check_out: check_out,
+                                    check_out_timestamp: currentDateTime
+                                }
+
+                                $.ajax({
+                                    url: 'http://certus.local/shifts/update/',
+                                    type: 'POST',
+                                    dataType: 'text',
+                                    data: update_shift,
+                                    success: function(data) {
+                                        console.log(update_shift);
+                                    },
+                                    error: function(data) {
+                                        console.log('error');
+                                    }
+                                });
+                            }
+                        }
+                    }, 500);
+                    
+                    console.log(currentDate);
+                    
+    
+                } 
             }
 
             return false;

@@ -57,6 +57,22 @@ class Shifts extends CI_Controller {
 		echo json_encode($data);
 	}
 
+	// Admin update
+	public function update() {
+		$this->load->model('Shifts_model');
+		// $choice = $this->input->post('choice');
+		
+		$update_shift = array (
+			'screener_id' => $this->input->post('screener_id'),
+			'check_in' => $this->input->post('check_in'),
+			'check_out' => $this->input->post('check_out'),
+			'check_out_timestamp' => $this->input->post('check_out_timestamp')
+		); 
+		
+		$this->Shifts_model->update($update_shift);
+		return redirect('request/view', 'refresh');
+	}
+
 	public function getData() {
 		$this->load->model('Shifts_model');
         $data = $this->Shifts_model->getAll();
